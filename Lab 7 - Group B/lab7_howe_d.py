@@ -5,12 +5,12 @@ def snowMan(pic):
   #filename = pickAFile()
   #pic = makePicture(filename)
   #explore(pic)
-  #xCordinate = requestInteger("Where should the Snowman go? Please enter X coordinate:")
-  #yCordinate = requestInteger("Where should the Snowman go? Please enter Y coordinate:")
-  xCordinate = 250
-  yCordinate = 850
-  #snowBallSize = requestInteger("How big should the base of the Snowman be?")
-  snowBallSize = 200
+  xCordinate = requestInteger("Where should the Snowman go? Please enter X coordinate:")
+  yCordinate = requestInteger("Where should the Snowman go? Please enter Y coordinate:")
+  #xCordinate = 250
+  #yCordinate = 850
+  snowBallSize = requestInteger("How big should the base of the Snowman be?")
+  #snowBallSize = 200
   while (xCordinate - snowBallSize / 2 <= 0 or getWidth(pic) < xCordinate + snowBallSize):
     xCordinate = requestInteger("The Snowman is too wide for the coordinates provided. Please enter new X coordinate:")
   offset = 0
@@ -54,29 +54,28 @@ def snowMan(pic):
     snowBallSize = snowBallSize * 0.75
   return pic
   
-def insertText(pic, color):
+def insertText(pic, bgColor):
   #filename = pickAFile()
   #pic = makePicture(filename)
   import java.awt.Font as Font
-  #xCordinate = requestInteger("Where should the text go? Please enter X coordinate:")
-  #yCordinate = requestInteger("Where should the text go? Please enter Y coordinate:")
-  xCordinate = 194
-  yCordinate = 2911
-  #text = requestString("Enter the text:")
-  text = "Wishing you and yours..."
-  while (getWidth(pic) < xCordinate or xCordinate < 0):
-    xCordinate = requestInteger("The text won't show in that coordinate.. Please enter new X coordinate:")
-  while (getHeight(pic) < yCordinate or yCordinate < 0):
-    yCordinate = requestInteger("The text won't show in that coordinate.. Please enter Y coordinate:")
-  print "Adding text to image.."
-  print "Length of text is %d characters" % (len(text))
-  rectPadding = 10
-  textSize = 40
-  rectWidth = len(text) * textSize / 2 + rectPadding
-  rectHeight = int(textSize * 0.5) + rectPadding * 2
-  addRectFilled(pic, xCordinate - rectPadding, yCordinate - rectPadding, rectWidth + rectPadding, rectHeight + rectPadding, color)
-  choiceFont = makeStyle("Chalkboard", Font.BOLD, textSize)
-  addTextWithStyle(pic, xCordinate, yCordinate + rectHeight - rectPadding, text, choiceFont)
+  thoughtBalloons = requestInteger("How many text objects do you want to place?:")
+  for i in range(0,thoughtBalloons):
+    xCordinate = requestInteger(str(i) + ": Where should the text go? Please enter X coordinate:")
+    yCordinate = requestInteger(str(i) + ": Where should the text go? Please enter Y coordinate:")
+    text = requestString("Enter the text:")
+    while (getWidth(pic) < xCordinate or xCordinate < 0):
+      xCordinate = requestInteger("The text won't show in that coordinate.. Please enter new X coordinate:")
+    while (getHeight(pic) < yCordinate or yCordinate < 0):
+      yCordinate = requestInteger("The text won't show in that coordinate.. Please enter Y coordinate:")
+    print "Adding text to image.."
+    print "Length of text is %d characters" % (len(text))
+    rectPadding = 10
+    textSize = 40
+    rectWidth = len(text) * textSize / 2 + rectPadding
+    rectHeight = int(textSize * 0.5) + rectPadding * 2
+    addRectFilled(pic, xCordinate - rectPadding, yCordinate - rectPadding, rectWidth + rectPadding, rectHeight + rectPadding, bgColor)
+    choiceFont = makeStyle("Chalkboard", Font.BOLD, textSize)
+    addTextWithStyle(pic, xCordinate, yCordinate + rectHeight - rectPadding, text, choiceFont)
   return pic
   
 def pyCopy(source, target, targetX, targetY):
@@ -143,38 +142,38 @@ def makeCollage(targetImage, targetX, targetY):
   lastY = targetY
   #newImage = makeEmptyPicture(width, height, black)
   for i in range(1, 5):
-    #filename = pickAFile()
-    #pic = makePicture(filename)
+    filename = pickAFile()
+    pic = makePicture(filename)
     #show(pic)
     #print 'Importing image %d x %d' % (getWidth(pic), getHeight(pic))
-    #while (getWidth(pic) > 1000 or getHeight(pic) > 1000):
-      #print 'Image too large.  Select new image no greater than 1000 x 1000'
-      #filename = pickAFile()
-      #pic = makePicture(filename)
+    while (getWidth(pic) > 1000 or getHeight(pic) > 1000):
+      print 'Image too large.  Select new image no greater than 1000 x 1000'
+      filename = pickAFile()
+      pic = makePicture(filename)
     if i == 1:
       print 'Working on picture: %d' % (i,)
-      pic = makePicture("/Users/danielhowe/Desktop/Desert/1000x/ridgeline.jpg")
+      #pic = makePicture("/Users/danielhowe/Desktop/Desert/1000x/ridgeline.jpg")
       newImage = pyCopy(pic, targetImage, lastX, lastY)
       lastX = getWidth(pic) + lastX
     elif i == 2:
       print 'Working on picture: %d' % (i,)
-      pic = makePicture("/Users/danielhowe/Desktop/Desert/1000x/heart.jpg")
+      #pic = makePicture("/Users/danielhowe/Desktop/Desert/1000x/heart.jpg")
       newImage = pyCopy(pic, targetImage, lastX, lastY)
       lastX = getWidth(pic) + lastX
     elif i == 3:
       print 'Working on picture: %d' % (i,)
-      pic = makePicture("/Users/danielhowe/Desktop/Desert/1000x/portrait.jpg")
+      #pic = makePicture("/Users/danielhowe/Desktop/Desert/1000x/portrait.jpg")
       newImage = pyCopy(pic, targetImage, lastX, lastY)
       lastX = getWidth(pic) + lastX
     elif i == 4:
       print 'Working on picture: %d' % (i,)
-      pic = makePicture("/Users/danielhowe/Desktop/Desert/1000x/flags.jpg")
+      #pic = makePicture("/Users/danielhowe/Desktop/Desert/1000x/flags.jpg")
       newImage = pyCopy(pic, targetImage, lastX, lastY)
       lastX = getWidth(pic) + lastX
   print 'Completed collage will now save..' 
   #repaint(newImage)
-  writePictureTo(newImage, "/Users/danielhowe/Desktop/collageOutput.jpg")
-  return pic
+  #writePictureTo(newImage, "/Users/danielhowe/Desktop/collageOutput.jpg")
+  return newImage
 
 def talkingSnowMan():
   filename = pickAFile()
@@ -186,17 +185,22 @@ def talkingSnowMan():
   
 def patricksDayCard():
   # Start with the base image
-  #filename = pickAFile()
-  #card = makePicture(filename)
-  card = makePicture("/Users/danielhowe/Desktop/Desert/source.jpg")
+  filename = pickAFile()
+  card = makePicture(filename)
+  #card = makePicture("/Users/danielhowe/Desktop/Desert/source.jpg")
+  #dimensions for the collage
   rectWidth = 4000
   rectHeight = 1000
   rectYPadding = 80
   startX = (getWidth(card) - rectWidth) / 2
-  #addRectFilled(card, int(startX), rectYPadding, rectWidth, rectHeight, green)
+  #check to make sure image is correct width
+  while (getWidth(card) < rectWidth):
+    print 'Image is not at least 4000 pixels wide.  Please select a new image:'
+    filename = pickAFile()
+    card = makePicture(filename)
   addOvalFilled(card, rectWidth / 2, rectHeight + rectYPadding, 30, 30, white)
   addOvalFilled(card, rectWidth / 2 + 30, rectHeight + rectYPadding + 30, 10, 10, white)
-  collage = makeCollage(card, int(startX), int(rectYPadding))
-  #card = chromakey(card, collage)
-  #writePictureTo(card, "/Users/danielhowe/Desktop/collageOutputChromaKey.jpg")  
+  card = makeCollage(card, int(startX), int(rectYPadding))
+  card = insertText(card, white)
+  writePictureTo(card, pickAFile())  
   show(card)
