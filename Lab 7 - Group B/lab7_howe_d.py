@@ -21,9 +21,12 @@ def snowMan(pic):
       endY = startY - 2
       print "First line of the nose starts at %d, %d, and ends at %d, %d" % (startX, startY, endX, endY)
       addLine(pic, startX, startY, endX, endY, red)
+      addLine(pic, startX + 1, startY + 1, endX + 1, endY + 1, red)
+      addLine(pic, startX - 1, startY - 1, endX - 1, endY - 1, red)
       startX = startX - 10
       print "Second line of the nose starts at %d, %d, and ends at %d, %d" % (startX, startY, endX, endY)
-      addLine(pic, startX, startY, endX, endY, red)      
+      for addWeight in range (0, 10):
+         addLine(pic, startX + addWeight, startY + addWeight, endX + addWeight, endY + addWeight, red)     
     print "Drawing %d oval at %d, %d with the size of %d by %d" % (i, int(xCordinate - offset / 2), int(yCordinate + offset), int(snowBallSize), int(snowBallSize * 0.95))
     addOvalFilled(pic, int(xCordinate + offset / 4), int(yCordinate - offset), int(snowBallSize), int(snowBallSize * 0.95), white)
     if (i == 2):
@@ -42,7 +45,8 @@ def snowMan(pic):
       endX = int(xCordinate)
       endY = int(yCordinate - offset / 2)
       print "Line of the arm starts at %d, %d, and ends at %d, %d" % (startX, startY, endX, endY)
-      addLine(pic, startX, startY, endX, endY, black)
+      for addWeight in range (0, 10):
+        addLine(pic, startX + addWeight, startY + addWeight, endX + addWeight, endY + addWeight, black)
     offset = offset + (snowBallSize * 0.5)
     snowBallSize = snowBallSize * 0.75
   return pic
