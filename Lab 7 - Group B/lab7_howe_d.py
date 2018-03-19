@@ -66,6 +66,8 @@ def talkingSnowMan():
   filename = pickAFile()
   pic = makePicture(filename)
   pic = snowMan(pic)
-  #show(pic)
   pic = insertText(pic)
-  show(pic)
+  repaint(pic)
+  writePictureTo(pic, pickAFile())
+  
+talkingSnowMan()
