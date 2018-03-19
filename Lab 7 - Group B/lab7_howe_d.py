@@ -5,9 +5,12 @@ def snowMan(pic):
   #filename = pickAFile()
   #pic = makePicture(filename)
   #explore(pic)
-  xCordinate = requestInteger("Where should the Snowman go? Please enter X coordinate:")
-  yCordinate = requestInteger("Where should the Snowman go? Please enter Y coordinate:")
-  snowBallSize = requestInteger("How big should the base of the Snowman be?")
+  #xCordinate = requestInteger("Where should the Snowman go? Please enter X coordinate:")
+  #yCordinate = requestInteger("Where should the Snowman go? Please enter Y coordinate:")
+  xCordinate = 250
+  yCordinate = 850
+  #snowBallSize = requestInteger("How big should the base of the Snowman be?")
+  snowBallSize = 200
   while (xCordinate - snowBallSize / 2 <= 0 or getWidth(pic) < xCordinate + snowBallSize):
     xCordinate = requestInteger("The Snowman is too wide for the coordinates provided. Please enter new X coordinate:")
   offset = 0
@@ -51,26 +54,36 @@ def snowMan(pic):
     snowBallSize = snowBallSize * 0.75
   return pic
   
-def insertText(pic):
+def insertText(pic, color):
   #filename = pickAFile()
   #pic = makePicture(filename)
-  xCordinate = requestInteger("Where should the text go? Please enter X coordinate:")
-  yCordinate = requestInteger("Where should the text go? Please enter Y coordinate:")
-  text = requestString("Enter the text:")
+  import java.awt.Font as Font
+  #xCordinate = requestInteger("Where should the text go? Please enter X coordinate:")
+  #yCordinate = requestInteger("Where should the text go? Please enter Y coordinate:")
+  xCordinate = 500
+  yCordinate = 650
+  #text = requestString("Enter the text:")
+  text = "I'd rather be\nat a St. Patricks Day Party"
   while (getWidth(pic) < xCordinate or xCordinate < 0):
     xCordinate = requestInteger("The text won't show in that coordinate.. Please enter new X coordinate:")
   while (getHeight(pic) < yCordinate or yCordinate < 0):
     yCordinate = requestInteger("The text won't show in that coordinate.. Please enter Y coordinate:")
   print "Adding text to image.."
   print "Length is %d" % (len(text))
-  addText(pic, xCordinate, yCordinate, text)
+  rectPadding = 10
+  textSize = 40
+  rectWidth = len(text) * textSize / 2 + rectPadding
+  rectHeight = int(textSize * 0.5) + rectPadding * 2
+  addRectFilled(pic, xCordinate - rectPadding, yCordinate - rectPadding, rectWidth + rectPadding, rectHeight + rectPadding, color)
+  choiceFont = makeStyle("Chalkboard", Font.BOLD, textSize)
+  addTextWithStyle(pic, xCordinate, yCordinate + rectHeight - rectPadding, text, choiceFont)
   return pic
   
 def talkingSnowMan():
   filename = pickAFile()
   pic = makePicture(filename)
   pic = snowMan(pic)
-  pic = insertText(pic)
+  pic = insertText(pic, green)
   repaint(pic)
   writePictureTo(pic, pickAFile())
   
