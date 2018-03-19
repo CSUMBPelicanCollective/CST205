@@ -202,5 +202,6 @@ def patricksDayCard():
   addOvalFilled(card, rectWidth / 2 + 30, rectHeight + rectYPadding + 30, 10, 10, white)
   card = makeCollage(card, int(startX), int(rectYPadding))
   card = insertText(card, white)
+  card = snowMan(card)
   writePictureTo(card, pickAFile())  
   show(card)
