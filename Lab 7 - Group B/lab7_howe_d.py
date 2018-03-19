@@ -63,13 +63,13 @@ def insertText(pic, color):
   xCordinate = 500
   yCordinate = 650
   #text = requestString("Enter the text:")
-  text = "I'd rather be\nat a St. Patricks Day Party"
+  text = "I'd rather be\nat a St. Patricks Day Party!"
   while (getWidth(pic) < xCordinate or xCordinate < 0):
     xCordinate = requestInteger("The text won't show in that coordinate.. Please enter new X coordinate:")
   while (getHeight(pic) < yCordinate or yCordinate < 0):
     yCordinate = requestInteger("The text won't show in that coordinate.. Please enter Y coordinate:")
   print "Adding text to image.."
-  print "Length is %d" % (len(text))
+  print "Length of text is %d characters" % (len(text))
   rectPadding = 10
   textSize = 40
   rectWidth = len(text) * textSize / 2 + rectPadding
@@ -79,6 +79,97 @@ def insertText(pic, color):
   addTextWithStyle(pic, xCordinate, yCordinate + rectHeight - rectPadding, text, choiceFont)
   return pic
   
+def pyCopy(source, target, targetX, targetY):
+  #target = makeEmptyPicture(getWidth(source) + targetX * 2, getHeight(source) + targetY * 2)
+  print 'Starting copy of '
+  print source
+  print 'To target '
+  print target
+  #print source
+  #print 'Copying to '
+  #print target
+  #print 'X Offset '
+  #print targetX
+  #print 'Y Offset'
+  #print targetY
+  for x in range(0, getWidth(source)):
+    for y in range(0, getHeight(source)):
+      p = getPixel(source, x, y)
+      r = getRed(p)
+      g = getGreen(p)
+      b = getBlue(p)
+      if (x + targetX > getWidth(target)) or (y + targetY > getHeight(target)):
+        print 'image too large, skipping pixels'
+      else:
+        newPix = getPixel(target, x + targetX, y + targetY)
+        setRed(newPix, r)
+        setGreen(newPix, g)
+        setBlue(newPix, b)
+  #show(newPicture)
+  return(target)
+
+def chromakey(target, source):
+  print 'Starting chromakey function'
+  #dimensional check
+  if getWidth(source) > getWidth(target) or getHeight(source) > getHeight(target):
+    print "Warning: source dimension is larger than target. operation aborted."
+    return
+  #replace green source pixel with target pixel
+  sourceX = 1
+  sourceY = 1
+  for x in range (0, getWidth(target)):
+    for y in range (0, getHeight(target)):
+      sPixel =  getPixel(source, sourceX, sourceY)
+      tPixel = getPixel(target, x, y)
+      #green condition check
+      if getGreen(tPixel) > 200 and getRed(tPixel) < 80 and getBlue(tPixel) < 80:
+        setColor(tPixel, getColor(sPixel))
+        sourceX = sourceX + 1
+        sourceY = sourceY + 1
+  return(target)
+
+def makeCollage():
+  width = 4000
+  height = 1000
+  print 'New collage target image size is %d x %d' % (width, height)
+  print 'Each image should be no greater than %d x %d' % (width / 4, height)
+  lastX = 0
+  lastY = 0
+  newImage = makeEmptyPicture(width, height, black)
+  for i in range(1, 5):
+    #filename = pickAFile()
+    #pic = makePicture(filename)
+    #show(pic)
+    #print 'Importing image %d x %d' % (getWidth(pic), getHeight(pic))
+    #while (getWidth(pic) > 1000 or getHeight(pic) > 1000):
+      #print 'Image too large.  Select new image no greater than 1000 x 1000'
+      #filename = pickAFile()
+      #pic = makePicture(filename)
+    if i == 1:
+      print 'Working on picture: %d' % (i,)
+      pic = makePicture("/Users/danielhowe/Desktop/Desert/1000x/ridgeline.jpg")
+      newImage = pyCopy(pic, newImage, lastX, lastY)
+      lastX = getWidth(pic) + lastX
+    elif i == 2:
+      print 'Working on picture: %d' % (i,)
+      pic = makePicture("/Users/danielhowe/Desktop/Desert/1000x/ridgeline.jpg")
+      newImage = pyCopy(pic, newImage, lastX, lastY)
+      lastX = getWidth(pic) + lastX
+    elif i == 3:
+      print 'Working on picture: %d' % (i,)
+      pic = makePicture("/Users/danielhowe/Desktop/Desert/1000x/ridgeline.jpg")
+      newImage = pyCopy(pic, newImage, lastX, lastY)
+      lastX = getWidth(pic) + lastX
+    elif i == 4:
+      print 'Working on picture: %d' % (i,)
+      pic = makePicture("/Users/danielhowe/Desktop/Desert/1000x/ridgeline.jpg")
+      newImage = pyCopy(pic, newImage, lastX, lastY)
+      lastX = getWidth(pic) + lastX
+  print 'Completed collage will now save..' 
+  #repaint(newImage)
+  writePictureTo(newImage, "/Users/danielhowe/Desktop/collageOutput.jpg")
+  return pic
+
 def talkingSnowMan():
   filename = pickAFile()
   pic = makePicture(filename)
@@ -87,4 +178,19 @@ def talkingSnowMan():
   repaint(pic)
   writePictureTo(pic, pickAFile())
   
-talkingSnowMan()
+def patricksDayCard():
+  # Start with the base image
+  filename = pickAFile()
+  card = makePicture(filename)
+  # Add a rectangle and fill it with green to create thoughtbubble
+  rectWidth = 4000
+  rectHeight = 1000
+  rectYPadding = 80
+  startX = (getWidth(card) - rectWidth) / 2
+  addRectFilled(card, int(startX), rectYPadding, rectWidth, rectHeight, green)
+  addOvalFilled(card, rectWidth / 2, rectHeight + rectYPadding, 30, 30, white)
+  addOvalFilled(card, rectWidth / 2 + 30, rectHeight + rectYPadding + 30, 10, 10, white)
+  collage = makeCollage()
+  card = chromakey(collage, card)
+  writePictureTo(card, "/Users/danielhowe/Desktop/collageOutputChromaKey.jpg")
+  show(card)
