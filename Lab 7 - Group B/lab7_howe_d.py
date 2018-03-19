@@ -60,10 +60,10 @@ def insertText(pic, color):
   import java.awt.Font as Font
   #xCordinate = requestInteger("Where should the text go? Please enter X coordinate:")
   #yCordinate = requestInteger("Where should the text go? Please enter Y coordinate:")
-  xCordinate = 500
-  yCordinate = 650
+  xCordinate = 194
+  yCordinate = 2911
   #text = requestString("Enter the text:")
-  text = "I'd rather be\nat a St. Patricks Day Party!"
+  text = "Wishing you and yours..."
   while (getWidth(pic) < xCordinate or xCordinate < 0):
     xCordinate = requestInteger("The text won't show in that coordinate.. Please enter new X coordinate:")
   while (getHeight(pic) < yCordinate or yCordinate < 0):
@@ -109,33 +109,39 @@ def pyCopy(source, target, targetX, targetY):
   return(target)
 
 def chromakey(target, source):
-  print 'Starting chromakey function'
+  print 'Starting chromakey function sourcing: '
+  print source
+  print 'To target: '
+  print target
   #dimensional check
   if getWidth(source) > getWidth(target) or getHeight(source) > getHeight(target):
     print "Warning: source dimension is larger than target. operation aborted."
     return
   #replace green source pixel with target pixel
-  sourceX = 1
-  sourceY = 1
+  sourceX = 0
+  sourceY = 0
   for x in range (0, getWidth(target)):
     for y in range (0, getHeight(target)):
-      sPixel =  getPixel(source, sourceX, sourceY)
+      sPixel = getPixel(source, sourceX, sourceY)
       tPixel = getPixel(target, x, y)
       #green condition check
       if getGreen(tPixel) > 200 and getRed(tPixel) < 80 and getBlue(tPixel) < 80:
+        print 'Chromakey detected at %d, %d' % (x, y)
         setColor(tPixel, getColor(sPixel))
-        sourceX = sourceX + 1
+        #sourceX = sourceX + 1
         sourceY = sourceY + 1
+    if getGreen(tPixel) > 200 and getRed(tPixel) < 80 and getBlue(tPixel) < 80:
+        sourceX = sourceX + 1
   return(target)
 
-def makeCollage():
+def makeCollage(targetImage, targetX, targetY):
   width = 4000
   height = 1000
   print 'New collage target image size is %d x %d' % (width, height)
   print 'Each image should be no greater than %d x %d' % (width / 4, height)
-  lastX = 0
-  lastY = 0
-  newImage = makeEmptyPicture(width, height, black)
+  lastX = targetX
+  lastY = targetY
+  #newImage = makeEmptyPicture(width, height, black)
   for i in range(1, 5):
     #filename = pickAFile()
     #pic = makePicture(filename)
@@ -148,22 +154,22 @@ def makeCollage():
     if i == 1:
       print 'Working on picture: %d' % (i,)
       pic = makePicture("/Users/danielhowe/Desktop/Desert/1000x/ridgeline.jpg")
-      newImage = pyCopy(pic, newImage, lastX, lastY)
+      newImage = pyCopy(pic, targetImage, lastX, lastY)
       lastX = getWidth(pic) + lastX
     elif i == 2:
       print 'Working on picture: %d' % (i,)
-      pic = makePicture("/Users/danielhowe/Desktop/Desert/1000x/ridgeline.jpg")
-      newImage = pyCopy(pic, newImage, lastX, lastY)
+      pic = makePicture("/Users/danielhowe/Desktop/Desert/1000x/heart.jpg")
+      newImage = pyCopy(pic, targetImage, lastX, lastY)
       lastX = getWidth(pic) + lastX
     elif i == 3:
       print 'Working on picture: %d' % (i,)
-      pic = makePicture("/Users/danielhowe/Desktop/Desert/1000x/ridgeline.jpg")
-      newImage = pyCopy(pic, newImage, lastX, lastY)
+      pic = makePicture("/Users/danielhowe/Desktop/Desert/1000x/portrait.jpg")
+      newImage = pyCopy(pic, targetImage, lastX, lastY)
       lastX = getWidth(pic) + lastX
     elif i == 4:
       print 'Working on picture: %d' % (i,)
-      pic = makePicture("/Users/danielhowe/Desktop/Desert/1000x/ridgeline.jpg")
-      newImage = pyCopy(pic, newImage, lastX, lastY)
+      pic = makePicture("/Users/danielhowe/Desktop/Desert/1000x/flags.jpg")
+      newImage = pyCopy(pic, targetImage, lastX, lastY)
       lastX = getWidth(pic) + lastX
   print 'Completed collage will now save..' 
   #repaint(newImage)
@@ -180,17 +186,17 @@ def talkingSnowMan():
   
 def patricksDayCard():
   # Start with the base image
-  filename = pickAFile()
-  card = makePicture(filename)
-  # Add a rectangle and fill it with green to create thoughtbubble
+  #filename = pickAFile()
+  #card = makePicture(filename)
+  card = makePicture("/Users/danielhowe/Desktop/Desert/source.jpg")
   rectWidth = 4000
   rectHeight = 1000
   rectYPadding = 80
   startX = (getWidth(card) - rectWidth) / 2
-  addRectFilled(card, int(startX), rectYPadding, rectWidth, rectHeight, green)
+  #addRectFilled(card, int(startX), rectYPadding, rectWidth, rectHeight, green)
   addOvalFilled(card, rectWidth / 2, rectHeight + rectYPadding, 30, 30, white)
   addOvalFilled(card, rectWidth / 2 + 30, rectHeight + rectYPadding + 30, 10, 10, white)
-  collage = makeCollage()
-  card = chromakey(collage, card)
-  writePictureTo(card, "/Users/danielhowe/Desktop/collageOutputChromaKey.jpg")
+  collage = makeCollage(card, int(startX), int(rectYPadding))
+  #card = chromakey(card, collage)
+  #writePictureTo(card, "/Users/danielhowe/Desktop/collageOutputChromaKey.jpg")  
   show(card)
