@@ -140,16 +140,16 @@ def makeCollage(targetImage, targetX, targetY):
   print 'Each image should be no greater than %d x %d' % (width / 4, height)
   lastX = targetX
   lastY = targetY
-  #newImage = makeEmptyPicture(width, height, black)
-  for i in range(1, 5):
-    filename = pickAFile()
-    pic = makePicture(filename)
-    #show(pic)
-    #print 'Importing image %d x %d' % (getWidth(pic), getHeight(pic))
-    while (getWidth(pic) > 1000 or getHeight(pic) > 1000):
+  filename = pickAFile()
+  pic = makePicture(filename)
+  while (getWidth(pic) > 1000 or getHeight(pic) > 1000):
       print 'Image too large.  Select new image no greater than 1000 x 1000'
       filename = pickAFile()
       pic = makePicture(filename)
+  newImage = makeEmptyPicture(width, height, black)
+  #new comment
+  for i in range(1, 5):
+    
     if i == 1:
       print 'Working on picture: %d' % (i,)
       #pic = makePicture("/Users/danielhowe/Desktop/Desert/1000x/ridgeline.jpg")
