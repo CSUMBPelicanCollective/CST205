@@ -90,7 +90,7 @@ def roseColoredGlasses():
     setGreen(p, g * 0.4)
     setBlue(p, b * 0.8)
   repaint(pic)
-  print "Look at those stunner pink shades.."
+  writePictureTo(pic, pickAFile() )
 
 """Problem 4:
 JES has a function called makeLighter that will lighten a color. It takes a color as a parameter and returns the lightened version of that color. This means that if my function call looks like this:
@@ -130,6 +130,7 @@ def makeNegative():
     b = 255 -  b
     setBlue(p, b)
   repaint(pic)
+  writePictureTo(pic, pickAFile() )
 
 """Problem 6:
 You can simulate a black and white image by converting your color image to gray-scale. It turns out that gray colors occur when the R G and B values for a pixel are all the same. e.g. 0, 0, 0 or 1, 1, 1 ... and so on. To go from a color image to a black and white image, you want to capture the intensity or luminance of a pixel. A rough estimate of luminance is the average of the R, G, and B values for a pixel.
@@ -158,3 +159,5 @@ def betterBnW():
     setBlue(i, luminosity)
     setGreen(i, luminosity)
   repaint(pic)
+  writePictureTo(pic, pickAFile() )
+  

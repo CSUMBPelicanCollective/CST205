@@ -15,7 +15,7 @@ def horizontalMirrorTopHalf():
       setGreen(offset, g)
       setBlue(offset, b)
   repaint(pic)
-  writePictureTo(pic, "/Users/danielhowe/Google Drive/Personal Folder/School/CST205 Graphic Programming/Lab4/horizontalMirrorTopHalfOutput.png")
+  writePictureTo(pic, pickAFile())
   
 def horizontalMirrorBottomHalf():
   filename = pickAFile()
@@ -35,7 +35,7 @@ def horizontalMirrorBottomHalf():
       setGreen(offset, g)
       setBlue(offset, b)
   repaint(pic)
-  writePictureTo(pic, "/Users/danielhowe/Google Drive/Personal Folder/School/CST205 Graphic Programming/Lab4/horizontalMirrorBottomHalfOutput.png")
+  writePictureTo(pic, pickAFile())
 
 def verticalMirrorLeftHalf():
   filename = pickAFile()
@@ -180,5 +180,32 @@ def shrink():
         newPix = getPixel(newPicture, x / 2, y / 2)
         setColor(newPix, color)
   show(newPicture)
-  writePictureTo(pic, "/Users/danielhowe/Google Drive/Personal Folder/School/CST205 Graphic Programming/Lab4/shrinkOutput.png")
+  writePictureTo(pic, pickAFile())
+  return(newPicture)
+  
+def shrink2():
+  filename = pickAFile()
+  pic = makePicture(filename)
+  #create new picture file that is half the size
+  width = getWidth(pic)/2
+  height = getHeight(pic)/2
+  newPicture = makeEmptyPicture(width, height)
+  for x in range (0, getWidth(pic), 2):
+    for y in range (0, getHeight(pic), 2):
+      pix = getPixel(pic, x, y)
+      color = getColor(pix)
+      if (x == 0 and y != 0):
+        newPix = getPixel(newPicture, x / 2, y / 2 - 1)
+        setColor(newPix, color)
+      elif (x != 0 and y == 0):
+        newPix = getPixel(newPicture, x / 2 - 1, y / 2)
+        setColor(newPix, color)
+      elif (x != 0 and y != 0):
+        newPix = getPixel(newPicture, x / 2 - 1, y / 2 - 1)
+        setColor(newPix, color)
+      else:
+        newPix = getPixel(newPicture, x / 2, y / 2)
+        setColor(newPix, color)
+  show(newPicture)
+  writePictureTo(newPicture, pickAFile())
   return(newPicture)
