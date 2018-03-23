@@ -104,4 +104,5 @@ def test():
   writePictureTo(image, pickAFile())
   
   
-#here is my comment rocky
+#here is my comment Rock
+#Rocky
