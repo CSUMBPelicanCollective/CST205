@@ -1,7 +1,7 @@
 #Midterm Project
 #Pelican Collective Brief Members
 #Daniel Howe, Rogelio Moreno, Jiwan Sandhu
-
+#just a comment-jiwan
 def artify(sourceImage):
   for x in range(0, getWidth(sourceImage)):
     for y in range(0, getHeight(sourceImage)):
