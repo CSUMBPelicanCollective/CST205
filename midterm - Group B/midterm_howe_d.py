@@ -102,3 +102,6 @@ def test():
   image = makePicture(filename)
   image = makeWarhol(image)
   writePictureTo(image, pickAFile())
+  
+  
+#here is my comment rocky
