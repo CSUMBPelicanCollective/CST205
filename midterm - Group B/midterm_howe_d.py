@@ -80,7 +80,8 @@ def makeWarhol(sourceImage):
       pic = artify(sourceImage)
       newImage = pyCopy(pic, newImage, lastX, lastY)
       lastX = 0
-      lastY = height
+      #lastY = height
+      lastY = getWidth(pic)
     elif i == 3:
       print 'Working on picture: %d' % (i,)
       pic = artify(sourceImage)
