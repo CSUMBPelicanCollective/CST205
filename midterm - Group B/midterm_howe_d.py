@@ -1,8 +1,10 @@
 #Midterm Project
 #Pelican Collective Brief Members
 #Daniel Howe, Rogelio Moreno, Jiwan Sandhu
-#just a comment-jiwan
-def artify(sourceImage):
+
+import random
+
+def artify(sourceImage, modifier):
   for x in range(0, getWidth(sourceImage)):
     for y in range(0, getHeight(sourceImage)):
       px = getPixel(sourceImage, x, y)
@@ -11,31 +13,32 @@ def artify(sourceImage):
       blue = getBlue(px)
       
       if red < 64:
-        setRed(px, 31)
+        # Use modifier in the second argument below
+        setRed(px, 31 * modifier)
       elif red > 63 and red < 128:
-        setRed(px, 95)
+        setRed(px, 95 * modifier)
       elif red > 127 and red < 192:
-        setRed(px, 159)
+        setRed(px, 159 * modifier)
       else: # 191 < color < 256
-        setRed(px, 223)
+        setRed(px, 223 * modifier)
       
       if green < 64:
-        setGreen(px, 31)
+        setGreen(px, 31 * modifier)
       elif green > 63 and green < 128:
-        setGreen(px, 95)
+        setGreen(px, 95 * modifier)
       elif green > 127 and green < 192:
-        setGreen(px, 159)
+        setGreen(px, 159 * modifier)
       else: # 191 < color < 256
-        setBlue(px, 223)
+        setBlue(px, 223 * modifier)
       
       if blue < 64:
-        setBlue(px, 31)
+        setBlue(px, 31 * modifier)
       elif blue > 63 and blue < 128:
-        setBlue(px, 95)
+        setBlue(px, 95 * modifier)
       elif blue > 127 and blue < 192:
         setBlue(px, 159)
       else: # 191 < color < 256
-        setBlue(px, 223)
+        setBlue(px, 223 * modifier)
   #show(pic)
   #writePictureTo(pic, filename + "_Artified.jpg")
   return(sourceImage)
@@ -72,24 +75,27 @@ def makeWarhol(sourceImage):
   for i in range(1, 5):
     if i == 1:
       print 'Working on picture: %d' % (i,)
-      pic = artify(sourceImage)
+      randomModifier = random.uniform(0.1, 0.9)
+      pic = artify(sourceImage, randomModifier)
       newImage = pyCopy(pic, newImage, lastX, lastY)
       lastX = getWidth(pic) + lastX
     elif i == 2:
       print 'Working on picture: %d' % (i,)
-      pic = artify(sourceImage)
+      randomModifier = random.uniform(0.1, 0.9)
+      pic = artify(sourceImage, randomModifier)
       newImage = pyCopy(pic, newImage, lastX, lastY)
       lastX = 0
-      #lastY = height
-      lastY = getWidth(pic)
+      lastY = getHeight(pic)
     elif i == 3:
       print 'Working on picture: %d' % (i,)
-      pic = artify(sourceImage)
+      randomModifier = random.uniform(0.1, 0.9)
+      pic = artify(sourceImage, randomModifier)
       newImage = pyCopy(pic, newImage, lastX, lastY)
       lastX = getWidth(pic) + lastX
     elif i == 4:
       print 'Working on picture: %d' % (i,)
-      pic = artify(sourceImage)
+      randomModifier = random.uniform(0.1, 0.9)
+      pic = artify(sourceImage, randomModifier)
       newImage = pyCopy(pic, newImage, lastX, lastY)
   print 'Completed Warhol collage will now return image..' 
   #repaint(newImage)
@@ -102,7 +108,3 @@ def test():
   image = makePicture(filename)
   image = makeWarhol(image)
   writePictureTo(image, pickAFile())
-  
-  
-#here is my comment Rock
-#Rocky
