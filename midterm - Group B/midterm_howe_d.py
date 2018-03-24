@@ -121,8 +121,9 @@ def test():
   image = makePicture(filename)
   image = makeWarhol(image)
   writePictureTo(image, pickAFile())
-  
+  #takes the file from make warhol and colorizes/outlines the effect
+  #may be we can autmate this part so the end user does't have to pick file again
+  print 'pick the same file just saved with the warhol effect'
   pic= makePicture( pickAFile() )
-  show(pic)
   newPic= makeOutline(pic )
   show(newPic)
