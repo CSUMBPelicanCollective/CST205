@@ -3,6 +3,8 @@
 #Daniel Howe, Rogelio Moreno, Jiwan Sandhu
 
 import random
+import time
+random.seed(time.time())
 
 def artify(sourceImage):
   for x in range(0, getWidth(sourceImage)):
@@ -11,37 +13,154 @@ def artify(sourceImage):
       red = getRed(px)
       green = getGreen(px)
       blue = getBlue(px)
-      modifier = random.uniform(0.1, 0.9)
+      ran = random.random()
       if red < 64:
         # Use modifier in the second argument below
-        setRed(px, 31 + modifier)
+        setRed(px, 31 + ran)
       elif red > 63 and red < 128:
-        setRed(px, 95 + modifier)
+        setRed(px, 95 + ran)
       elif red > 127 and red < 192:
-        setRed(px, 159 + modifier)
+        setRed(px, 159 + ran)
       else: # 191 < color < 256
-        setRed(px, 223 + modifier)
+        setRed(px, 223)
       
       if green < 64:
-        setGreen(px, 31 + modifier)
+        setGreen(px, 31 + ran)
       elif green > 63 and green < 128:
-        setGreen(px, 95 + modifier)
+        setGreen(px, 95 + ran)
       elif green > 127 and green < 192:
-        setGreen(px, 159 * modifier)
+        setGreen(px, 109 + ran)
       else: # 191 < color < 256
-        setBlue(px, 223 + modifier)
+        setBlue(px, 223)
       
       if blue < 64:
-        setBlue(px, 31 + modifier)
+        setBlue(px, 31 + ran)
       elif blue > 63 and blue < 128:
-        setBlue(px, 95 + modifier)
+        setBlue(px, 95 + ran)
       elif blue > 127 and blue < 192:
         setBlue(px, 159)
       else: # 191 < color < 256
-        setBlue(px, 223 + modifier)
+        setBlue(px, 223)
   #show(pic)
   #writePictureTo(pic, filename + "_Artified.jpg")
   return(sourceImage)
+
+def artify1(sourceImage):
+  for x in range(0, getWidth(sourceImage)):
+    for y in range(0, getHeight(sourceImage)):
+      px = getPixel(sourceImage, x, y)
+      red = getRed(px)
+      green = getGreen(px)
+      blue = getBlue(px)
+      ran = random.random()
+      if red < 64:
+        # Use modifier in the second argument below
+        setRed(px, 31 + ran)
+      elif red > 63 and red < 128:
+        setRed(px, 95 + ran)
+      elif red > 127 and red < 192:
+        setRed(px, 109 + ran)
+      else: # 191 < color < 256
+        setRed(px, 223 + ran)
+      
+      if green < 64:
+        setGreen(px, 31 + ran)
+      elif green > 63 and green < 128:
+        setGreen(px, 95 + ran)
+      elif green > 127 and green < 192:
+        setGreen(px, 159 + ran)
+      else: # 191 < color < 256
+        setBlue(px, 223 + ran)
+      
+      if blue < 64:
+        setBlue(px, 31 + ran)
+      elif blue > 63 and blue < 128:
+        setBlue(px, 95 + ran)
+      elif blue > 127 and blue < 192:
+        setBlue(px, 159)
+      else: # 191 < color < 256
+        setBlue(px, 223 + ran)
+  #show(pic)
+  #writePictureTo(pic, filename + "_Artified.jpg")
+  return(sourceImage)
+
+def artify2(sourceImage):
+  for x in range(0, getWidth(sourceImage)):
+    for y in range(0, getHeight(sourceImage)):
+      px = getPixel(sourceImage, x, y)
+      red = getRed(px)
+      green = getGreen(px)
+      blue = getBlue(px)
+      ran = random.random()
+      if red < 64:
+        # Use modifier in the second argument below
+        setRed(px, 31 + ran)
+      elif red > 63 and red < 128:
+        setRed(px, 95 + ran)
+      elif red > 127 and red < 192:
+        setRed(px, 159 + ran)
+      else: # 191 < color < 256
+        setRed(px, 223 + ran)
+      
+      if green < 64:
+        setGreen(px, 31 + ran)
+      elif green > 63 and green < 128:
+        setGreen(px, 95 + ran)
+      elif green > 127 and green < 192:
+        setGreen(px, 159 * ran)
+      else: # 191 < color < 256
+        setBlue(px, 223 + ran)
+      
+      if blue < 64:
+        setBlue(px, 31 + ran)
+      elif blue > 63 and blue < 128:
+        setBlue(px, 95 + ran)
+      elif blue > 127 and blue < 192:
+        setBlue(px, 159)
+      else: # 191 < color < 256
+        setBlue(px, 223 + ran)
+  #show(pic)
+  #writePictureTo(pic, filename + "_Artified.jpg")
+  return(sourceImage)
+def artify3(sourceImage):
+  for x in range(0, getWidth(sourceImage)):
+    for y in range(0, getHeight(sourceImage)):
+      px = getPixel(sourceImage, x, y)
+      red = getRed(px)
+      green = getGreen(px)
+      blue = getBlue(px)
+      ran = random.random()
+      if red < 64:
+        # Use modifier in the second argument below
+        setRed(px, 31 + ran)
+      elif red > 63 and red < 128:
+        setRed(px, 95 + ran)
+      elif red > 127 and red < 192:
+        setRed(px, 159 + ran)
+      else: # 191 < color < 256
+        setRed(px, 223 + ran)
+      
+      if green < 64:
+        setGreen(px, 31 + ran)
+      elif green > 63 and green < 128:
+        setGreen(px, 95 + ran)
+      elif green > 127 and green < 192:
+        setGreen(px, 159 * ran)
+      else: # 191 < color < 256
+        setBlue(px, 223 + ran)
+      
+      if blue < 64:
+        setBlue(px, 31 + ran)
+      elif blue > 63 and blue < 128:
+        setBlue(px, 95 + ran)
+      elif blue > 127 and blue < 192:
+        setBlue(px, 159)
+      else: # 191 < color < 256
+        setBlue(px, 223 + ran)
+  #show(pic)
+  #writePictureTo(pic, filename + "_Artified.jpg")
+  return(sourceImage)
+
 
 def pyCopy(source, target, targetX, targetY):
   print 'Starting copy of '
@@ -87,7 +206,7 @@ def makeWarhol(sourceImage):
 
       #randomModifier = random.uniform(0.1, 0.9)
       #pic = artify(sourceImage, randomModifier)
-      pic = artify(sourceImage)
+      pic = artify1(sourceImage)
 
       newImage = pyCopy(pic, newImage, lastX, lastY)
       lastX = 0
@@ -97,7 +216,7 @@ def makeWarhol(sourceImage):
 
       #randomModifier = random.uniform(0.1, 0.9)
       #pic = artify(sourceImage, randomModifier)
-      pic = artify(sourceImage)
+      pic = artify2(sourceImage)
 
       newImage = pyCopy(pic, newImage, lastX, lastY)
       lastX = getWidth(pic) + lastX
@@ -106,7 +225,7 @@ def makeWarhol(sourceImage):
 
       #randomModifier = random.uniform(0.1, 0.9)
       #pic = artify(sourceImage, randomModifier)
-      pic = artify(sourceImage)
+      pic = artify3(sourceImage)
       newImage = pyCopy(pic, newImage, lastX, lastY)
   print 'Completed Warhol collage will now return image..' 
   #repaint(newImage)
