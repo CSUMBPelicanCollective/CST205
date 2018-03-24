@@ -127,45 +127,57 @@ def makeWarhol(sourceImage):
   #Create new canvas that is 2 x 2 of the original picture size
   width = getWidth(sourceImage) * 2
   height = getHeight(sourceImage) * 2
-  newImage = makeEmptyPicture(width, height, black)
+  newCanvas = makeEmptyPicture(width, height, black)
   #Store x and y values for the start of the image to track where the next image needs to be placed
   lastX = 0
   lastY = 0
   for i in range(1, 5):
     if i == 1:
       print 'Working on picture: %d' % (i,)
-      filename = pickAFile()
-      sourceImage = makePicture(filename)
-      writePictureTo(sourceImage, pickAFile())
-      pic1 = artify(sourceImage)
-      newImage = pyCopy(pic1, newImage, lastX, lastY)
-      lastX = getWidth(pic1) + lastX
+      # Copy the source image so it doesnt get modified
+      newTempWidth = getWidth(sourceImage)
+      newTempHeight = getHeight(sourceImage)
+      newTempImage = makeEmptyPicture(newTempWidth, newTempHeight, black)
+      newTempImage = pyCopy(sourceImage, newTempImage, 0, 0)
+      # Apply modifications to the copy and send to the canvas
+      newTempImage = artify(newTempImage)
+      newCanvas = pyCopy(newTempImage, newCanvas, lastX, lastY)
+      lastX = getWidth(newTempImage) + lastX
     elif i == 2:
       print 'Working on picture: %d' % (i,)
-      filename = pickAFile()
-      sourceImage = makePicture(filename)
-      writePictureTo(sourceImage, pickAFile())
-      pic2 = artify(sourceImage)
-      newImage = pyCopy(pic2, newImage, lastX, lastY)
+      # Copy the source image so it doesnt get modified
+      newTempWidth = getWidth(sourceImage)
+      newTempHeight = getHeight(sourceImage)
+      newTempImage = makeEmptyPicture(newTempWidth, newTempHeight, black)
+      newTempImage = pyCopy(sourceImage, newTempImage, 0, 0)
+      # Apply modifications to the copy and send to the canvas
+      newTempImage = artify(newTempImage)
+      newCanvas = pyCopy(newTempImage, newCanvas, lastX, lastY)
       lastX = 0
-      lastY = getHeight(pic2)
+      lastY = getHeight(newTempImage)
     elif i == 3:
       print 'Working on picture: %d' % (i,)
-      filename = pickAFile()
-      sourceImage = makePicture(filename)
-      writePictureTo(sourceImage, pickAFile())
-      pic3 = artify(sourceImage)
-      newImage = pyCopy(pic3, newImage, lastX, lastY)
-      lastX = getWidth(pic3) + lastX
+     # Copy the source image so it doesnt get modified
+      newTempWidth = getWidth(sourceImage)
+      newTempHeight = getHeight(sourceImage)
+      newTempImage = makeEmptyPicture(newTempWidth, newTempHeight, black)
+      newTempImage = pyCopy(sourceImage, newTempImage, 0, 0)
+      # Apply modifications to the copy and send to the canvas
+      newTempImage = artify(newTempImage)
+      newCanvas = pyCopy(newTempImage, newCanvas, lastX, lastY)
+      lastX = getWidth(newTempImage) + lastX
     elif i == 4:
       print 'Working on picture: %d' % (i,)
-      filename = pickAFile()
-      sourceImage = makePicture(filename)
-      writePictureTo(sourceImage, pickAFile())
-      pic4 = artify(sourceImage)
-      newImage = pyCopy(pic4, newImage, lastX, lastY)
+      # Copy the source image so it doesnt get modified
+      newTempWidth = getWidth(sourceImage)
+      newTempHeight = getHeight(sourceImage)
+      newTempImage = makeEmptyPicture(newTempWidth, newTempHeight, black)
+      newTempImage = pyCopy(sourceImage, newTempImage, 0, 0)
+      # Apply modifications to the copy and send to the canvas
+      newTempImage = artify(newTempImage)
+      newCanvas = pyCopy(newTempImage, newCanvas, lastX, lastY)
   print 'Completed Warhol collage will now return image..' 
-  return newImage
+  return newCanvas
 
 def test():
   print 'run this function to test the makeWarhol implementation'
