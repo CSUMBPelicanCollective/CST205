@@ -131,25 +131,37 @@ def makeWarhol(sourceImage):
   #Store x and y values for the start of the image to track where the next image needs to be placed
   lastX = 0
   lastY = 0
-  for i in range(1, 3):
+  for i in range(1, 5):
     if i == 1:
       print 'Working on picture: %d' % (i,)
+      filename = pickAFile()
+      sourceImage = makePicture(filename)
+      writePictureTo(sourceImage, pickAFile())
       pic1 = artify(sourceImage)
       newImage = pyCopy(pic1, newImage, lastX, lastY)
       lastX = getWidth(pic1) + lastX
     elif i == 2:
       print 'Working on picture: %d' % (i,)
+      filename = pickAFile()
+      sourceImage = makePicture(filename)
+      writePictureTo(sourceImage, pickAFile())
       pic2 = artify(sourceImage)
       newImage = pyCopy(pic2, newImage, lastX, lastY)
       lastX = 0
       lastY = getHeight(pic2)
     elif i == 3:
       print 'Working on picture: %d' % (i,)
+      filename = pickAFile()
+      sourceImage = makePicture(filename)
+      writePictureTo(sourceImage, pickAFile())
       pic3 = artify(sourceImage)
       newImage = pyCopy(pic3, newImage, lastX, lastY)
       lastX = getWidth(pic3) + lastX
     elif i == 4:
       print 'Working on picture: %d' % (i,)
+      filename = pickAFile()
+      sourceImage = makePicture(filename)
+      writePictureTo(sourceImage, pickAFile())
       pic4 = artify(sourceImage)
       newImage = pyCopy(pic4, newImage, lastX, lastY)
   print 'Completed Warhol collage will now return image..' 
