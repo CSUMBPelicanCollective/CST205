@@ -1,13 +1,12 @@
 
 def logoPrep(source, target, targetX, targetY):   
+  # Copy the source into a target in a given position
   canvas = makeEmptyPicture(getWidth(target), getHeight(target), green)
   for x in range(0, getWidth(source)):
     for y in range(0, getHeight(source)):
       pic_pixel = getPixel(source, x, y)
       pic_pixel_color = getColor(pic_pixel)  
       setColor(getPixel(canvas, x + targetX ,y + targetY), pic_pixel_color)
-      
-  #show (canvas)
   return canvas 
 
 def shrink(picture):
@@ -24,7 +23,6 @@ def shrink(picture):
 
 
 def logoChroma(source, target):
-
   #dimensional check
   if getWidth(source) > getWidth(target) or getHeight(source) > getHeight(target):
     print "Warning: source dimension is larger than target. operation aborted."
@@ -44,51 +42,41 @@ def logoChroma(source, target):
       elif getGreen(sPixel) > 150 and getRed(sPixel) < 95 and getBlue(sPixel) < 95:
         setColor(sPixel, getColor(tPixel))
   show(source)
-  #writePictureTo(source, "C://Users//rocky.moreno//Documents//JES//image_portfolio//Lab6 green screen//mango_palm_green_screen.jpg")
   return(source)
   
 def usersPicture():
   #CSUMB Logo
-  filename = ("C:\Users\computer1\Documents\JES\midterm\\csumb_logo_greenscreen.png")
+  print 'Select the CSUMB logo'
+  filename = pickAFile()
   logo = makePicture(filename)
   #show(logo)
   
-  
-  
   # PICK A PICTURE FOR THE TARGET
+  print 'Select the destination image'
   file = pickAFile()
   picture = makePicture(file)
-  
-  
-  #print logo
-  #logo = shrink(logo)
-  #print logo
-  
-  logoWidth = getWidth(logo)
+
   while (getWidth(logo) > getWidth(picture)):   
+    # Shrink logo x2 if the canvas is too small
     logo = shrink(logo)
-    #print " This is logo width " 
-    #print logo
-    #print "Ths is getwidthPicture " 
-    #print getWidth(picture)
   
   #SET THE LOGO TO BOTTOM RIGHT
   targetX = getWidth(picture) - getWidth(logo)
   targetY = getHeight(picture)- getHeight(logo)
   
-  #PREP THE LOGO
+  #PREP THE LOGO - ? HOW WHY
   logo = logoPrep(logo, picture, targetX, targetY)
   
   #PLACE LOGO IN PICTURE
   picture = logoChroma(logo, picture)
   
   show(picture)
+  print 'Saving image to same directory with _result.jpg appended..'
+  writePictureTo(pic, filename + "_result.jpg")
   return picture
-
-  
-    
+ 
 #FUNCTION CALL  
 usersPicture()
   
 
-  
+                        
