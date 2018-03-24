@@ -1,8 +1,4 @@
-def main():
-  pic= makePicture( pickAFile() )
-  show(pic)
-  newPic= makeOutline(pic )
-  show(newPic)
+
 
 def makeOutline(pic ):
   picEdge=makeEmptyPicture(getWidth(pic),getHeight(pic))
@@ -67,3 +63,63 @@ def warholize(picEdge):
   return picNew
 
     
+def makeWarhol(sourceImage):
+  #Create new canvas that is 2 x 2 of the original picture size
+  width = getWidth(sourceImage) * 2
+  height = getHeight(sourceImage) * 2
+  newImage = makeEmptyPicture(width, height, black)
+  #Store x and y values for the start of the image to track where the next image needs to be placed
+  lastX = 0
+  lastY = 0
+  for i in range(1, 5):
+    if i == 1:
+      print 'Working on picture: %d' % (i,)
+
+      #randomModifier = random.uniform(0.1, 0.9)
+      #pic = artify(sourceImage, randomModifier)
+      pic = (sourceImage)
+
+      newImage = pyCopy(pic, newImage, lastX, lastY)
+      lastX = getWidth(pic) + lastX
+    elif i == 2:
+      print 'Working on picture: %d' % (i,)
+
+      #randomModifier = random.uniform(0.1, 0.9)
+      #pic = artify(sourceImage, randomModifier)
+      pic = (sourceImage)
+
+      newImage = pyCopy(pic, newImage, lastX, lastY)
+      lastX = 0
+      lastY = getHeight(pic)
+    elif i == 3:
+      print 'Working on picture: %d' % (i,)
+
+      #randomModifier = random.uniform(0.1, 0.9)
+      #pic = artify(sourceImage, randomModifier)
+      pic = (sourceImage)
+
+      newImage = pyCopy(pic, newImage, lastX, lastY)
+      lastX = getWidth(pic) + lastX
+    elif i == 4:
+      print 'Working on picture: %d' % (i,)
+
+      #randomModifier = random.uniform(0.1, 0.9)
+      #pic = artify(sourceImage, randomModifier)
+      pic = (sourceImage)
+      newImage = pyCopy(pic, newImage, lastX, lastY)
+  print 'Completed Warhol collage will now return image..' 
+  #repaint(newImage)
+  #writePictureTo(newImage, "/Users/danielhowe/Desktop/collageOutput.jpg")
+  return newImage
+
+def test():
+  print 'run this function to test the makeWarhol implementation'
+  filename = pickAFile()
+  image = makePicture(filename)
+  image = makeWarhol(image)
+  writePictureTo(image, pickAFile())
+  
+  pic= makePicture( pickAFile() )
+  show(pic)
+  newPic= makeOutline(pic )
+  show(newPic)
