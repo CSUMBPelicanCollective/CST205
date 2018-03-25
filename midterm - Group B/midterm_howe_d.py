@@ -64,6 +64,26 @@ def warholize(picEdge):
 
 
   return picNew
+def pyCopy(source, target, targetX, targetY):
+  print 'Starting copy of '
+  print source
+  print 'To target '
+  print target
+  for x in range(0, getWidth(source)):
+    for y in range(0, getHeight(source)):
+      p = getPixel(source, x, y)
+      r = getRed(p)
+      g = getGreen(p)
+      b = getBlue(p)
+      if (x + targetX > getWidth(target)) or (y + targetY > getHeight(target)):
+        print 'image too large, skipping pixels'
+      else:
+        newPix = getPixel(target, x + targetX, y + targetY)
+        setRed(newPix, r)
+        setGreen(newPix, g)
+        setBlue(newPix, b)
+  #show(newPicture)
+  return(target)
 
     
 def makeWarhol(sourceImage):
