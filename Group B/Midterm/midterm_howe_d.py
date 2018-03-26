@@ -2,31 +2,74 @@
 #Pelican Collective Brief Members
 #Daniel Howe, Rogelio Moreno, Jiwan Sandhu
 
+###########################
+#NEW CODE USING LAB3 BnW  #
+###########################
 
-def makeOutline(pic ):
-  picEdge=makeEmptyPicture(getWidth(pic),getHeight(pic))
-  for x in range (0, getWidth(pic)-1):
-    for y in range (0, getHeight(pic)-1):
-      here=getPixel(picEdge,x,y)
-      down = getPixel(pic,x,y+1)
-      right = getPixel(pic, x+1,y)
-      hereL=(getRed(here)+getGreen(here)+getBlue(here))/3
-      downL=(getRed(down)+getGreen(down)+getBlue(down))/3
-      rightL=(getRed(right)+getGreen(right)+getBlue(right))/3
-      if abs (hereL-downL)>100 and abs(hereL-rightL)>100:
-        setColor(here,black)
-      if abs (hereL-downL)<=100 or abs(hereL-rightL)<=100:
-        setColor(here,white)
-  warholizedPic=warholize(picEdge)
-  return warholizedPic
 
-def warholize(picEdge):
-  w= getWidth( picEdge )
-  h= getHeight( picEdge )
-  picNew= makeEmptyPicture( w, h )
+def betterBnW(pic):
+  pixels = getPixels(pic)
+  for i in pixels:
+    luminosity = ((getRed(i)*0.299) + (getBlue(i)*0.114) + (getGreen(i)*0.587))
+    setRed(i, luminosity)
+    setBlue(i, luminosity)
+    setGreen(i, luminosity)
+  return(pic)
+
+
+def outLine(pic):
+
+  pic = betterBnW(pic)
+  h = getHeight(pic)
+  w = getWidth(pic)
+  
+  for x in range(0, w-1):
+    for y in range(0 , h-1):
+      pix = getPixel(pic, x, y)
+      rP = getPixel(pic, x+1, y)
+      dP = getPixel(pic, x, y+1)
+      # we can adjust the values to get desired effect try playing with it
+      if abs(getRed(pix)- getRed(rP)) > 2 and abs(getRed(pix) - getRed(dP)) > 5:
+        setColor(pix, black)
+      else :
+        setColor(pix, white)
+
+  effect_warholdPic=effect_warhol(pic)
+  return effect_warholdPic
+
+###########################
+#RESOURCE CODE BELOW      #
+#WE CAN DELETE IT BEFORE  #
+#SUBMITING THE FINAL FILE #
+###########################
+
+
+#def makeOutline(pic):
+#  w = getWidth(pic)
+#  h = getHeight(pic)
+#  picEdge=makeEmptyPicture(w,h)
+#  for x in range (0, w-1):
+#    for y in range (0, h-1):
+#      here=getPixel(picEdge,x,y)
+#      down = getPixel(pic,x,y+1)
+#      right = getPixel(pic, x+1,y)
+#      hereL=(getRed(here)+getGreen(here)+getBlue(here))/3
+#      downL=(getRed(down)+getGreen(down)+getBlue(down))/3
+#      rightL=(getRed(right)+getGreen(right)+getBlue(right))/3
+#      if abs (hereL-downL)>100 and abs(hereL-rightL)>100:
+#        setColor(here,black)
+#      if abs (hereL-downL)<=100 or abs(hereL-rightL)<=100:
+#        setColor(here,white)
+#  effect_warholdPic=effect_warhol(pic)
+#  return effect_warholdPic
+
+def effect_warhol(pic):
+  w= getWidth( pic)
+  h= getHeight( pic)
+  picNew= makeEmptyPicture(w, h)
   for x in range(0,w/2):
     for y in range (0,h/2):
-      px=getPixel(picEdge,x,y)
+      px=getPixel(pic,x,y)
       r=getRed(px)
       pxNew=getPixel(picNew,x,y)
       if r >0:
@@ -35,7 +78,7 @@ def warholize(picEdge):
         setColor(pxNew,yellow)
   for x in range (w/2,w):
     for y in range (h/2,h):
-      px=getPixel(picEdge,x,y)
+      px=getPixel(pic,x,y)
       r=getRed(px)
       pxNew=getPixel(picNew,x,y)
       if r >0:
@@ -45,7 +88,7 @@ def warholize(picEdge):
 
   for x in range(0,w/2):
     for y in range (h/2,h):
-      px=getPixel(picEdge,x,y)
+      px=getPixel(pic,x,y)
       r=getRed(px)
       pxNew=getPixel(picNew,x,y)
       if r >0:
@@ -54,7 +97,7 @@ def warholize(picEdge):
         setColor(pxNew,red)
   for x in range (w/2,w):
     for y in range (0,h/2):
-      px=getPixel(picEdge,x,y)
+      px=getPixel(pic,x,y)
       r=getRed(px)
       pxNew=getPixel(picNew,x,y)
       if r >0:
@@ -145,5 +188,6 @@ def test():
   #may be we can autmate this part so the end user does't have to pick file again
   print 'pick the same file just saved with the warhol effect'
   pic= makePicture( pickAFile() )
-  newPic= makeOutline(pic )
+  newPic= outLine(pic )
   show(newPic)
+
