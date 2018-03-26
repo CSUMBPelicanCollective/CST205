@@ -1,3 +1,7 @@
+# Lab 10 Strings
+# Pelican Collective
+# Members: Daniel Howe, Jiwan Sandhu, Rogelio Moreno
+
 #############
 #  Hangman  #
 #############
