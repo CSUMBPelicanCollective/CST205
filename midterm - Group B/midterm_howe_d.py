@@ -17,10 +17,8 @@ def betterBnW(pic):
   return(pic)
 
 
-def outLine():
-  
-  filename = pickAFile()
-  pic = makePicture(filename)
+def outLine(pic):
+
   pic = betterBnW(pic)
   h = getHeight(pic)
   w = getWidth(pic)
@@ -190,6 +188,6 @@ def test():
   #may be we can autmate this part so the end user does't have to pick file again
   print 'pick the same file just saved with the warhol effect'
   pic= makePicture( pickAFile() )
-  newPic= makeOutline(pic )
+  newPic= outLine(pic )
   show(newPic)
 
