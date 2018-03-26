@@ -44,6 +44,16 @@ def logoChroma(source, target):
   show(source)
   return(source)
   
+  
+def addLogoText(target,size, targetX, targetY):
+  myFont = makeStyle("Arial", bold, size)
+  addTextWithStyle(target, targetX, targetY - 15, "Nothing hOtter", myFont, red)
+  
+ 
+def addTopText(target,size, targetX, targetY):
+  myFont = makeStyle("Arial", bold, size)
+  addTextWithStyle(target, targetX, targetY, "We are the Sea Otters", myFont, blue)
+  
 def usersPicture():
   #CSUMB Logo
   print 'Select the CSUMB logo'
@@ -56,7 +66,9 @@ def usersPicture():
   file = pickAFile()
   picture = makePicture(file)
 
-  while (getWidth(logo) > getWidth(picture)):   
+  iterations = 1
+  while (getWidth(logo) > getWidth(picture)):
+    iterations = iterations + 1   
     # Shrink logo x2 if the canvas is too small
     logo = shrink(logo)
   
@@ -69,6 +81,11 @@ def usersPicture():
   
   #PLACE LOGO IN PICTURE
   picture = logoChroma(logo, picture)
+  
+  addLogoText(picture, 60 / iterations, targetX, targetY)
+  
+  targetX = getWidth(picture) / 5
+  addTopText(picture, 60 / iterations, targetX, 30)
   
   show(picture)
   print 'Saving image to same directory with _result.jpg appended..'
