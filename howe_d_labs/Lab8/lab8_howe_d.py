@@ -71,7 +71,7 @@ def combineSounds(startSound, endSound):
     print 'Mismatched sample rate'
     return
   # Create new sound file that is the length of the two parameters, or sound objects
-  newSound = makeEmptySound(getLength(startSound) + getLength(endSound), getSamplingRate(startSound))
+  newSound = makeEmptySound(getLength(startSound) + getLength(endSound), int(getSamplingRate(startSound)))
   newSoundIndex = 0
   # Copy both sounds to the new sound object
   for i in range (0, getLength(startSound)):
