@@ -7,6 +7,10 @@ def logoPrep(source, target, targetX, targetY):
       pic_pixel = getPixel(source, x, y)
       pic_pixel_color = getColor(pic_pixel)  
       setColor(getPixel(canvas, x + targetX ,y + targetY), pic_pixel_color)
+      
+  myFont = makeStyle("Arial", bold, 30)
+  addTextWithStyle(canvas, targetX, targetY, "Nothing hOtter", myFont, red)
+  
   return canvas 
 
 def shrink(picture):
@@ -41,10 +45,16 @@ def logoChroma(source, target):
       #highlight greens
       elif getGreen(sPixel) > 150 and getRed(sPixel) < 95 and getBlue(sPixel) < 95:
         setColor(sPixel, getColor(tPixel))
+  
+  #ADD TEXT TO TOP AND CENTER OF PICTURE      
+  myFont = makeStyle("Arial", bold, 30)
+  addTextWithStyle(source, getWidth(source) / 4, 50, "We are the Sea Otters", myFont, blue)
+  
   show(source)
   return(source)
   
-  
+
+  """  
 def addLogoText(target,size, targetX, targetY):
   myFont = makeStyle("Arial", bold, size)
   addTextWithStyle(target, targetX, targetY - 15, "Nothing hOtter", myFont, red)
@@ -53,7 +63,7 @@ def addLogoText(target,size, targetX, targetY):
 def addTopText(target,size, targetX, targetY):
   myFont = makeStyle("Arial", bold, size)
   addTextWithStyle(target, targetX, targetY, "We are the Sea Otters", myFont, blue)
-  
+  """
 def usersPicture():
   #CSUMB Logo
   print 'Select the CSUMB logo'
@@ -66,10 +76,7 @@ def usersPicture():
   file = pickAFile()
   picture = makePicture(file)
 
-  iterations = 1
   while (getWidth(logo) > getWidth(picture)):
-    iterations = iterations + 1   
-    # Shrink logo x2 if the canvas is too small
     logo = shrink(logo)
   
   #SET THE LOGO TO BOTTOM RIGHT
@@ -81,11 +88,6 @@ def usersPicture():
   
   #PLACE LOGO IN PICTURE
   picture = logoChroma(logo, picture)
-  
-  addLogoText(picture, 60 / iterations, targetX, targetY)
-  
-  targetX = getWidth(picture) / 5
-  addTopText(picture, 60 / iterations, targetX, 30)
   
   show(picture)
   print 'Saving image to same directory with _result.jpg appended..'
