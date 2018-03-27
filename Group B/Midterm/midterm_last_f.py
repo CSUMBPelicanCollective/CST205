@@ -253,13 +253,13 @@ def makeWarhol(sourceImage):
 
 def csumbRize():
   #CSUMB Logo
-  print 'Select the CSUMB logo'
+  showWarning("Select the CSUMB logo")
   filename = pickAFile()
   logo = makePicture(filename)
   #show(logo)
   
   # PICK A PICTURE FOR THE TARGET
-  print 'Select the background image'
+  showWarning("Select the background image")
   file = pickAFile()
   picture = makePicture(file)
 
@@ -280,13 +280,13 @@ def csumbRize():
   picture = shadesTriColor(picture)
   
   #show(picture)
-  print 'Save image'
+  showWarning("Save image to new file")
   filenameSave = pickAFile()
   writePictureTo(picture, filenameSave)
   return picture
 
 def warholize():
-  print 'Testing the makeWarhol collage tribute..'
+  showWarning("Pick a file for the Andy Warhol tribute collage source image")
   filename = pickAFile()
   image = makePicture(filename)
   print filename
@@ -300,6 +300,7 @@ def warholize():
   # change threshold to effect outline 2.5 to 2.9 seem best
   threshold = 2.9
   newPic = outLine(pic,threshold)
+  showWarning("Save image to new file")
   writePictureTo(newPic, pickAFile())
   show(newPic)
 
