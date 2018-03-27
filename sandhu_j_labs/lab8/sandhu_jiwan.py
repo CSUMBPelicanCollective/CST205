@@ -2,8 +2,10 @@
 #Pelican Collective
 #LAB 8
 
-filename = pickAFile()
-s = makeSound(filename)
+def sound():
+  filename = pickAFile()
+  s = makeSound(filename)
+  return (s)
 
 #decrease volume
 def decreaseVolume(s):
