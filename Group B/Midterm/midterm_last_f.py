@@ -63,9 +63,11 @@ def logoPrep(source, target, targetX, targetY):
       pic_pixel_color = getColor(pic_pixel)  
       setColor(getPixel(canvas, x + targetX ,y + targetY), pic_pixel_color)
       
+  # Offset shadow with greater size to make it stand out
   myFont = makeStyle("Arial", bold, 31)
   addTextWithStyle(canvas, targetX - 1, targetY, "Nothing hOtter", myFont, black)
   addTextWithStyle(canvas, targetX + 1, targetY, "Nothing hOtter", myFont, black)
+  # Normal color on top layer
   myFont = makeStyle("Arial", bold, 30)
   addTextWithStyle(canvas, targetX, targetY, "Nothing hOtter", myFont, red)
   return canvas 
