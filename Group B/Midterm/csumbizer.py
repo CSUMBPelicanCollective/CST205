@@ -7,9 +7,9 @@ def logoPrep(source, target, targetX, targetY):
       pic_pixel = getPixel(source, x, y)
       pic_pixel_color = getColor(pic_pixel)  
       setColor(getPixel(canvas, x + targetX ,y + targetY), pic_pixel_color)
-      
+  font_color = makeColor(255,153,51)    
   myFont = makeStyle("Arial", bold, 30)
-  addTextWithStyle(canvas, targetX, targetY, "Nothing hOtter", myFont, red)
+  addTextWithStyle(canvas, targetX, targetY, "Nothing hOtter", myFont, font_color)
   
   return canvas 
 
@@ -46,24 +46,15 @@ def logoChroma(source, target):
       elif getGreen(sPixel) > 150 and getRed(sPixel) < 95 and getBlue(sPixel) < 95:
         setColor(sPixel, getColor(tPixel))
   
-  #ADD TEXT TO TOP AND CENTER OF PICTURE      
-  myFont = makeStyle("Arial", bold, 30)
-  addTextWithStyle(source, getWidth(source) / 4, 50, "We are the Sea Otters", myFont, blue)
+  #ADD TEXT TO TOP AND CENTER OF PICTURE
+  fontColor = makeColor(204,238,255)   
+  myFont = makeStyle("Arial", bold, 20)
+  addTextWithStyle(source, getWidth(source) / 4, 50, "We are the Sea Otters", myFont, white)
+  #addTextWithStyle(source, (getWidth(source) / 4)+1, 51, "We are the Sea Otters", myFont, white)
   
   show(source)
   return(source)
   
-
-  """  
-def addLogoText(target,size, targetX, targetY):
-  myFont = makeStyle("Arial", bold, size)
-  addTextWithStyle(target, targetX, targetY - 15, "Nothing hOtter", myFont, red)
-  
- 
-def addTopText(target,size, targetX, targetY):
-  myFont = makeStyle("Arial", bold, size)
-  addTextWithStyle(target, targetX, targetY, "We are the Sea Otters", myFont, blue)
-  """
 def usersPicture():
   #CSUMB Logo
   print 'Select the CSUMB logo'
