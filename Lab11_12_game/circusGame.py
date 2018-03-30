@@ -28,7 +28,21 @@ def main(): #Jason Tse
     
     #parse input into command
     command, comTypeCode = parseCommand(command, comTypeCode)
+  
+  while(comTypeCode < 5): #Jiwanjot Sandhu
+    if (comTypeCode == 0):
+      break
+      print "End Game"
+    elif (comTypeCode == 1):
+      dispLocation(location)
+    elif (comTypeCode == 2):
+      execMovement(location, command) 
+    elif (comTypeCode ==3):
+      disHelp()
+    break
     
+    
+
 def dispLocation(location): #Nikola Petkov
   print "You are currently at the " + location
   if location.lower() == "ticket gate":
