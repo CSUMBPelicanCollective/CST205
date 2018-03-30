@@ -3,11 +3,11 @@
 
 #Rocky - execMovement Function
 def execMovement(location, command):
-  ticketGate = 'ticketgate'
-  circusTent = 'circustent'
-  spectatorSeats = 'spectatorseats'
-  stagingArea = 'stagingarea'
-  backStage = 'backstage'
+  ticketGate = 'ticket gate'
+  circusTent = 'circus tent'
+  spectatorSeats = 'spectator seats'
+  stagingArea = 'staging area'
+  backStage = 'back stage'
   newLocation = ''
   
   #Location is Ticket Gate
@@ -51,8 +51,9 @@ def execMovement(location, command):
   #else
   #display and return newLocation
   #dispLocation(newLocation) 
-  elif (newLocation == ''):
+  if (newLocation == ''):
     print 'can\'t go this way'
+    return newLocation
   else:
     #dispLocation(newLocation)
     return newLocation
@@ -60,13 +61,32 @@ def execMovement(location, command):
 #############################
 #       FOR DEBUGGING       #
 #############################
-ticketGate = 'ticketgate'
+ticketGate = 'ticket gate'
 location = ticketGate
 command = 'n'
-# now in staging area
+print execMovement(location, command)
+# now in circus tent
+
+#moving east to staging area
 location = execMovement(location, command)
 command = 'e'
+print execMovement(location, command)
+#now in staging area
+
 #moving east still
 location = execMovement(location, command)
 command = 'e'
+print execMovement(location, command)
+#cant do taht 
+
+#movign west back to circus tent
+location = execMovement(location, command)
+command = 'w'
+print execMovement(location, command)
+#now in circus tent
+
+
+#moving east still
+#location = execMovement(location, command)
+#command = 'e'
 
