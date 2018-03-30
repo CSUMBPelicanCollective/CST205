@@ -53,40 +53,29 @@ def execMovement(location, command):
   #dispLocation(newLocation) 
   if (newLocation == ''):
     print 'can\'t go this way'
-    return newLocation
+    dispLocation(location)                  ##########################  uncomment when dispLocation is complete
+    return location
   else:
-    #dispLocation(newLocation)
+    #dispLocation(newLocation)              ##########################  uncomment when dispLocation is complete
     return newLocation
   
+
+
+
 #############################
 #       FOR DEBUGGING       #
 #############################
-ticketGate = 'ticket gate'
-location = ticketGate
-command = 'n'
-print execMovement(location, command)
-# now in circus tent
 
-#moving east to staging area
-location = execMovement(location, command)
-command = 'e'
-print execMovement(location, command)
-#now in staging area
+choice = ''
+#Starting location always ticket gate
+location = 'ticket gate'
 
-#moving east still
-location = execMovement(location, command)
-command = 'e'
-print execMovement(location, command)
-#cant do taht 
-
-#movign west back to circus tent
-location = execMovement(location, command)
-command = 'w'
-print execMovement(location, command)
-#now in circus tent
-
-
-#moving east still
-#location = execMovement(location, command)
-#command = 'e'
-
+while (choice != 'yes'):
+  command = requestString('Type a command: ')
+  #print execMovement(location, command)
+  location = execMovement(location, command)
+  
+  print 'This is current location ' + location
+  
+  #choice = requestString('Do you want to quit: ')
+  
