@@ -28,3 +28,26 @@ def main(): #Jason Tse
     
     #parse input into command
     command, comTypeCode = parseCommand(command, comTypeCode)
+    
+def dispLocation(location): #Nikola Petkov
+  print "You are currently at the " + location
+  if location.lower() == "ticket gate":
+    print "Some description"
+  elif location.lower() == "circus tent":
+    print "Some description"
+  elif location.lower() == "spectator seats":
+    print "Some description"
+  elif location.lower() == "staging area":
+    print "Some description"
+  elif location.lower() == "backstage":
+    print "Some description"
+
+def dispHelp(): #Nikola Petkov
+  print "- - - - - - - - - - - - - H E L P - - - - - - - - - - - - -"
+  print "exit - exits the game            help - displays this menu."
+  print "look - look around the current location."
+  print "go - move in a given direction."
+  print "Directions: north, south, east, west, up,"
+  print "                     northwest, northeast, southeast, southwest."
+  print "ex. \"go east\" will move you east of current location (if it exists)"
+  print "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
