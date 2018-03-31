@@ -27,7 +27,7 @@ def main(): #Jason Tse
       command = command.lower().strip()
     
     #parse input into command
-    command, comTypeCode = parseCommand(command, location, comTypeCode)
+    command, comTypeCode = parseCommand(command, comTypeCode)
   
     if (comTypeCode == 0):#Jiwanjot Sandhu
       #break (checking the behaviour of break statement)
@@ -131,48 +131,32 @@ def yell(location): #Jason Tse
   else:
     print "Now is not the time for that."
 
-def parseCommand(userCommand, userLocation, isCode):
+# Checks user input for commands
+def parseCommand(userCommand, isCode):
   userCommand = userCommand.lower()
-  newLocation = ''
-  newTempStatus = ''
   if (userCommand == 'exit'):
     # Exit
     isCode = 0
+  return userCommand, isCode
   elif (userCommand == 'help'):
     # Print Help
     isCode = 3
-    dispHelp()
-    response = requestString("Press any key to continue")
-    printPadding()
+    return userCommand, isCode
   elif (userCommand == 'go'):   
     # Move
     isCode = 2
-    where = requestString("Where do you want to GO ?\nExamples: north,south,east,west")
-    acceptableDirections = "north,south,east,west"
+    acceptableDirections = "north,south,east,west,southeast,northeast,southwest,northwest"
     # Not sure if up, down, left, and right are acceptable
-    # print 'should we execute movement now?\n'
-    # print containsString(where, acceptableDirections)
     if (containsString(where, acceptableDirections)):
-      lewLocation = execMovement(userLocation, where)
-      return newLocation, isCode
-    printPadding()
-    
+      return where, isCode
   elif (userCommand == 'look'):
     isCode = 1
-    where = requestString("Where do you want to LOOK ?\nExamples: here,north,south,east,west")
-    acceptableDirections = "here,north,south,east,west"
+    acceptableDirections = "north,south,east,west,southeast,northeast,southwest,northwest"
     # Not sure if up, down, left, and right are acceptable
-    if (containsString(where, acceptableDirections)):
+    if (containsString(userCommand, acceptableDirections)):
       # Assigning new location to check ahead
-      newTempStatus = execMovement(newLocation, where)
-      dispLocation(newTempStatus, isCode)
-      printPadding()
-      return userLocation, isCode
-      
-  else:
-    dispLocation(userLocation, isCode)
-    printPadding()
-  return userLocation, isCode
+      return where, isCode
+  return userCommand, isCode
 
 def containsString(searchTerm, searchString):
   if (searchString.find(searchTerm) > 0):
