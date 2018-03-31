@@ -23,6 +23,7 @@ def main(): #Jason Tse
 def parseCommand(userCommand, userLocation, isCode):
   userCommand = userCommand.lower()
   newLocation = ''
+  newTempStatus = ''
   if (userCommand == 'exit'):
     # Exit
     isCode = 0
@@ -38,22 +39,25 @@ def parseCommand(userCommand, userLocation, isCode):
     where = requestString("Where do you want to GO ?\nExamples: north,south,east,west")
     acceptableDirections = "north,south,east,west"
     # Not sure if up, down, left, and right are acceptable
-    print 'should we execute movement now?\n'
-    print containsString(where, acceptableDirections)
+    # print 'should we execute movement now?\n'
+    # print containsString(where, acceptableDirections)
     if (containsString(where, acceptableDirections)):
       lewLocation = execMovement(userLocation, where)
       return newLocation, isCode
     printPadding()
+    
   elif (userCommand == 'look'):
     isCode = 1
     where = requestString("Where do you want to LOOK ?\Examples: here,north,south,east,west")
     acceptableDirections = "here,north,south,east,west"
     # Not sure if up, down, left, and right are acceptable
     if (containsString(where, acceptableDirections)):
+      # Assigning new location to check ahead
       newTempStatus = execMovement(newLocation, where)
       dispLocation(newTempStatus, isCode)
       printPadding()
       return userLocation, isCode
+      
   else:
     dispLocation(userLocation, isCode)
     printPadding()
@@ -74,19 +78,25 @@ def dispLocation(location, isCode): #Nikola Petkov
     print "you find yourself inside the front gates of an old"
     print "abandoned circus. In the wind you could hear faint giggling.\n"
     print "Type help for more information."
-    print "Type exit to give up.\n"
+    print "Type exit to give up."
+    printPadding()
  
   print "You are currently at the " + str(location)
   if location.lower() == "ticket gate":
     print "Some description"
+    printPadding()
   elif location.lower() == "circus tent":
     print "Some description"
+    printPadding()
   elif location.lower() == "spectator seats":
     print "Some description"
+    printPadding()
   elif location.lower() == "staging area":
     print "Some description"
+    printPadding()
   elif location.lower() == "backstage":
     print "Some description"
+    printPadding()
 
 def dispHelp(): #Nikola Petkov
   print "- - - - - - - - - - - - - H E L P - - - - - - - - - - - - -"
@@ -108,7 +118,7 @@ def execMovement(location, command):  #Rocky Moreno
   spectatorSeats = 'spectator seats'
   stagingArea = 'staging area'
   backStage = 'back stage'
-  newLocation = ''
+  newLocation = ''  
   
   #Location is Ticket Gate
   if (location == ticketGate): 
@@ -156,5 +166,4 @@ def execMovement(location, command):  #Rocky Moreno
     #dispLocation(location)                  
     return location
   else:
-    dispLocation(newLocation)              
-    return newLocation
+    return location
