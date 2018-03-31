@@ -50,7 +50,7 @@ def execMovement(location, command):  #Rocky Moreno
       newLocation = stagingArea
       
   #if not valid direction print cant go thisway
-  elif (newLocation == ''):
+  if (newLocation == ''):
     print 'You CANNOT go this way!\n\n'
     #dispLocation(location)                  
     return location
@@ -70,7 +70,7 @@ while (choice != 'yes'):
   command = requestString('Type a command: ')
   #print execMovement(location, command)
   location = execMovement(location, command)
-  
+  print location
   print 'This is current location ' + str(location)
   
   #choice = requestString('Do you want to quit: ')
