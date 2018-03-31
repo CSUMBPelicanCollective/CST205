@@ -8,10 +8,9 @@ def main(): #Jason Tse
   location = "ticket gate"
   command = "none"
   comTypeCode = 99
-  
-  run = true	
+  	
   #main game loop
-  while (run):
+  while (comTypeCode > 0):
     dispLocation(location, comTypeCode)
     location, comTypeCode = parseCommand(requestString("What will you do?"), location, comTypeCode)
 
@@ -158,9 +157,6 @@ def execMovement(location, command):  #Rocky Moreno
       newLocation = stagingArea
       
   #if not valid direction print cant go thisway
-  #else
-  #display and return newLocation
-  #dispLocation(newLocation) 
   elif (newLocation == ''):
     print 'You CANNOT go this way!\n\n'
     #dispLocation(location)                  
