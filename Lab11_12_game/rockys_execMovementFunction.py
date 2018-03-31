@@ -60,7 +60,7 @@ def execMovement(location, command):
     return newLocation
   
 
-
+#comment
 
 #############################
 #       FOR DEBUGGING       #
