@@ -27,7 +27,7 @@ def main(): #Jason Tse
       command = command.lower().strip()
     
     #parse input into command
-    command, comTypeCode = parseCommand(command, comTypeCode)
+    command, comTypeCode = parseCommand(command, location, comTypeCode)
   
     if (comTypeCode == 0):#Jiwanjot Sandhu
       #break (checking the behaviour of break statement)
