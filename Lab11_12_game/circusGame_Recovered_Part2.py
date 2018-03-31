@@ -79,7 +79,7 @@ def execMovement(location, command):  #Rocky Moreno
     if(command == 'n' or command == 'north'):
       newLocation = circusTent
     elif(command == 'nw' or command == 'northwest'):
-+      newLocation = spectatorSeats
+      newLocation = spectatorSeats
 
   #Location is Circus Tent    
   elif (location == circusTent):
@@ -118,8 +118,7 @@ def execMovement(location, command):  #Rocky Moreno
   #display and return newLocation
   #dispLocation(newLocation) 
   if (newLocation == ''):
-    print 'can\'t go this way'
-    dispLocation(location)                  
+    print 'can\'t go this way'                 
     return location
   else:
     dispLocation(newLocation)              
