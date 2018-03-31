@@ -29,8 +29,7 @@ def main(): #Jason Tse
     #parse input into command
     command, comTypeCode = parseCommand(command, comTypeCode)
   
-  while(comTypeCode < 5): #Jiwanjot Sandhu
-    if (comTypeCode == 0):
+    if (comTypeCode == 0):#Jiwanjot Sandhu
       #break (checking the behaviour of break statement)
       print "End Game"
       break
