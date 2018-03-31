@@ -2,19 +2,21 @@
 #execMovement function
 
 #Rocky - execMovement Function
-def execMovement(location, command):
+def execMovement(location, command):  #Rocky Moreno
   ticketGate = 'ticket gate'
   circusTent = 'circus tent'
   spectatorSeats = 'spectator seats'
   stagingArea = 'staging area'
-  backStage = 'back stage'
+  backStage = 'backstage'
   newLocation = ''
   
   #Location is Ticket Gate
   if (location == ticketGate): 
     if(command == 'n' or command == 'north'):
       newLocation = circusTent
-      
+    elif(command == 'nw' or command == 'northwest'):
+      newLocation = spectatorSeats
+
   #Location is Circus Tent    
   elif (location == circusTent):
     if(command == 's' or command == 'south'):
@@ -52,15 +54,11 @@ def execMovement(location, command):
   #display and return newLocation
   #dispLocation(newLocation) 
   if (newLocation == ''):
-    print 'can\'t go this way'
-    dispLocation(location)                  ##########################  uncomment when dispLocation is complete
+    print 'can\'t go this way'                 
     return location
   else:
-    #dispLocation(newLocation)              ##########################  uncomment when dispLocation is complete
+    #dispLocation(newLocation)              
     return newLocation
-  
-
-#comment
 
 #############################
 #       FOR DEBUGGING       #
@@ -74,8 +72,8 @@ while (choice != 'yes'):
   command = requestString('Type a command: ')
   #print execMovement(location, command)
   location = execMovement(location, command)
-  
-  print 'This is current location ' + location
+  print location
+  print 'This is current location ' + str(location)
   
   #choice = requestString('Do you want to quit: ')
   
