@@ -117,13 +117,15 @@ def execMovement(location, command):  #Rocky Moreno
   circusTent = 'circus tent'
   spectatorSeats = 'spectator seats'
   stagingArea = 'staging area'
-  backStage = 'back stage'
+  backStage = 'backstage'
   newLocation = ''  
   
   #Location is Ticket Gate
   if (location == ticketGate): 
     if(command == 'n' or command == 'north'):
       newLocation = circusTent
+    elif(command == 'nw' or command == 'northwest'):
+      newLocation = spectatorSeats
       
   #Location is Circus Tent    
   elif (location == circusTent):
