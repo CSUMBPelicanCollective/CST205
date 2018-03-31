@@ -118,7 +118,8 @@ def execMovement(location, command):  #Rocky Moreno
   #display and return newLocation
   #dispLocation(newLocation) 
   if (newLocation == ''):
-    print 'can\'t go this way'                 
+    print 'can\'t go this way'
+    dispLocation(location)                  
     return location
   else:
     dispLocation(newLocation)              
