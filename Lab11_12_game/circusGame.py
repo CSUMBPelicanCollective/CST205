@@ -39,19 +39,21 @@ def main(): #Jason Tse
       execMovement(location, command) 
     elif (comTypeCode ==3):
       dispHelp()
+    elif (comTypeCode == 4):
+      yell(location)
     
 def dispLocation(location): #Nikola Petkov
   print "You are currently at the " + location
   if location.lower() == "ticket gate":
-    print "Some description"
+    print "The turnstyles are locked and looks difficult to climb over.\n To the NORTH you see a big tent. The tent has smaller entrance NORTHEAST.\n Through the gate bars you spot a clown in the distance. Maybe you can YELL out to them."
   elif location.lower() == "circus tent":
-    print "Some description"
+    print "The insides are strung with dim holiday lights. Doesn't look like there have been any shows recently.\n The spectator seats are to the EAST. There is an opening in the tent NORTH, SOUTH, and WEST."
   elif location.lower() == "spectator seats":
-    print "Some description"
+    print "The seats are littered with old tickets, discarded cups, and candy wrappers.\n From the seats you can see the all of the main stage to the EAST and an exit to the SOUTHEAST."
   elif location.lower() == "staging area":
-    print "Some description"
+    print "The equipment for the shows are kept here, including empty animal cages.\n There are entrances to the WEST and NORTHWEST."
   elif location.lower() == "backstage":
-    print "Some description"
+    print "It's a small backstage area. The counters along the outside are cluttered with junk.\n There are entrances to the SOUTH and SOUTHEAST."
 
 def dispHelp(): #Nikola Petkov
   print "- - - - - - - - - - - - - H E L P - - - - - - - - - - - - -"
@@ -127,3 +129,8 @@ def yell(location): #Jason Tse
     print "The clown seems to ignore you."
   else:
     print "Now is not the time for that."
+
+
+
+#Call to start game
+main()
