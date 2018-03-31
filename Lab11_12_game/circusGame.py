@@ -121,3 +121,10 @@ def execMovement(location, command):  #Rocky Moreno
   else:
     dispLocation(newLocation)              
     return newLocation
+
+#For yelling action. Only useful at ticket gate.        
+def yell(location): #Jason Tse
+  if location == "ticket gate":
+    print "The clown seems to ignore you."
+  else:
+    print "Now is not the time for that."
