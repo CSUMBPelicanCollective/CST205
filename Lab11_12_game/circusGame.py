@@ -48,7 +48,7 @@ def parseCommand(userCommand, userLocation, isCode):
     
   elif (userCommand == 'look'):
     isCode = 1
-    where = requestString("Where do you want to LOOK ?\Examples: here,north,south,east,west")
+    where = requestString("Where do you want to LOOK ?\nExamples: here,north,south,east,west")
     acceptableDirections = "here,north,south,east,west"
     # Not sure if up, down, left, and right are acceptable
     if (containsString(where, acceptableDirections)):
