@@ -160,8 +160,7 @@ def execMovement(location, command):  #Rocky Moreno
       
   #if not valid direction print cant go thisway
   elif (newLocation == ''):
-    print 'You CANNOT go this way!\n\n'
-    #dispLocation(location)                  
+    print 'You CANNOT go this way!\n\n'                
     return location
   else:
     return location
