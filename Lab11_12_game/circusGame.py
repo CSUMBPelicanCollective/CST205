@@ -31,18 +31,16 @@ def main(): #Jason Tse
   
   while(comTypeCode < 5): #Jiwanjot Sandhu
     if (comTypeCode == 0):
-      break
+      #break (checking the behaviour of break statement)
       print "End Game"
+      break
     elif (comTypeCode == 1):
       dispLocation(location)
     elif (comTypeCode == 2):
       execMovement(location, command) 
     elif (comTypeCode ==3):
-      disHelp()
-    break
+      dispHelp()
     
-    
-
 def dispLocation(location): #Nikola Petkov
   print "You are currently at the " + location
   if location.lower() == "ticket gate":
