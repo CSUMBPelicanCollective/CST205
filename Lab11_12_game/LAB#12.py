@@ -7,6 +7,8 @@ def main(): #Jason Tse
   location = "ticket gate"
   command = "none"
   comTypeCode = 99
+  inventory = ""
+  progress = 0 #This variable is used to determine game endings
 	
   #initStory: start user UI
   print "You suddenly awoke on the hard ground outdoors."
@@ -28,8 +30,10 @@ def main(): #Jason Tse
     
     #parse input into command
     command, comTypeCode = parseCommand(command)
-  
-    if (comTypeCode == 0):#Jiwanjot Sandhu
+    
+    #calls the appropriate function based on the comTypeCode
+    #also prints the progress of the game
+    if (comTypeCode == 0):  #Jiwanjot Sandhu
       #break (checking the behaviour of break statement)
       print "End Game"
       break
@@ -40,7 +44,20 @@ def main(): #Jason Tse
     elif (comTypeCode == 3):
       dispHelp()
     elif (comTypeCode == 4):
-      yell(location)
+      progress = yell(location, inventory)
+    elif (comTypeCode == 5):
+      getItem(location, inventory, command)
+    elif (comTypeCode == 6):
+      dispInventory(inventory)
+    elif (comTypeCode == 7):
+      useItem(location, inventory, command, progress)
+    #prints if game is a win or loss
+    if (progress == 1):
+      print "Good End, congratulations you WON"
+      break
+    elif (progress == 2):
+      print "Bad End, Please try again"
+      break
     
 def dispLocation(location): #Nikola Petkov
   print "You are currently at the " + location
@@ -56,14 +73,33 @@ def dispLocation(location): #Nikola Petkov
     print "It's a small backstage area. The counters along the outside are cluttered with junk.\nThere are entrances to the SOUTH and SOUTHEAST.\n"
 
 def dispHelp(): #Nikola Petkov
-  print "- - - - - - - - - - - - - - - - - - - - - - - - - - H E L P - - - - - - - - - - - - - - - - - - - - - - - - - -"
-  print "exit - exits the game            help - displays this menu."
-  print "look - look around the current location."
+  print "- - - - - - - - - - - - - - - - - - - - - - - - - - - H E L P - - - - - - - - - - - - - - - - - - - - - - - - - - -"
+  print "exit - exits the game        help (h) - displays this menu."
+  print "look (l) - look around the current location."
   print "go - move in a given direction."
   print "Directions: north (n), south (s), east (e), west (w),"
   print "                     northwest (nw), northeast (ne), southeast (se), southwest (sw)."
+  print "get - pick up an item at the current location.		use - use an item from your inventory."
+  print "inventory (i) - display the items currently in your inventory."
   print "ex. \"go north\" or \"go n\" will move you north of current location (if it exists)"
-  print "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
+  print "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
+
+def dispInventory(inventory):  #Nikola Petkov
+  print "Inventory: " + inventory
+  
+def getItem(location, inventory, command):  #Nikola Petkov
+  if (location == circusTent) and (clownNose in command):
+    inventory = inventory + ", " + command
+  if (location == backStage) and (keys in command):
+    inventory = inventory + ", " + command
+  return inventory
+
+def useItem(location, inventory, command, progress):  #Nikola Petkov
+  if (location == securityRoom) and (keys in inventory):
+    progress == 1	# Good End
+  if (location == ticketGate) and (clownNose in inventory) and (command == 4):
+    progress == 2	# Bad End
+  return progress
 
 def execMovement(location, command):  #Rocky Moreno
   ticketGate = 'ticket gate'
@@ -124,11 +160,15 @@ def execMovement(location, command):  #Rocky Moreno
     return newLocation
 
 #For yelling action. Only useful at ticket gate.        
-def yell(location): #Jason Tse
-  if location == "ticket gate":
-    print "The clown seems to ignore you."
+def yell(location, inventory): #Jason Tse
+  if location == "ticket gate" and "clown nose" in inventory:
+    print "The clown thinks you stole its nose! The last thing you remember is the clown grabbing ahold of you ... "
+    return 2
+  elif location == "ticket gate":
+    print "The clown seems to ignore you. It's looking for something."
   else:
     print "Now is not the time for that."
+  return 0
 
 def parseCommand(command):
   #If more than 2 words, ignore command
@@ -138,7 +178,7 @@ def parseCommand(command):
   #check for word commands
   if command == "exit":
     return(command, 0)
-  if command == "look":
+  if command == "look" or command == "l":
     return(command, 1)
   #if first word is "go", return direction as command
   if command[:2] == "go":
@@ -148,10 +188,14 @@ def parseCommand(command):
       command = command.lower().strip()
     if command in ["n", "e", "s", "w", "ne", "nw", "se", "sw", "north", "east", "south", "west", "northeast", "northwest", "southeast", "southwest"]:
       return(command, 2)
-  if command == "help":
+  if command == "help" or command == "h":
     return(command, 3)
-  if command == "yell":
-    return(command, 4)
+  if command == "get":
+    return(command, 5)
+  if command == "inventory" or command == "i":
+    return(command, 6)
+  if command == "use":
+    return(command, 7)
   #check for short directions only
   if command in ["n", "e", "s", "w", "ne", "nw", "se", "sw"]:
     return(command, 2)

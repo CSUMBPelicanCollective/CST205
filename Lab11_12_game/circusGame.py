@@ -138,7 +138,7 @@ def parseCommand(command):
   #check for word commands
   if command == "exit":
     return(command, 0)
-  if command == "look":
+  if command == "look" or command == "l":
     return(command, 1)
   #if first word is "go", return direction as command
   if command[:2] == "go":
@@ -148,7 +148,7 @@ def parseCommand(command):
       command = command.lower().strip()
     if command in ["n", "e", "s", "w", "ne", "nw", "se", "sw", "north", "east", "south", "west", "northeast", "northwest", "southeast", "southwest"]:
       return(command, 2)
-  if command == "help":
+  if command == "help" or command == "h":
     return(command, 3)
   if command == "yell":
     return(command, 4)
