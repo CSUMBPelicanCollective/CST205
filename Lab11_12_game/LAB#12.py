@@ -70,25 +70,33 @@ def dispLocation(location): #Nikola Petkov
     print "It's a small backstage area. The counters along the outside are cluttered with junk.\nThere are entrances to the SOUTH and SOUTHEAST.\n"
 
 def dispHelp(): #Nikola Petkov
-  print "- - - - - - - - - - - - - - - - - - - - - - - - - - H E L P - - - - - - - - - - - - - - - - - - - - - - - - - -"
+  print "- - - - - - - - - - - - - - - - - - - - - - - - - - - H E L P - - - - - - - - - - - - - - - - - - - - - - - - - - -"
   print "exit - exits the game        help (h) - displays this menu."
   print "look (l) - look around the current location."
   print "go - move in a given direction."
   print "Directions: north (n), south (s), east (e), west (w),"
   print "                     northwest (nw), northeast (ne), southeast (se), southwest (sw)."
+  print "get - pick up an item at the current location.		use - use an item from your inventory."
+  print "inventory (i) - display the items currently in your inventory."
   print "ex. \"go north\" or \"go n\" will move you north of current location (if it exists)"
-  print "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
+  print "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
 
 def dispInventory(inventory):  #Nikola Petkov
   print "Inventory: " + inventory
   
 def getItem(location, inventory, command):  #Nikola Petkov
-  inventory = inventory + command
+  if (location == circusTent) and (clownNose in command):
+	inventory = inventory + ", " + command
+  if (location == backStage) and (keys in command):
+	inventory = inventory + ", " + command
   return inventory
 
 def useItem(location, inventory, command, progress):  #Nikola Petkov
-  
-  return inventory, progress
+  if (location == securityRoom) and (keys in inventory):
+	progress == 1	# Good End
+  if (location == ticketGate) and (clownNose in inventory) and (command == 4):
+	progress == 2	# Bad End
+  return progress
 
 def execMovement(location, command):  #Rocky Moreno
   ticketGate = 'ticket gate'
