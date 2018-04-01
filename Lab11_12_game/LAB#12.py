@@ -95,9 +95,9 @@ def getItem(location, inventory, command):  #Nikola Petkov
   return inventory
 
 def useItem(location, inventory, command, progress):  #Nikola Petkov
-  if (location == "security room") and ("keys" in inventory):
+  if (location == "security room") and (keys in inventory):
     progress == 1	# Good End
-  if (location == "ticket gate") and ("clown nose" in inventory) and (command == 4):
+  if (location == "ticket gate") and (clownNose in inventory) and (command == 4):
     progress == 2	# Bad End
   return progress
 
@@ -182,7 +182,7 @@ def execMovement(location, command, inventory):  #Rocky Moreno
     print 'can\'t go this way'                 
     return location
   else:
-    #dispLocation(newLocation)              
+    dispLocation(newLocation)              
     return newLocation
 
 #For yelling action. Only useful at ticket gate.        
