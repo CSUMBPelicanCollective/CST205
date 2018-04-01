@@ -43,6 +43,18 @@ def main(): #Jason Tse
       dispHelp()
     elif (comTypeCode == 4):
       yell(location)
+    elif (comTypeCode == 5):
+      getItem()
+    elif (comTypeCode == 6):
+      getInventory()
+    elif (comTypeCode == 7):
+      useItem()
+    elif (progress == 1):
+      print "Good End"
+      break
+    elif (progress == 2):
+      print "Bad End, Please try again"
+      break
     
 def dispLocation(location): #Nikola Petkov
   print "You are currently at the " + location
