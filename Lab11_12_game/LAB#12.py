@@ -44,11 +44,11 @@ def main(): #Jason Tse
     elif (comTypeCode == 4):
       progress = yell(location, inventory)
     elif (comTypeCode == 5):
-      getItem()
+      getItem(location, inventory, command)
     elif (comTypeCode == 6):
       dispInventory(inventory)
     elif (comTypeCode == 7):
-      getItem(location, inventory, command)
+      useItem(location, inventory, command, progress)
     if (progress == 1):
       print "Good End, congratulations you WON"
       break
