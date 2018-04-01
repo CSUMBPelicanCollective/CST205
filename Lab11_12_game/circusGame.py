@@ -143,7 +143,8 @@ def parseCommand(command):
   #if first word is "go", return direction as command
   if command[:2] == "go":
     command = command[3:]
-    return(command, 2)
+    if command in ["n", "e", "s", "w", "ne", "nw", "se", "sw", "north", "east", "south", "west", "northeast", "northwest", "southeast", "southwest"]:
+      return(command, 2)
   if command == "help":
     return(command, 3)
   if command == "yell":
