@@ -46,9 +46,9 @@ def main(): #Jason Tse
     elif (comTypeCode == 5):
       getItem()
     elif (comTypeCode == 6):
-      getInventory()
+      dispInventory(inventory):
     elif (comTypeCode == 7):
-      useItem()
+      getItem(location, inventory, command)
     if (progress == 1):
       print "Good End, congratulations you WON"
       break
