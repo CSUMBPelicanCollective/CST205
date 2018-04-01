@@ -119,8 +119,7 @@ def execMovement(location, command):  #Rocky Moreno
   if (newLocation == ''):
     print 'can\'t go this way'                  
     return location
-  else:
-    dispLocation(newLocation)              
+  else:             
     return newLocation
 
 #For yelling action. Only useful at ticket gate.        
