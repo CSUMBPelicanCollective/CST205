@@ -36,8 +36,8 @@ def main(): #Jason Tse
     elif (comTypeCode == 1):
       dispLocation(location)
     elif (comTypeCode == 2):
-      execMovement(location, command) 
-    elif (comTypeCode ==3):
+      location = execMovement(location, command) 
+    elif (comTypeCode == 3):
       dispHelp()
     elif (comTypeCode == 4):
       yell(location)
@@ -56,23 +56,26 @@ def dispLocation(location): #Nikola Petkov
     print "It's a small backstage area. The counters along the outside are cluttered with junk.\nThere are entrances to the SOUTH and SOUTHEAST."
 
 def dispHelp(): #Nikola Petkov
-  print "- - - - - - - - - - - - - H E L P - - - - - - - - - - - - -"
+  print "- - - - - - - - - - - - - - - - - - - - - - - - - - H E L P - - - - - - - - - - - - - - - - - - - - - - - - - -"
   print "exit - exits the game            help - displays this menu."
   print "look - look around the current location."
   print "go - move in a given direction."
-  print "Directions: north, south, east, west, up,"
-  print "                     northwest, northeast, southeast, southwest."
-  print "ex. \"go east\" will move you east of current location (if it exists)"
-  print "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
-  
+  print "Directions: north (n), south (s), east (e), west (w),"
+  print "                     northwest (nw), northeast (ne), southeast (se), southwest (sw)."
+  print "ex. \"go north\" or \"go n\" will move you north of current location (if it exists)"
+  print "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
 
 def execMovement(location, command):  #Rocky Moreno
+  print 'changing from'
+  print location
+  print 'changing with'
+  print command
   ticketGate = 'ticket gate'
   circusTent = 'circus tent'
   spectatorSeats = 'spectator seats'
   stagingArea = 'staging area'
   backStage = 'backstage'
-  newLocation = ''
+  newLocation = location
   
   #Location is Ticket Gate
   if (location == ticketGate): 
@@ -158,7 +161,6 @@ def parseCommand(command):
   else:
     print "I didn't understand that command"
     return(command, 99)
-  
 
 
 #Call to start game
