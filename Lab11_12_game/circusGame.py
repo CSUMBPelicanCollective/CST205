@@ -66,10 +66,6 @@ def dispHelp(): #Nikola Petkov
   print "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
 
 def execMovement(location, command):  #Rocky Moreno
-  print 'changing from'
-  print location
-  print 'changing with'
-  print command
   ticketGate = 'ticket gate'
   circusTent = 'circus tent'
   spectatorSeats = 'spectator seats'
