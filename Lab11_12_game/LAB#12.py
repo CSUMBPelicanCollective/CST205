@@ -86,16 +86,16 @@ def dispInventory(inventory):  #Nikola Petkov
   
 def getItem(location, inventory, command):  #Nikola Petkov
   if (location == circusTent) and (clownNose in command):
-	inventory = inventory + ", " + command
+    inventory = inventory + ", " + command
   if (location == backStage) and (keys in command):
-	inventory = inventory + ", " + command
+    inventory = inventory + ", " + command
   return inventory
 
 def useItem(location, inventory, command, progress):  #Nikola Petkov
   if (location == securityRoom) and (keys in inventory):
-	progress == 1	# Good End
+    progress == 1	# Good End
   if (location == ticketGate) and (clownNose in inventory) and (command == 4):
-	progress == 2	# Bad End
+    progress == 2	# Bad End
   return progress
 
 def execMovement(location, command):  #Rocky Moreno
