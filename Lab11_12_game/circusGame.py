@@ -47,7 +47,7 @@ def dispLocation(location): #Nikola Petkov
   if location.lower() == "ticket gate":
     print "The turnstyles are locked and looks difficult to climb over.\nTo the NORTH you see a big tent. The tent has smaller entrance NORTHEAST.\nThrough the gate bars you spot a clown in the distance. Maybe you can YELL out to them.\n"
   elif location.lower() == "circus tent":
-    print "The insides are strung with dim holiday lights. Doesn't look like there have been any shows recently.\nThe spectator seats are to the EAST. There is an opening in the tent NORTH, SOUTH, and WEST.\n"
+    print "The insides are strung with dim holiday lights. Doesn't look like there have been any shows recently.\nThe spectator seats are to the WEST. There is an opening in the tent NORTH, SOUTH, and EAST.\n"
   elif location.lower() == "spectator seats":
     print "The seats are littered with old tickets, discarded cups, and candy wrappers.\nFrom the seats you can see the all of the main stage to the EAST and an exit to the SOUTHEAST.\n"
   elif location.lower() == "staging area":
