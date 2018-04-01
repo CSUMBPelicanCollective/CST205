@@ -94,7 +94,7 @@ def execMovement(location, command, inventory):  #Rocky Moreno
 choice = ''
 #Starting location always ticket gate
 location = 'ticket gate'
-inventory = 'clown nose '
+inventory = ' keys clown nose '
 
 while (choice != 'yes'):
   command = requestString('Type a command: ')  
