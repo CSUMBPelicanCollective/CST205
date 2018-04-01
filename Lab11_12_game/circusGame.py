@@ -117,7 +117,7 @@ def execMovement(location, command):  #Rocky Moreno
   #display and return newLocation
   #dispLocation(newLocation) 
   if (newLocation == ''):
-    print 'Can\'t go this way, Please select a differnt direction or enter help\n'                  
+    print 'Can\'t go this way, Please select a different direction or enter help\n'                  
     return location
   else:      
     dispLocation(newLocation)       
@@ -143,6 +143,9 @@ def parseCommand(command):
   #if first word is "go", return direction as command
   if command[:2] == "go":
     command = command[3:]
+    if command == '':
+      command = requestString("Which direction?")
+      command = command.lower().strip()
     if command in ["n", "e", "s", "w", "ne", "nw", "se", "sw", "north", "east", "south", "west", "northeast", "northwest", "southeast", "southwest"]:
       return(command, 2)
   if command == "help":
