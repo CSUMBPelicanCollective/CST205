@@ -45,15 +45,15 @@ def main(): #Jason Tse
 def dispLocation(location): #Nikola Petkov
   print "You are currently at the " + location
   if location.lower() == "ticket gate":
-    print "The turnstyles are locked and looks difficult to climb over.\nTo the NORTH you see a big tent. The tent has smaller entrance NORTHEAST.\nThrough the gate bars you spot a clown in the distance. Maybe you can YELL out to them."
+    print "The turnstyles are locked and looks difficult to climb over.\nTo the NORTH you see a big tent. The tent has smaller entrance NORTHEAST.\nThrough the gate bars you spot a clown in the distance. Maybe you can YELL out to them.\n"
   elif location.lower() == "circus tent":
-    print "The insides are strung with dim holiday lights. Doesn't look like there have been any shows recently.\nThe spectator seats are to the EAST. There is an opening in the tent NORTH, SOUTH, and WEST."
+    print "The insides are strung with dim holiday lights. Doesn't look like there have been any shows recently.\nThe spectator seats are to the EAST. There is an opening in the tent NORTH, SOUTH, and WEST.\n"
   elif location.lower() == "spectator seats":
-    print "The seats are littered with old tickets, discarded cups, and candy wrappers.\nFrom the seats you can see the all of the main stage to the EAST and an exit to the SOUTHEAST."
+    print "The seats are littered with old tickets, discarded cups, and candy wrappers.\nFrom the seats you can see the all of the main stage to the EAST and an exit to the SOUTHEAST.\n"
   elif location.lower() == "staging area":
-    print "The equipment for the shows are kept here, including empty animal cages.\nThere are entrances to the WEST and NORTHWEST."
+    print "The equipment for the shows are kept here, including empty animal cages.\nThere are entrances to the WEST and NORTHWEST.\n"
   elif location.lower() == "backstage":
-    print "It's a small backstage area. The counters along the outside are cluttered with junk.\nThere are entrances to the SOUTH and SOUTHEAST."
+    print "It's a small backstage area. The counters along the outside are cluttered with junk.\nThere are entrances to the SOUTH and SOUTHEAST.\n"
 
 def dispHelp(): #Nikola Petkov
   print "- - - - - - - - - - - - - - - - - - - - - - - - - - H E L P - - - - - - - - - - - - - - - - - - - - - - - - - -"
