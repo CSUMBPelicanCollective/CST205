@@ -164,13 +164,15 @@ def parseCommand(userCommand, isCode):
       return newCommand, isCode
     
     goodDirection = false
-    acceptableDirections = "east,west"
+    acceptableDirections = "west"
     wordLength = 4
-    newCommand4 = acceptableDirections
-    newCommand4, goodDirection = commandCheck(newCommand, acceptableDirections, wordLength)
+    newCommand = acceptableDirections
+    newCommand, goodDirection = commandCheck(newCommand, acceptableDirections, wordLength)
     if (goodDirection == true):
       isCode = 2
-      return newCommand4, isCode
+      print acceptableDirections
+      print isCode
+      return acceptableDirections, isCode
       
     goodDirection = false
     acceptableDirections = "east"
@@ -179,25 +181,71 @@ def parseCommand(userCommand, isCode):
     newCommand, goodDirection = commandCheck(newCommand, acceptableDirections, wordLength)
     if (goodDirection == true):
       isCode = 2
+      print acceptableDirections
+      print isCode
+      return acceptableDirections, isCode
+      
+    goodDirection = false
+    acceptableDirections = "north"
+    wordLength = 4
+    newCommand = acceptableDirections
+    newCommand, goodDirection = commandCheck(newCommand, acceptableDirections, wordLength)
+    if (goodDirection == true):
+      isCode = 2
+      print acceptableDirections
+      print isCode
+      return acceptableDirections, isCode
+      
+    goodDirection = false
+    acceptableDirections = "south"
+    wordLength = 4
+    newCommand = ""
+    newCommand, goodDirection = commandCheck(newCommand, acceptableDirections, wordLength)
+    if (goodDirection == true):
+      isCode = 2
+      print acceptableDirections
+      print isCode
       return acceptableDirections, isCode
     
     goodDirection = false
-    acceptableDirections = "southeast,northeast,southwest,northwest"
+    acceptableDirections = "southeast"
     wordLength = 9
-    newCommand8 = acceptableDirections
-    newCommand8, goodDirection = commandCheck(newCommand, acceptableDirections, wordLength)
+    newCommand = ""
+    newCommand, goodDirection = commandCheck(newCommand, acceptableDirections, wordLength)
     if (goodDirection == true):
       isCode = 2
-      return newCommand8, isCode
+      print 'southeast'
+      return acceptableDirections, isCode
     
     goodDirection = false
-    acceptableDirections = "north,south"
-    wordLength = 6
-    newCommand5 = acceptableDirections
-    newCommand5, goodDirection = commandCheck(newCommand, acceptableDirections, wordLength)
+    acceptableDirections = "northeast"
+    wordLength = 9
+    newCommand = ""
+    newCommand, goodDirection = commandCheck(newCommand, acceptableDirections, wordLength)
     if (goodDirection == true):
       isCode = 2
-      return newCommand5, isCode
+      print 'northeast'
+      return acceptableDirections, isCode
+      
+    goodDirection = false
+    acceptableDirections = "southwest"
+    wordLength = 9
+    newCommand = ""
+    newCommand, goodDirection = commandCheck(newCommand, acceptableDirections, wordLength)
+    if (goodDirection == true):
+      isCode = 2
+      print 'southwest'
+      return "southwest", isCode
+    
+    goodDirection = false
+    acceptableDirections = "northwest"
+    wordLength = 9
+    newCommand = ""
+    newCommand, goodDirection = commandCheck(newCommand, acceptableDirections, wordLength)
+    if (goodDirection == true):
+      isCode = 2
+      print 'northwest'
+      return "northwest", isCode
       
   print 'returning default values'
   return "",99
