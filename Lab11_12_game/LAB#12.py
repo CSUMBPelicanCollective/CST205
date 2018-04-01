@@ -40,7 +40,7 @@ def main(): #Jason Tse
     elif (comTypeCode == 1):
       dispLocation(location)
     elif (comTypeCode == 2):
-      location = execMovement(location, command) 
+      location = execMovement(location, command, inventory) 
     elif (comTypeCode == 3):
       dispHelp()
     elif (comTypeCode == 4):
@@ -197,13 +197,14 @@ def yell(location, inventory): #Jason Tse
   return 0
 
 def parseCommand(command):
-  #If more than 2 words, ignore command
+  #If more than 3 words, ignore command
   if command.count(' ') > 2:
     print "I didn't understand that command"
     return(command, 99)
-  #check for word commands
+  #check for exit
   if command == "exit":
     return(command, 0)
+  #check for look or l
   if command == "look" or command == "l":
     return(command, 1)
   #if first word is "go", return direction as command
@@ -214,14 +215,26 @@ def parseCommand(command):
       command = command.lower().strip()
     if command in ["n", "e", "s", "w", "ne", "nw", "se", "sw", "north", "east", "south", "west", "northeast", "northwest", "southeast", "southwest"]:
       return(command, 2)
+  #check for help
   if command == "help" or command == "h":
     return(command, 3)
-  if command == "get":
-    return(command, 5)
+  #if first word is "get", return item as command
+  if command[:3] == "get":
+    command = command[4:]
+    if command == '':
+      command = requestString("Get what?")
+    if command in ["clown nose", "keys"]:
+      return(command, 5)
+  #check for inventory or i
   if command == "inventory" or command == "i":
     return(command, 6)
-  if command == "use":
-    return(command, 7)
+  #if first word is "use", return use as command
+  if command[:3] == "use":
+    command = command[4:]
+    if command == '':
+      command = requestString("Use what?")
+    if command in ["clown nose", "keys"]:
+      return(command, 7)
   #check for short directions only
   if command in ["n", "e", "s", "w", "ne", "nw", "se", "sw"]:
     return(command, 2)
