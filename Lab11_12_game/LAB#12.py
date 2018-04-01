@@ -190,8 +190,12 @@ def parseCommand(command):
       return(command, 2)
   if command == "help" or command == "h":
     return(command, 3)
-  if command == "yell":
-    return(command, 4)
+  if command == "get":
+    return(command, 5)
+  if command == "inventory" or command == "i":
+    return(command, 6)
+  if command == "use":
+    return(command, 7)
   #check for short directions only
   if command in ["n", "e", "s", "w", "ne", "nw", "se", "sw"]:
     return(command, 2)
