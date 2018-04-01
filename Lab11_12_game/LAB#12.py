@@ -7,7 +7,7 @@ def main(): #Jason Tse
   location = "ticket gate"
   command = "none"
   comTypeCode = 99
-  inventory = ""
+  inventory = "clown nose"
   progress = 0 #This variable is used to determine game endings
 	
   #initStory: start user UI
@@ -42,14 +42,14 @@ def main(): #Jason Tse
     elif (comTypeCode == 3):
       dispHelp()
     elif (comTypeCode == 4):
-      yell(location)
+      progress = yell(location, inventory)
     elif (comTypeCode == 5):
       getItem()
     elif (comTypeCode == 6):
       getInventory()
     elif (comTypeCode == 7):
       useItem()
-    elif (progress == 1):
+    if (progress == 1):
       print "Good End, congratulations you WON"
       break
     elif (progress == 2):
@@ -138,11 +138,15 @@ def execMovement(location, command):  #Rocky Moreno
     return newLocation
 
 #For yelling action. Only useful at ticket gate.        
-def yell(location): #Jason Tse
-  if location == "ticket gate":
-    print "The clown seems to ignore you."
+def yell(location, inventory): #Jason Tse
+  if location == "ticket gate" and "clown nose" in inventory:
+    print "The clown thinks you stole its nose! The last thing you remember is the clown grabbing ahold of you ... "
+    return 2
+  elif location == "ticket gate":
+    print "The clown seems to ignore you. It's looking for something."
   else:
     print "Now is not the time for that."
+  return 0
 
 def parseCommand(command):
   #If more than 2 words, ignore command
