@@ -22,8 +22,6 @@ def main(): #Jason Tse
     #prompt player for command
     command = requestString("What will you do?")
     command = command.lower().strip()
-    print len(command)
-    print command.isalpha()
     while len(command) < 1 or not command.isalpha():
       command = requestString("I didn't understand. What will you do?")
       command = command.lower().strip()
@@ -38,7 +36,7 @@ def main(): #Jason Tse
     elif (comTypeCode == 1):
       dispLocation(location)
     elif (comTypeCode == 2):
-      execMovement(location, command) 
+      location = execMovement(location, command) 
     elif (comTypeCode == 3):
       dispHelp()
     elif (comTypeCode == 4):
@@ -69,12 +67,16 @@ def dispHelp(): #Nikola Petkov
   
 
 def execMovement(location, command):  #Rocky Moreno
+  print 'changing from'
+  print location
+  print 'changing with'
+  print command
   ticketGate = 'ticket gate'
   circusTent = 'circus tent'
   spectatorSeats = 'spectator seats'
   stagingArea = 'staging area'
   backStage = 'backstage'
-  newLocation = ''
+  newLocation = location
   
   #Location is Ticket Gate
   if (location == ticketGate): 
