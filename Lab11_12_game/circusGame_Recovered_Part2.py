@@ -36,7 +36,7 @@ def main(): #Jason Tse
     elif (comTypeCode == 1):
       dispLocation(location)
     elif (comTypeCode == 2):
-      execMovement(location, command) 
+      location = execMovement(location, command) 
     elif (comTypeCode ==3):
       dispHelp()
     elif (comTypeCode == 4):
@@ -137,7 +137,7 @@ def parseCommand(userCommand, isCode):
   if (userCommand == 'exit'):
     # Exit
     isCode = 0
-  return userCommand, isCode
+    return userCommand, isCode
   elif (userCommand == 'help'):
     # Print Help
     isCode = 3
