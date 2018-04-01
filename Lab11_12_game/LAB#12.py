@@ -30,8 +30,10 @@ def main(): #Jason Tse
     
     #parse input into command
     command, comTypeCode = parseCommand(command)
-  
-    if (comTypeCode == 0):#Jiwanjot Sandhu
+    
+    #calls the appropriate function based on the comTypeCode
+    #also prints the progress of the game
+    if (comTypeCode == 0):  #Jiwanjot Sandhu
       #break (checking the behaviour of break statement)
       print "End Game"
       break
@@ -49,6 +51,7 @@ def main(): #Jason Tse
       dispInventory(inventory)
     elif (comTypeCode == 7):
       useItem(location, inventory, command, progress)
+    #prints if game is a win or loss
     if (progress == 1):
       print "Good End, congratulations you WON"
       break
