@@ -22,6 +22,8 @@ def main(): #Jason Tse
     #prompt player for command
     command = requestString("What will you do?")
     command = command.lower().strip()
+    print len(command)
+    print command.isalpha()
     while len(command) < 1 or not command.isalpha():
       command = requestString("I didn't understand. What will you do?")
       command = command.lower().strip()
@@ -37,7 +39,7 @@ def main(): #Jason Tse
       dispLocation(location)
     elif (comTypeCode == 2):
       execMovement(location, command) 
-    elif (comTypeCode ==3):
+    elif (comTypeCode == 3):
       dispHelp()
     elif (comTypeCode == 4):
       yell(location)
@@ -133,6 +135,8 @@ def yell(location): #Jason Tse
 
 def parseCommand(userCommand, isCode):
   # Check user commands for matching program status code
+  extraVerb = "go"
+  testGo = false
   extraVerb, testGo = commandCheck("go", userCommand, 2)
   
   
@@ -226,6 +230,7 @@ def commandCheck(userInput, stringToCheck, length):
       correctCharCountIndex = 0
       newString = ''
       #print 'none new:'+newString + ' state:'+str(commandFoundBool)
+  return newString, commandFoundBool
 
 def printPadding():
   print '\n\n'
