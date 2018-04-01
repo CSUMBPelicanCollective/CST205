@@ -198,7 +198,6 @@ def parseCommand(userCommand, isCode):
   return "",99
     
 
-########
 # Checks an userInput string against stringToCheck
 # Returns newString, commandFound
 def commandCheck(userInput, stringToCheck, length):
