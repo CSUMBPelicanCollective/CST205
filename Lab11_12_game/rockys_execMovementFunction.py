@@ -2,13 +2,23 @@
 #execMovement function
 
 #Rocky - execMovement Function
-def execMovement(location, command):  #Rocky Moreno
+def execMovement(location, command, inventory):  #Rocky Moreno
   ticketGate = 'ticket gate'
   circusTent = 'circus tent'
   spectatorSeats = 'spectator seats'
   stagingArea = 'staging area'
   backStage = 'backstage'
+  trailer = 'trailer'
+  securityRoom = 'security room'
   newLocation = ''
+  
+  
+  #check if keys are in inventory
+  hasKeys = 'no'
+
+  for index in range(len(inventory)-1):
+    if inventory[index:index+4] == 'keys':
+      hasKeys = 'yes'
   
   #Location is Ticket Gate
   if (location == ticketGate): 
@@ -41,12 +51,28 @@ def execMovement(location, command):  #Rocky Moreno
       newLocation = circusTent
     elif(command == 'nw' or command == 'northwest'):
       newLocation = backStage
+    elif(command == 'n' or command == 'north'):
+      newLocation = trailer
+    elif((command == 's' and hasKeys == 'yes') or (command == 'south' and hasKeys == 'yes')):
+      newLocation = securityRoom
+    elif((command == 's' and hasKeys == 'no') or (command == 'south' and hasKeys == 'no')):
+      print 'The door to the south is locked'
       
   #Location is Back Stage
   elif (location == backStage):
     if(command == 's' or command == 'south'):
       newLocation = circusTent
     elif(command == 'se' or command == 'southeast'):
+      newLocation = stagingArea
+      
+  #Location is Trailer
+  elif (location == trailer):
+    if(command == 's' or command == 'south'):
+      newLocation = stagingArea
+      
+  #Location is Security Room
+  elif (location == securityRoom):
+    if(command == 'n' or command == 'north'):
       newLocation = stagingArea
       
   #if not valid direction print cant go thisway
@@ -59,7 +85,7 @@ def execMovement(location, command):  #Rocky Moreno
   else:
     #dispLocation(newLocation)              
     return newLocation
-
+    
 #############################
 #       FOR DEBUGGING       #
 #############################
@@ -67,13 +93,11 @@ def execMovement(location, command):  #Rocky Moreno
 choice = ''
 #Starting location always ticket gate
 location = 'ticket gate'
+inventory = 'clown nose '
 
 while (choice != 'yes'):
-  command = requestString('Type a command: ')
+  command = requestString('Type a command: ')  
   #print execMovement(location, command)
-  location = execMovement(location, command)
-  print location
+  location = execMovement(location, command, inventory)
+  #print location
   print 'This is current location ' + str(location)
-  
-  #choice = requestString('Do you want to quit: ')
-  
