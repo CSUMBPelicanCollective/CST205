@@ -71,13 +71,24 @@ def dispLocation(location): #Nikola Petkov
 
 def dispHelp(): #Nikola Petkov
   print "- - - - - - - - - - - - - - - - - - - - - - - - - - H E L P - - - - - - - - - - - - - - - - - - - - - - - - - -"
-  print "exit - exits the game            help - displays this menu."
-  print "look - look around the current location."
+  print "exit - exits the game        help (h) - displays this menu."
+  print "look (l) - look around the current location."
   print "go - move in a given direction."
   print "Directions: north (n), south (s), east (e), west (w),"
   print "                     northwest (nw), northeast (ne), southeast (se), southwest (sw)."
   print "ex. \"go north\" or \"go n\" will move you north of current location (if it exists)"
   print "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
+
+def dispInventory(inventory):  #Nikola Petkov
+  print "Inventory: " + inventory
+  
+def getItem(location, inventory, command):  #Nikola Petkov
+  inventory = inventory + command
+  return inventory
+
+def useItem(location, inventory, command, progress):  #Nikola Petkov
+  
+  return inventory, progress
 
 def execMovement(location, command):  #Rocky Moreno
   ticketGate = 'ticket gate'
