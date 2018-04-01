@@ -71,7 +71,7 @@ def execMovement(location, command):  #Rocky Moreno
   spectatorSeats = 'spectator seats'
   stagingArea = 'staging area'
   backStage = 'backstage'
-  newLocation = location
+  newLocation = ''
   
   #Location is Ticket Gate
   if (location == ticketGate): 
@@ -119,7 +119,8 @@ def execMovement(location, command):  #Rocky Moreno
   if (newLocation == ''):
     print 'can\'t go this way'                  
     return location
-  else:             
+  else:      
+    dispLocation(newLocation)       
     return newLocation
 
 #For yelling action. Only useful at ticket gate.        
