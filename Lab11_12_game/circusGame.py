@@ -22,14 +22,12 @@ def main(): #Jason Tse
     #prompt player for command
     command = requestString("What will you do?")
     command = command.lower().strip()
-    print len(command)
-    print command.isalpha()
-    while len(command) < 1 or not command.isalpha():
+    while len(command) < 1:
       command = requestString("I didn't understand. What will you do?")
       command = command.lower().strip()
     
     #parse input into command
-    command, comTypeCode = parseCommand(command, comTypeCode)
+    command, comTypeCode = parseCommand(command)
   
     if (comTypeCode == 0):#Jiwanjot Sandhu
       #break (checking the behaviour of break statement)
@@ -39,7 +37,7 @@ def main(): #Jason Tse
       dispLocation(location)
     elif (comTypeCode == 2):
       execMovement(location, command) 
-    elif (comTypeCode == 3):
+    elif (comTypeCode ==3):
       dispHelp()
     elif (comTypeCode == 4):
       yell(location)
@@ -47,15 +45,15 @@ def main(): #Jason Tse
 def dispLocation(location): #Nikola Petkov
   print "You are currently at the " + location
   if location.lower() == "ticket gate":
-    print "The turnstyles are locked and looks difficult to climb over.\n To the NORTH you see a big tent. The tent has smaller entrance NORTHEAST.\n Through the gate bars you spot a clown in the distance. Maybe you can YELL out to them."
+    print "The turnstyles are locked and looks difficult to climb over.\nTo the NORTH you see a big tent. The tent has smaller entrance NORTHEAST.\nThrough the gate bars you spot a clown in the distance. Maybe you can YELL out to them."
   elif location.lower() == "circus tent":
-    print "The insides are strung with dim holiday lights. Doesn't look like there have been any shows recently.\n The spectator seats are to the EAST. There is an opening in the tent NORTH, SOUTH, and WEST."
+    print "The insides are strung with dim holiday lights. Doesn't look like there have been any shows recently.\nThe spectator seats are to the EAST. There is an opening in the tent NORTH, SOUTH, and WEST."
   elif location.lower() == "spectator seats":
-    print "The seats are littered with old tickets, discarded cups, and candy wrappers.\n From the seats you can see the all of the main stage to the EAST and an exit to the SOUTHEAST."
+    print "The seats are littered with old tickets, discarded cups, and candy wrappers.\nFrom the seats you can see the all of the main stage to the EAST and an exit to the SOUTHEAST."
   elif location.lower() == "staging area":
-    print "The equipment for the shows are kept here, including empty animal cages.\n There are entrances to the WEST and NORTHWEST."
+    print "The equipment for the shows are kept here, including empty animal cages.\nThere are entrances to the WEST and NORTHWEST."
   elif location.lower() == "backstage":
-    print "It's a small backstage area. The counters along the outside are cluttered with junk.\n There are entrances to the SOUTH and SOUTHEAST."
+    print "It's a small backstage area. The counters along the outside are cluttered with junk.\nThere are entrances to the SOUTH and SOUTHEAST."
 
 def dispHelp(): #Nikola Petkov
   print "- - - - - - - - - - - - - H E L P - - - - - - - - - - - - -"
@@ -120,7 +118,7 @@ def execMovement(location, command):  #Rocky Moreno
   #display and return newLocation
   #dispLocation(newLocation) 
   if (newLocation == ''):
-    print 'can\'t go this way'                 
+    print 'can\'t go this way'                  
     return location
   else:
     dispLocation(newLocation)              
@@ -133,107 +131,35 @@ def yell(location): #Jason Tse
   else:
     print "Now is not the time for that."
 
-def parseCommand(userCommand, isCode):
-  # Check user commands for matching program status code
-  extraVerb = "go"
-  testGo = false
-  extraVerb, testGo = commandCheck("go", userCommand, 2)
+def parseCommand(command):
+  #If more than 2 words, ignore command
+  if command.count(' ') > 2:
+    print "I didn't understand that command"
+    return(command, 99)
+  #check for word commands
+  if command == "exit":
+    return(command, 0)
+  if command == "look":
+    return(command, 1)
+  #if first word is "go", return direction as command
+  if command[:2] == "go":
+    command = command[3:]
+    return(command, 2)
+  if command == "help":
+    return(command, 3)
+  if command == "yell":
+    return(command, 4)
+  #check for short directions only
+  if command in ["n", "e", "s", "w", "ne", "nw", "se", "sw"]:
+    return(command, 2)
+  #check for long directions only
+  if command in ["north", "east", "south", "west", "northeast", "northwest", "southeast", "southwest"]:
+    return(command, 2)
+  else:
+    print "I didn't understand that command"
+    return(command, 99)
   
-  
-  if (userCommand == "exit"):
-    # Exit
-    isCode = 0
-    print 'exit'
-    return userCommand, isCode
-  elif (userCommand == "help"):
-    # Print Help
-    isCode = 3
-    print 'help'
-    return userCommand, isCode
-  elif (userCommand == "look"):
-    isCode = 1
-    print 'look'
-    return userCommand, isCode
-  elif (testGo):  
-    # Move / Go
-    # Initialization of variables
-    newCommand = userCommand.strip('go')
-    isCode = 66
-    if (len(newCommand) < 4):
-      return newCommand, isCode
-    
-    goodDirection = false
-    acceptableDirections = "east,west"
-    wordLength = 4
-    newCommand4 = acceptableDirections
-    newCommand4, goodDirection = commandCheck(newCommand, acceptableDirections, wordLength)
-    if (goodDirection == true):
-      isCode = 2
-      return newCommand4, isCode
-      
-    goodDirection = false
-    acceptableDirections = "east"
-    wordLength = 4
-    newCommand = acceptableDirections
-    newCommand, goodDirection = commandCheck(newCommand, acceptableDirections, wordLength)
-    if (goodDirection == true):
-      isCode = 2
-      return acceptableDirections, isCode
-    
-    goodDirection = false
-    acceptableDirections = "southeast,northeast,southwest,northwest"
-    wordLength = 9
-    newCommand8 = acceptableDirections
-    newCommand8, goodDirection = commandCheck(newCommand, acceptableDirections, wordLength)
-    if (goodDirection == true):
-      isCode = 2
-      return newCommand8, isCode
-    
-    goodDirection = false
-    acceptableDirections = "north,south"
-    wordLength = 6
-    newCommand5 = acceptableDirections
-    newCommand5, goodDirection = commandCheck(newCommand, acceptableDirections, wordLength)
-    if (goodDirection == true):
-      isCode = 2
-      return newCommand5, isCode
-      
-  print 'returning default values'
-  return "",99
-    
 
-# Checks an userInput string against stringToCheck
-# Returns newString, commandFound
-def commandCheck(userInput, stringToCheck, length):
-  newString = ''
-  commandFoundBool = false
-  correctCharCountIndex = 0
-  userInputStringLength = len(userInput)
-  #print len(userInput)
-  for i in range (0, len(stringToCheck)):
-    if ( correctCharCountIndex == length ):
-      # Whole string checked
-      print newString
-      return newString, commandFoundBool
-    elif (userInput[correctCharCountIndex] == stringToCheck[i]):
-      # This character matches the string
-      newString = newString + userInput[correctCharCountIndex]
-      correctCharCount = correctCharCountIndex + 1
-      print len(newString)
-      print length
-      if (len(newString) <= length):
-        # Matched
-        commandFoundBool = true
-        print newString
-        return newString, commandFoundBool
-    else:
-      correctCharCountIndex = 0
-      newString = ''
-      #print 'none new:'+newString + ' state:'+str(commandFoundBool)
-  return newString, commandFoundBool
-
-def printPadding():
-  print '\n\n'
 
 #Call to start game
 main()
