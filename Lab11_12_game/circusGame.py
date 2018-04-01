@@ -62,7 +62,7 @@ def dispHelp(): #Nikola Petkov
   print "go - move in a given direction."
   print "Directions: north (n), south (s), east (e), west (w),"
   print "                     northwest (nw), northeast (ne), southeast (se), southwest (sw)."
-  print "ex. \"go east\" will move you east of current location (if it exists)"
+  print "ex. \"go north\" or \"go n\" will move you north of current location (if it exists)"
   print "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
 
 def execMovement(location, command):  #Rocky Moreno
