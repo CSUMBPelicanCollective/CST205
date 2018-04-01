@@ -50,7 +50,7 @@ def main(): #Jason Tse
     elif (comTypeCode == 7):
       useItem()
     elif (progress == 1):
-      print "Good End"
+      print "Good End, congratulations you WON"
       break
     elif (progress == 2):
       print "Bad End, Please try again"
