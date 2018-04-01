@@ -7,6 +7,8 @@ def main(): #Jason Tse
   location = "ticket gate"
   command = "none"
   comTypeCode = 99
+  inventory = ""
+  progress = 0 #This variable is used to determine game endings
 	
   #initStory: start user UI
   print "You suddenly awoke on the hard ground outdoors."
