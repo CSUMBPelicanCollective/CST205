@@ -46,7 +46,7 @@ def main(): #Jason Tse
     elif (comTypeCode == 5):
       getItem()
     elif (comTypeCode == 6):
-      dispInventory(inventory):
+      dispInventory(inventory)
     elif (comTypeCode == 7):
       getItem(location, inventory, command)
     if (progress == 1):
