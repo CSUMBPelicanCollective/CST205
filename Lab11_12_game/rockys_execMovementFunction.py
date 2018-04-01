@@ -57,6 +57,7 @@ def execMovement(location, command, inventory):  #Rocky Moreno
       newLocation = securityRoom
     elif((command == 's' and hasKeys == 'no') or (command == 'south' and hasKeys == 'no')):
       print 'The door to the south is locked'
+      return location
       
   #Location is Back Stage
   elif (location == backStage):
