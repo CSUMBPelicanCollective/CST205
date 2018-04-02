@@ -75,13 +75,13 @@ def dispLocation(location, inventory): #Nikola Petkov
   elif location.lower() == "staging area":
     print "The equipment for the shows are kept here, including empty animal cages.\nThere are entrances to the WEST, NORTHWEST, and SOUTH.\n"
   elif location.lower() == "backstage":
-    print "It's a small backstage area. The counters along the outside are cluttered with junk.\nThere are entrances to the SOUTH and SOUTHEAST.\n"
+    print "It's a small backstage area. The counters along the outside are cluttered with junk.\nThere are entrances to the SOUTH and SOUTHEAST."
     if "keys" not in inventory:
       print "Among the clutter you spot a big ring of KEYS.\n"
     else:
       print "\n"
   elif location.lower() == "security room":
-    print "The room is filled with monitors. Mostly static, but one monitor shows the ticket gate.\nThere are doors to the NORTH and SOUTH.\n Looks like the SOUTH door also need KEYS."
+    print "The room is filled with monitors. Mostly static, but one monitor shows the ticket gate.\nThere are doors to the NORTH and SOUTH.\nLooks like the SOUTH door also need KEYS."
   elif location.lower() == "trailer":
     print "The trailer is dark, and it doesn't look like anybody is home.\nThere is a path to the SOUTH.\n"
 
