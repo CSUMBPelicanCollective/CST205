@@ -261,6 +261,9 @@ def parseCommand(command):
       command = requestString("Use what?")
     if command in ["clown nose", "keys"]:
       return(command, 7)
+    else:
+      print "No such item in inventory."
+      return(command, 99)
   #check for short directions only
   if command in ["n", "e", "s", "w", "ne", "nw", "se", "sw"]:
     return(command, 2)
