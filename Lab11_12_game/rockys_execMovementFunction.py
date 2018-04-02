@@ -11,15 +11,18 @@ def execMovement(location, command, inventory):  #Rocky Moreno
   trailer = 'trailer'
   securityRoom = 'security room'
   newLocation = ''
-  
-  
+   
   #check if keys are in inventory
   hasKeys = 'no'
-
+  
+  if 'keys' in inventory:
+    hasKeys = 'yes'
+  
+  """
   for index in range(len(inventory)-1):
     if inventory[index:index+4] == 'keys':
       hasKeys = 'yes'
-  
+  """
   #Location is Ticket Gate
   if (location == ticketGate): 
     if(command == 'n' or command == 'north'):
@@ -75,16 +78,19 @@ def execMovement(location, command, inventory):  #Rocky Moreno
   elif (location == securityRoom):
     if(command == 'n' or command == 'north'):
       newLocation = stagingArea
+    elif((command == 's' and hasKeys == 'yes') or (command == 'south' and hasKeys == 'yes')):
+      print 'Door to the south is locked'
+      newLocation = location
       
+          
   #if not valid direction print cant go thisway
   #else
   #display and return newLocation
-  #dispLocation(newLocation) 
   if (newLocation == ''):
     print 'can\'t go this way'                 
     return location
   else:
-    #dispLocation(newLocation)              
+    #dispLocation(newLocation, inventory)              
     return newLocation
     
 #############################
@@ -94,7 +100,7 @@ def execMovement(location, command, inventory):  #Rocky Moreno
 choice = ''
 #Starting location always ticket gate
 location = 'ticket gate'
-inventory = ' keys clown nose '
+inventory = ' clown nose keys '
 
 while (choice != 'yes'):
   command = requestString('Type a command: ')  

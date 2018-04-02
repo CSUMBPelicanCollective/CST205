@@ -132,10 +132,9 @@ def execMovement(location, command, inventory):  #Rocky Moreno
    
   #check if keys are in inventory
   hasKeys = 'no'
-
-  for index in range(len(inventory)-1):
-    if inventory[index:index+4] == 'keys':
-      hasKeys = 'yes'
+  
+  if 'keys' in inventory:
+    hasKeys = 'yes'
   
   #Location is Ticket Gate
   if (location == ticketGate): 
