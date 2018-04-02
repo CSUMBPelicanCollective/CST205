@@ -65,21 +65,17 @@ def dispLocation(location, inventory): #Nikola Petkov
   if location.lower() == "ticket gate":
     print "The turnstyles are locked and looks difficult to climb over.\nTo the NORTH you see a big tent. The tent has smaller entrance NORTHEAST.\nThrough the gate bars you spot a clown in the distance. Maybe you can YELL out to them.\n"
   elif location.lower() == "circus tent":
-    print "The insides are strung with dim holiday lights. Doesn't look like there have been any shows recently.\nThe spectator seats are to the WEST. There is an opening in the tent NORTH, SOUTH, and EAST."
+    print "The insides are strung with dim holiday lights. Doesn't look like there have been any shows recently.\nThe spectator seats are to the WEST. There is an opening in the tent NORTH, SOUTH, and EAST.\n"
     if "clown nose" not in inventory:
       print "There is a CLOWN NOSE on the ground in the middle of the tent.\n"
-    else:
-      print "\n"
   elif location.lower() == "spectator seats":
     print "The seats are littered with old tickets, discarded cups, and candy wrappers.\nFrom the seats you can see all of the main stage to the EAST and an exit to the SOUTHEAST.\n"
   elif location.lower() == "staging area":
     print "The equipment for the shows are kept here, including empty animal cages.\nThere are entrances to the WEST, NORTHWEST, and SOUTH.\n"
   elif location.lower() == "backstage":
-    print "It's a small backstage area. The counters along the outside are cluttered with junk.\nThere are entrances to the SOUTH and SOUTHEAST."
+    print "It's a small backstage area. The counters along the outside are cluttered with junk.\nThere are entrances to the SOUTH and SOUTHEAST.\n"
     if "keys" not in inventory:
       print "Among the clutter you spot a big ring of KEYS.\n"
-    else:
-      print "\n"
   elif location.lower() == "security room":
     print "The room is filled with monitors. Mostly static, but one monitor shows the ticket gate.\nThere are doors to the NORTH and SOUTH.\nLooks like the SOUTH door also need KEYS.\n"
   elif location.lower() == "trailer":
