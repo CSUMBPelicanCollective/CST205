@@ -218,6 +218,9 @@ def parseCommand(command):
   #check for help
   if command == "help" or command == "h":
     return(command, 3)
+  #check for yell
+  if command == "yell":
+    return(command, 4)
   #if first word is "get", return item as command
   if command[:3] == "get":
     command = command[4:]
