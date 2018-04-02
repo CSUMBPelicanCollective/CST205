@@ -1,5 +1,5 @@
 #PELICAN COLLECTIVE
-#LAB 11 AND LAB 12
+#LAB 12
 #GAME
 
 def main(): #Jason Tse
@@ -111,9 +111,13 @@ def getItem(location, inventory, command):  #Nikola Petkov
 def useItem(location, inventory, command, progress):  #Nikola Petkov
   if (command not in inventory):
     print "No such item is in your inventory."
-  if (location == "security room") and ("keys" in inventory):
+  elif (location == "security room") and ("keys" in inventory) and ("keys" in command):
     progress = 1	# Good End
     print "The door unlocked."
+  elif (location == "security room") and ("clown nose" in command):
+    print "Haha, you can't unlock a door using a " + command
+  else:
+    print command + " is of no use in " + location
   return progress
 
 def execMovement(location, command, inventory):  #Rocky Moreno
