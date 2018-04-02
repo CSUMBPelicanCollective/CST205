@@ -125,13 +125,7 @@ def execMovement(location, command, inventory):  #Rocky Moreno
   trailer = 'trailer'
   securityRoom = 'security room'
   newLocation = ''
-   
-  #check if keys are in inventory
-  hasKeys = 'no'
-  
-  if 'keys' in inventory:
-    hasKeys = 'yes'
-  
+     
   #Location is Ticket Gate
   if (location == ticketGate): 
     if(command == 'n' or command == 'north'):
@@ -165,9 +159,9 @@ def execMovement(location, command, inventory):  #Rocky Moreno
       newLocation = backStage
     elif(command == 'n' or command == 'north'):
       newLocation = trailer
-    elif((command == 's' and hasKeys == 'yes') or (command == 'south' and hasKeys == 'yes')):
+    elif(command == 's' or command == 'south') and ('keys' in inventory):
       newLocation = securityRoom
-    elif((command == 's' and hasKeys == 'no') or (command == 'south' and hasKeys == 'no')):
+    elif(command == 's' or command == 'south'):
       print 'The door to the south is locked'
       return location
       
@@ -187,7 +181,7 @@ def execMovement(location, command, inventory):  #Rocky Moreno
   elif (location == securityRoom):
     if(command == 'n' or command == 'north'):
       newLocation = stagingArea
-    elif((command == 's' and hasKeys == 'yes') or (command == 'south' and hasKeys == 'yes')):
+    elif(command == 's' or command == 'south'):
       print 'Door to the south is locked'
       newLocation = location
       
