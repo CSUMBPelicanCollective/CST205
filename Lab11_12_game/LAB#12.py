@@ -90,11 +90,12 @@ def dispInventory(inventory):  #Nikola Petkov
 def getItem(location, inventory, command):  #Nikola Petkov
   if (command in inventory):  # item is already in the inventory
     print "No " + command + " can be seen at " + location
+    return inventory
   elif (location == "circus tent") and ("clown nose" in command):
-    inventory = inventory + ", " + command
-    print
+    print "You picked up a clown nose."
   elif (location == "backstage") and ("keys" in command):
-    inventory = inventory + command + ", "
+    print "You picked up some keys."
+  inventory = inventory + command + ", "
   return inventory
 
 def useItem(location, inventory, command, progress):  #Nikola Petkov
