@@ -86,16 +86,17 @@ def dispLocation(location, inventory): #Nikola Petkov
     print "The trailer is dark, and it doesn't look like anybody is home.\nThere is a path to the SOUTH.\n"
 
 def dispHelp(): #Nikola Petkov
-  print "- - - - - - - - - - - - - - - - - - - - - - - - - - - H E L P - - - - - - - - - - - - - - - - - - - - - - - - - - -"
-  print "exit - exits the game        help (h) - displays this menu."
+  print "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - H E L P - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
+  print "exit - exits the game    help (h) - displays this menu."
   print "look (l) - look around the current location."
   print "go - move in a given direction."
   print "Directions: north (n), south (s), east (e), west (w),"
   print "                     northwest (nw), northeast (ne), southeast (se), southwest (sw)."
-  print "get - pick up an item at the current location.		use - use an item from your inventory."
+  print "get - pick up an item at the current location.    use - use an item from your inventory."
   print "inventory (i) - display the items currently in your inventory."
-  print "ex. \"go north\" or \"go n\" will move you north of current location (if it exists)"
-  print "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
+  print "ex. \"go north\" or \"go n\" will move you north of current location (if it exists)."
+  print "ex. \"use 'item'\" will attempt to use an 'item' from your inventory."
+  print "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
 
 def dispInventory(inventory):  #Nikola Petkov
   print "Inventory: " + inventory
