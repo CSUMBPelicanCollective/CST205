@@ -190,7 +190,11 @@ def execMovement(location, command, inventory):  #Rocky Moreno
   elif (location == securityRoom):
     if(command == 'n' or command == 'north'):
       newLocation = stagingArea
+    elif((command == 's' and hasKeys == 'yes') or (command == 'south' and hasKeys == 'yes')):
+      print 'Door to the south is locked'
+      newLocation = location
       
+          
   #if not valid direction print cant go thisway
   #else
   #display and return newLocation
