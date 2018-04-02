@@ -51,6 +51,7 @@ def main(): #Jason Tse
       dispInventory(inventory)
     elif (comTypeCode == 7):
       progress = useItem(location, inventory, command, progress)
+      
     #prints if game is a win or loss
     if (progress == 1):
       print "Good End, congratulations you WON"
@@ -100,7 +101,8 @@ def getItem(location, inventory, command):  #Nikola Petkov
 
 def useItem(location, inventory, command, progress):  #Nikola Petkov
   if (location == "security room") and ("keys" in inventory):
-    progress == 1	# Good End    
+    progress == 1	# Good End
+    print "The door unlocked."
   return progress
 
 
