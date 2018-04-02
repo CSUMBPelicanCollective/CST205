@@ -81,7 +81,7 @@ def dispLocation(location, inventory): #Nikola Petkov
     else:
       print "\n"
   elif location.lower() == "security room":
-    print "The room is filled with monitors. Mostly static, but one monitor shows the ticket gate.\nThere are doors to the NORTH and SOUTH.\nLooks like the SOUTH door also need KEYS."
+    print "The room is filled with monitors. Mostly static, but one monitor shows the ticket gate.\nThere are doors to the NORTH and SOUTH.\nLooks like the SOUTH door also need KEYS.\n"
   elif location.lower() == "trailer":
     print "The trailer is dark, and it doesn't look like anybody is home.\nThere is a path to the SOUTH.\n"
 
@@ -249,6 +249,9 @@ def parseCommand(command):
       command = requestString("Get what?")
     if command in ["clown nose", "keys"]:
       return(command, 5)
+    else:
+      print "There's no such item."
+      return(command, 99)
   #check for inventory or i
   if command == "inventory" or command == "i":
     return(command, 6)
