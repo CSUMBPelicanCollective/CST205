@@ -113,6 +113,8 @@ def getItem(location, inventory, command):  #Nikola Petkov
   return inventory
 
 def useItem(location, inventory, command, progress):  #Nikola Petkov
+  if (command not in inventory):
+    print "No such item is in your inventory."
   if (location == "security room") and ("keys" in inventory):
     progress = 1	# Good End
     print "The door unlocked."
