@@ -17,7 +17,7 @@ def main(): #Jason Tse
   print "abandoned circus. In the wind you could hear faint giggling."
   print "Type help for more information."
   print "Type exit to give up.\n"
-  dispLocation(location)
+  dispLocation(location, inventory)
 	
   #main game loop
   while True:
@@ -38,7 +38,7 @@ def main(): #Jason Tse
       print "End Game"
       break
     elif (comTypeCode == 1):
-      dispLocation(location)
+      dispLocation(location, inventory)
     elif (comTypeCode == 2):
       location = execMovement(location, command, inventory) 
     elif (comTypeCode == 3):
@@ -60,18 +60,30 @@ def main(): #Jason Tse
       print "Bad End, Please try again"
       break
     
-def dispLocation(location): #Nikola Petkov
+def dispLocation(location, inventory): #Nikola Petkov
   print "You are currently at the " + location
   if location.lower() == "ticket gate":
     print "The turnstyles are locked and looks difficult to climb over.\nTo the NORTH you see a big tent. The tent has smaller entrance NORTHEAST.\nThrough the gate bars you spot a clown in the distance. Maybe you can YELL out to them.\n"
   elif location.lower() == "circus tent":
-    print "The insides are strung with dim holiday lights. Doesn't look like there have been any shows recently.\nThe spectator seats are to the WEST. There is an opening in the tent NORTH, SOUTH, and EAST.\n"
+    print "The insides are strung with dim holiday lights. Doesn't look like there have been any shows recently.\nThe spectator seats are to the WEST. There is an opening in the tent NORTH, SOUTH, and EAST."
+    if "clown nose" not in inventory:
+      print "There is a CLOWN NOSE on the ground in the middle of the tent.\n"
+    else:
+      print "\n"
   elif location.lower() == "spectator seats":
     print "The seats are littered with old tickets, discarded cups, and candy wrappers.\nFrom the seats you can see all of the main stage to the EAST and an exit to the SOUTHEAST.\n"
   elif location.lower() == "staging area":
-    print "The equipment for the shows are kept here, including empty animal cages.\nThere are entrances to the WEST and NORTHWEST.\n"
+    print "The equipment for the shows are kept here, including empty animal cages.\nThere are entrances to the WEST, NORTHWEST, and SOUTH.\n"
   elif location.lower() == "backstage":
     print "It's a small backstage area. The counters along the outside are cluttered with junk.\nThere are entrances to the SOUTH and SOUTHEAST.\n"
+    if "keys" not in inventory:
+      print "Among the clutter you spot a big ring of KEYS.\n"
+    else:
+      print "\n"
+  elif location.lower() == "security room":
+    print "The room is filled with monitors. Mostly static, but one monitor shows the ticket gate.\nThere are doors to the NORTH and SOUTH.\n Looks like the SOUTH door also need KEYS."
+  elif location.lower() == "trailer":
+    print "The trailer is dark, and it doesn't look like anybody is home.\nThere is a path to the SOUTH.\n"
 
 def dispHelp(): #Nikola Petkov
   print "- - - - - - - - - - - - - - - - - - - - - - - - - - - H E L P - - - - - - - - - - - - - - - - - - - - - - - - - - -"
@@ -91,21 +103,20 @@ def dispInventory(inventory):  #Nikola Petkov
 def getItem(location, inventory, command):  #Nikola Petkov
   if (command in inventory):  # item is already in the inventory
     print "No " + command + " can be seen at " + location
+    return inventory
   elif (location == "circus tent") and ("clown nose" in command):
     print "You picked up a clown nose."
-    inventory = inventory + command + ", "
   elif (location == "backstage") and ("keys" in command):
     print "You picked up some keys."
-    inventory = inventory + command + ", "
+  inventory = inventory + command + ", "
   return inventory
 
 def useItem(location, inventory, command, progress):  #Nikola Petkov
-  if (command not in inventory):
-    print "You don't have such item in your inventory."
   if (location == "security room") and ("keys" in inventory):
-    progress == 1	# Good End
+    progress = 1	# Good End
     print "The door unlocked."
   return progress
+
 
 def execMovement(location, command, inventory):  #Rocky Moreno
   ticketGate = 'ticket gate'
@@ -187,7 +198,7 @@ def execMovement(location, command, inventory):  #Rocky Moreno
     print 'can\'t go this way'                 
     return location
   else:
-    dispLocation(newLocation)              
+    dispLocation(newLocation, inventory)              
     return newLocation
 
 #For yelling action. Only useful at ticket gate.        
