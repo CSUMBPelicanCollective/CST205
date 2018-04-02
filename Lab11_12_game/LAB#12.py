@@ -257,7 +257,7 @@ def parseCommand(command):
     if command in ["clown nose", "keys"]:
       return(command, 7)
     else:
-      print "No such item in inventory."
+      print "No such item is in your inventory."
       return(command, 99)
   #check for short directions only
   if command in ["n", "e", "s", "w", "ne", "nw", "se", "sw"]:
