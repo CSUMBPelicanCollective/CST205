@@ -100,9 +100,7 @@ def getItem(location, inventory, command):  #Nikola Petkov
 
 def useItem(location, inventory, command, progress):  #Nikola Petkov
   if (location == "security room") and ("keys" in inventory):
-    progress == 1	# Good End
-  if (location == "ticket gate") and ("clown nose" in inventory) and (command == 4):
-    progress == 2	# Bad End
+    progress == 1	# Good End    
   return progress
 
 
