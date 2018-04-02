@@ -250,6 +250,9 @@ def parseCommand(command):
       command = requestString("Get what?")
     if command in ["clown nose", "keys"]:
       return(command, 5)
+    else:
+      print "There's no such item."
+      return(command, 99)
   #check for inventory or i
   if command == "inventory" or command == "i":
     return(command, 6)
