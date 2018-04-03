@@ -106,6 +106,8 @@ def getItem(location, inventory, command):  #Nikola Petkov
   elif (location == "backstage") and ("keys" in command):
     print "You picked up some keys."
     inventory = inventory + command + ", "
+  else:
+    print "There's no such item in " + location
   return inventory
 
 def useItem(location, inventory, command, progress):  #Nikola Petkov
