@@ -85,7 +85,7 @@ def dispHelp(): #Nikola Petkov
   print "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - H E L P - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
   print "exit - exits the game    help (h) - displays this menu."
   print "look (l) - look around the current location."
-  print "go - move in a given direction."
+  print "go - move in a given direction.    yell - you can yell but who will hear you?"
   print "Directions: north (n), south (s), east (e), west (w),"
   print "                     northwest (nw), northeast (ne), southeast (se), southwest (sw)."
   print "get - pick up an item at the current location.    use - use an item from your inventory."
