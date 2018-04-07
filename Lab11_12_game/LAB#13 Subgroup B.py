@@ -7,16 +7,13 @@ def main(): #Jason Tse
   location = "ticket gate"
   command = "none"
   comTypeCode = 99
-  inventory = ""
+  inventory = []
   progress = 0 #This variable is used to determine game endings
 	
   #initStory: start user UI
-  print "You suddenly awoke on the hard ground outdoors."
-  print "As your eyes adjust to the dimly moon-lit surroundings,"
-  print "you find yourself inside the front gates of an old"
-  print "abandoned circus. In the wind you could hear faint giggling."
-  print "Type help for more information."
-  print "Type exit to give up.\n"
+  showInformation("You suddenly awoke on the hard ground outdoors. As your eyes adjust to the dimly moon-lit surroundings, you find yourself inside the front gates of an old abandoned circus. " \
+                  "In the wind you could hear faint giggling.\nClick OK to play. Click Stop to exit the game.")
+  player = requestString("Enter your name:")
   dispLocation(location, inventory)
 	
   #main game loop
@@ -25,7 +22,7 @@ def main(): #Jason Tse
     command = requestString("What will you do?")
     command = command.lower().strip()
     while len(command) < 1:
-      command = requestString("I didn't understand. What will you do?")
+      command = requestString("I didn't understand. What will you do?\nType 'help' for more information.")
       command = command.lower().strip()
     
     #parse input into command
@@ -54,10 +51,10 @@ def main(): #Jason Tse
       
     #prints if game is a win or loss
     if (progress == 1):
-      print "Good End, congratulations you WON"
+      showInformation("Good End! Congratulations, " + player + ", you WON!")
       break
     elif (progress == 2):
-      print "Bad End, Please try again"
+      showInformation("Bad End! Sorry, " + player + ", you LOST!\nPlay again?")
       break
     
 def dispLocation(location, inventory): #Nikola Petkov
@@ -95,17 +92,18 @@ def dispHelp(): #Nikola Petkov
   print "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
 
 def dispInventory(inventory):  #Nikola Petkov
-  print "Inventory: " + inventory
+  print "Inventory: ",
+  print inventory
   
 def getItem(location, inventory, command):  #Nikola Petkov
   if (command in inventory):  # item is already in the inventory
     print "No " + command + " can be seen at " + location
   elif (location == "circus tent") and ("clown nose" in command):
     print "You picked up a clown nose."
-    inventory = inventory + command + ", "
+    inventory.append(command)
   elif (location == "backstage") and ("keys" in command):
     print "You picked up some keys."
-    inventory = inventory + command + ", "
+    inventory.append(command)
   else:
     print "There's no such item in " + location
   return inventory
@@ -216,7 +214,7 @@ def yell(location, inventory): #Jason Tse
 def parseCommand(command):
   #If more than 3 words, ignore command
   if command.count(' ') > 2:
-    print "I didn't understand that command"
+    print "I didn't understand that command. Type 'help' for more information."
     return(command, 99)
   #check for exit
   if command == "exit":
@@ -268,7 +266,7 @@ def parseCommand(command):
   if command in ["north", "east", "south", "west", "northeast", "northwest", "southeast", "southwest"]:
     return(command, 2)
   else:
-    print "I didn't understand that command"
+    print "I didn't understand that command. Type 'help' for more information."
     return(command, 99)
 
 
