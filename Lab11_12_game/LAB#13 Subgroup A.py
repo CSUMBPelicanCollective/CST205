@@ -1,22 +1,24 @@
-#PELICAN COLLECTIVE
-#LAB 12
-#GAME
+# PELICAN COLLECTIVE - Group A - Nikola Petkov, Jason Tse
+# Lab 13, Problem 2.
+# Changed inventory from string to list. Added a list that keeps track of the path a player took (locationHistory).
+# Changed greeting and game ending messages from print to showInformation.
+# Added a string to allow the user to enter his/her name. Displays it at game's end.
 
 def main(): #Jason Tse
   #initialize game variables
   location = "ticket gate"
+  locationHistory = []    # Records the path the player has taken.
   command = "none"
   comTypeCode = 99
-  inventory = ""
+  inventory = []
   progress = 0 #This variable is used to determine game endings
+  player = ''  # Holds the player's name.
+
 	
   #initStory: start user UI
-  print "You suddenly awoke on the hard ground outdoors."
-  print "As your eyes adjust to the dimly moon-lit surroundings,"
-  print "you find yourself inside the front gates of an old"
-  print "abandoned circus. In the wind you could hear faint giggling."
-  print "Type help for more information."
-  print "Type exit to give up.\n"
+  showInformation("You suddenly awoke on the hard ground outdoors. As your eyes adjust to the dimly moon-lit surroundings, you find yourself inside the front gates of an old abandoned circus. " \
+                  "In the wind you could hear faint giggling.\nClick OK to play. Click Stop to exit the game.")
+  player = requestString("Enter your name:")
   dispLocation(location, inventory)
 	
   #main game loop
@@ -25,7 +27,7 @@ def main(): #Jason Tse
     command = requestString("What will you do?")
     command = command.lower().strip()
     while len(command) < 1:
-      command = requestString("I didn't understand. What will you do?")
+      command = requestString("I didn't understand. What will you do?\nType 'help' for more information.")
       command = command.lower().strip()
     
     #parse input into command
@@ -40,7 +42,7 @@ def main(): #Jason Tse
     elif (comTypeCode == 1):
       dispLocation(location, inventory)
     elif (comTypeCode == 2):
-      location = execMovement(location, command, inventory) 
+      location = execMovement(location, command, inventory, locationHistory) 
     elif (comTypeCode == 3):
       dispHelp()
     elif (comTypeCode == 4):
@@ -54,10 +56,12 @@ def main(): #Jason Tse
       
     #prints if game is a win or loss
     if (progress == 1):
-      print "Good End, congratulations you WON"
+      showInformation("Good End! Congratulations, " + player + ", you WON!")
+      print "The path you took: " + str(locationHistory)
       break
     elif (progress == 2):
-      print "Bad End, Please try again"
+      showInformation("Bad End! Sorry, " + player + ", you LOST!\nPlay again?")
+      print "The path you took: " + str(locationHistory)
       break
     
 def dispLocation(location, inventory): #Nikola Petkov
@@ -95,17 +99,18 @@ def dispHelp(): #Nikola Petkov
   print "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
 
 def dispInventory(inventory):  #Nikola Petkov
-  print "Inventory: " + inventory
+  print "Inventory: ",
+  print inventory
   
 def getItem(location, inventory, command):  #Nikola Petkov
   if (command in inventory):  # item is already in the inventory
     print "No " + command + " can be seen at " + location
   elif (location == "circus tent") and ("clown nose" in command):
     print "You picked up a clown nose."
-    inventory = inventory + command + ", "
+    inventory.append(command)
   elif (location == "backstage") and ("keys" in command):
     print "You picked up some keys."
-    inventory = inventory + command + ", "
+    inventory.append(command)
   else:
     print "There's no such item in " + location
   return inventory
@@ -122,7 +127,7 @@ def useItem(location, inventory, command, progress):  #Nikola Petkov
     print command + " is of no use in " + location
   return progress
 
-def execMovement(location, command, inventory):  #Rocky Moreno
+def execMovement(location, command, inventory, locationHistory):  #Rocky Moreno
   ticketGate = 'ticket gate'
   circusTent = 'circus tent'
   spectatorSeats = 'spectator seats'
@@ -199,7 +204,9 @@ def execMovement(location, command, inventory):  #Rocky Moreno
     print 'can\'t go this way'                 
     return location
   else:
-    dispLocation(newLocation, inventory)              
+    dispLocation(newLocation, inventory)
+    if newLocation <> location:
+      locationHistory.append(newLocation)    # Add new location to history.
     return newLocation
 
 #For yelling action. Only useful at ticket gate.        
@@ -216,7 +223,7 @@ def yell(location, inventory): #Jason Tse
 def parseCommand(command):
   #If more than 3 words, ignore command
   if command.count(' ') > 2:
-    print "I didn't understand that command"
+    print "I didn't understand that command. Type 'help' for more information."
     return(command, 99)
   #check for exit
   if command == "exit":
@@ -268,7 +275,7 @@ def parseCommand(command):
   if command in ["north", "east", "south", "west", "northeast", "northwest", "southeast", "southwest"]:
     return(command, 2)
   else:
-    print "I didn't understand that command"
+    print "I didn't understand that command. Type 'help' for more information."
     return(command, 99)
 
 
