@@ -19,6 +19,8 @@ def main(): #Jason Tse
   showInformation("You suddenly awoke on the hard ground outdoors. As your eyes adjust to the dimly moon-lit surroundings, you find yourself inside the front gates of an old abandoned circus. " \
                   "In the wind you could hear faint giggling.\nClick OK to play. Click Stop to exit the game.")
   player = requestString("Enter your name:")
+  if len(player) == 0:
+    player = 'Player'
   dispLocation(location, inventory)
 	
   #main game loop
