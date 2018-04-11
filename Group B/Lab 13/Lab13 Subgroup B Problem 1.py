@@ -1,4 +1,4 @@
-#Jiwanjot Sandhu
+#Jiwanjot Sandhu, Daniel Howe, Rogelio Moreno
 #Pelican Collective
 #Lab 13
 #source https://finance.yahoo.com/news/tesla-hopes-deliver-wheel-drive-193300742.html
