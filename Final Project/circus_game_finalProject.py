@@ -71,7 +71,7 @@ def main(): #Jason Tse
     ################################################  
     #print locationHistory
     #open map
-    show (map(location, locationHistory))
+    show (map(location, locationHistory, command))
     
     
     
@@ -240,16 +240,20 @@ def execMovement(location, command, inventory, locationHistory):  #Rocky Moreno
 #       map function      #  
 ###########################
 
-def map(location, locationHistory):
+def map(location, locationHistory, command):
   print "This is from map function"
   print len(locationHistory)
   print location
+  specialAngle = ['southeast', 'northwest']
+  
+  
   
   canvas = makeEmptyPicture(305, 305)
-  if 'circus tent' in locationHistory:
-    addRectFilled(canvas, 115, 210, 75, 75, gray)#ticket gate
-    addText(canvas,120, 215, 'ticket Gate', black)
-   
+  #Game starts at ticket gate
+  addRectFilled(canvas, 115, 210, 75, 75, gray)#ticket gate
+  addText(canvas,120, 215, 'ticket Gate', black)
+  
+  if 'circus tent' in locationHistory:    
     addRectFilled(canvas, 115, 115, 75, 75, gray)#circus Tent
     addText(canvas,120,120, 'Circus Tent', black)  
     addLine(canvas, 153, 210, 153, 190, black) ######line Ticket Gate to Circus Tent
@@ -259,10 +263,14 @@ def map(location, locationHistory):
     addText(canvas,215,120, 'Staging Area', black)
     addLine(canvas, 190, 152, 210, 152, black) ######line Circus Tent to Staging Area
   
-  if 'spectator seats' in locationHistory:
+  if 'spectator seats' in locationHistory: 
     addRectFilled(canvas, 20, 115, 75, 75, gray)#spectator seats
     addText(canvas,25,120, 'Spectator Seats', black)
-    addLine(canvas, 95, 152, 115, 152, black) #######line circus tent to specator seats
+    
+    if command in specialAngle:
+      addLine(canvas, 115, 210, 95, 190, black) ######line Ticket Gate to Spectator Seats
+    else:
+      addLine(canvas, 95, 152, 115, 152, black) #######line circus tent to specator seats
     
   if 'backstage' in locationHistory:  
     addRectFilled(canvas, 115, 20, 75, 75, gray)#backstage
