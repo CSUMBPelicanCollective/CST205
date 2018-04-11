@@ -1,4 +1,4 @@
-# PELICAN COLLECTIVE - Group A - Nikola Petkov, Jason Tse
+# PELICAN COLLECTIVE - Group B - Daniel Howe, Rogelio Moreno, Jiwanjot Sandhu
 # Lab 13, Problem 2: Adventure Game Updates
 # Changed inventory from string to list. Added a list that keeps track of the path a player took (locationHistory).
 # Changed greeting and game ending messages from print to showInformation.
