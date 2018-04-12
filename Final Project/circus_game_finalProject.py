@@ -13,6 +13,11 @@ def main(): #Jason Tse
   inventory = []
   progress = 0 #This variable is used to determine game endings
   player = ''  # Holds the player's name.
+  
+  #########################################
+  #   made new variable currentLocation   #
+  #########################################
+  currentLocation = ''
 
 	
   #initStory: start user UI
@@ -22,6 +27,7 @@ def main(): #Jason Tse
   if len(player) == 0:
     player = 'Player'
   dispLocation(location, inventory)
+  
 	
   #main game loop
   while True:
@@ -55,7 +61,12 @@ def main(): #Jason Tse
       dispInventory(inventory)
     elif (comTypeCode == 7):
       progress = useItem(location, inventory, command, progress)
-      
+    
+    #########################################
+    #   made new variable currentLocation   #
+    #########################################  
+    currentLocation = location
+    
     #prints if game is a win or loss
     if (progress == 1):
       showInformation("Good End! Congratulations, " + player + ", you WON!")
@@ -71,7 +82,13 @@ def main(): #Jason Tse
     ################################################  
     #print locationHistory
     #open map
-    show (map(location, locationHistory, command))
+    #angleMovement = []
+   # if (location == 'spectator seats' or location == 'ticket gate') and (command == 'northwest' or command == 'southeast'):
+      
+     # angleMovement.append('specttoticket')
+    print "this is the current location from main " + currentLocation
+    print " this is the location variable from main " + location 
+    show (map(location, locationHistory, currentLocation))
     
     
     
@@ -224,6 +241,8 @@ def execMovement(location, command, inventory, locationHistory):  #Rocky Moreno
     return location
   else:
     dispLocation(newLocation, inventory)
+    if newLocation <> location and location == 'ticket gate' and command == 'northeast':
+      locationHistory.append(newLocation)    # Add new location to history.
     if newLocation <> location:
       locationHistory.append(newLocation)    # Add new location to history.
     return newLocation
@@ -240,11 +259,11 @@ def execMovement(location, command, inventory, locationHistory):  #Rocky Moreno
 #       map function      #  
 ###########################
 
-def map(location, locationHistory, command):
-  print "This is from map function"
-  print len(locationHistory)
-  print location
-  specialAngle = ['southeast', 'northwest']
+def map(location, locationHistory, currentLocation):
+  #print "This is from map function"
+  #print len(locationHistory)
+  #print location
+  print "this is the current location from map function " + currentLocation
   
   
   
@@ -267,10 +286,10 @@ def map(location, locationHistory, command):
     addRectFilled(canvas, 20, 115, 75, 75, gray)#spectator seats
     addText(canvas,25,120, 'Spectator Seats', black)
     
-    if command in specialAngle:
-      addLine(canvas, 115, 210, 95, 190, black) ######line Ticket Gate to Spectator Seats
-    else:
-      addLine(canvas, 95, 152, 115, 152, black) #######line circus tent to specator seats
+  #if 'specttoticket' in angleMovement:
+   #   addLine(canvas, 115, 210, 95, 190, black) ######line Ticket Gate to Spectator Seats
+  #else:
+     # addLine(canvas, 95, 152, 115, 152, black) #######line circus tent to specator seats
     
   if 'backstage' in locationHistory:  
     addRectFilled(canvas, 115, 20, 75, 75, gray)#backstage
