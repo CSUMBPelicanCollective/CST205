@@ -277,8 +277,6 @@ def map(location, locationHistory):
   addText(canvas,120, 215, 'ticket Gate', black)
   
   
-
-  
   if 'circusToTicket' in locationHistory:    
     addRectFilled(canvas, 115, 115, 75, 75, gray)#Ticket
     addText(canvas,120,120, 'Circus Tent', black)  
@@ -293,13 +291,7 @@ def map(location, locationHistory):
     addRectFilled(canvas, 115, 20, 75, 75, gray)#backstage
     addText(canvas,120,25, 'Backstage', black)
     addLine(canvas, 153, 115, 153, 95, black) ######line Circus Tent to Backstage
-    
-    if location == 'backstage':
-      addRect(canvas, 122, 27, 61, 61, red) #Tracker  add 7 and 7
-      addText(canvas,122, 48, 'You Are', red)  # 7 and 28
-      addText(canvas,130, 60, 'Here', red)  #add 8 and 12
-    
-  
+     
   
   if 'spectator seats' in locationHistory: 
     addRectFilled(canvas, 20, 115, 75, 75, gray)#spectator seats
@@ -327,11 +319,13 @@ def map(location, locationHistory):
     addRectFilled(canvas, 115, 20, 75, 75, gray)#backstage
     addText(canvas,120,25, 'Backstage', black)
     addLine(canvas, 190, 95, 210, 115, black) ######line Backstage to Staging Area
+    
+
 
   if 'stagingToCircus' in locationHistory:
     addRectFilled(canvas, 115, 115, 75, 75, gray)#circus Tent
     addText(canvas,120,120, 'Circus Tent', black)  
-    addLine(canvas, 95, 152, 115, 152, black) ######line staging to Circus Tent 
+    #addLine(canvas, 95, 152, 115, 152, black) ######line staging to Circus Tent 
       
    
   if 'ticketToSpectator' in locationHistory:
@@ -341,10 +335,7 @@ def map(location, locationHistory):
     addRectFilled(canvas, 115, 115, 75, 75, gray)#circus Tent
     addText(canvas,120,120, 'Circus Tent', black)
     addLine(canvas, 153, 210, 153, 190, black) ######line Ticket Gate to Circus Tent  
-    if location == 'circus tent':
-      addRect(canvas, 122,122, 61, 61, red) #Tracker
-      addText(canvas,130, 150, 'You Are', red)  
-      addText(canvas,138, 162, 'Here', red)   
+
   
   if 'backToCircus' in locationHistory:  
     addRectFilled(canvas, 115, 20, 75, 75, gray)#backstage
@@ -356,8 +347,7 @@ def map(location, locationHistory):
     addText(canvas,215,120, 'Staging Area', black)
     addLine(canvas, 190, 95, 210, 115, black) ######line Backstage to Staging Area 
     
-    
-  
+     
   
   if 'trailer' in locationHistory:  
     addRectFilled(canvas, 210, 20, 75, 75, gray)#trailer
@@ -369,6 +359,43 @@ def map(location, locationHistory):
     addText(canvas,215,215, 'Security Room', black)
     addLine(canvas, 247, 210, 247, 190, black)  ######line Security Room to Staging Area
     
+  
+  ############ you are here ################################  
+  if location == 'backstage':
+    addRect(canvas, 122, 27, 61, 61, red) #Tracker  add 7 and 7
+    addText(canvas,122, 48, 'You Are', red)  # 7 and 28
+    addText(canvas,130, 60, 'Here', red)  #add 8 and 12
+    
+  if location == 'circus tent':
+    addRect(canvas, 122,122, 61, 61, red) #Tracker
+    addText(canvas,130, 150, 'You Are', red)  
+    addText(canvas,138, 162, 'Here', red)
+    
+  if location == 'staging area':
+    addRect(canvas, 217, 122, 61, 61, red) #Tracker  add 7 and 7
+    addText(canvas,224, 150, 'You Are', red)  # 7 and 28
+    addText(canvas,232, 162, 'Here', red)  #add 8 and 12
+    
+  if location == 'trailer': 
+    addRect(canvas, 217, 27, 61, 61, red) #Tracker  add 7 and 7
+    addText(canvas,224, 55, 'You Are', red)  # 7 and 28
+    addText(canvas,232, 67, 'Here', red)  #add 8 and 12 
+    
+  if location == 'security room':     
+    addRect(canvas, 217, 217, 61, 61, red) #Tracker  add 7 and 7
+    addText(canvas,224, 245, 'You Are', red)  # 7 and 28
+    addText(canvas,232, 257, 'Here', red)  #add 8 and 12
+    
+  if location == 'ticket gate':       
+    addRect(canvas, 122, 217, 61, 61, red) #Tracker  add 7 and 7
+    addText(canvas, 129, 245, 'You Are', red)  # 7 and 28
+    addText(canvas, 137, 257, 'Here', red)  #add 8 and 12
+    
+  if location == 'spectator seats':          
+    addRect(canvas, 27, 122, 61, 61, red) #Tracker  add 7 and 7
+    addText(canvas, 34, 150, 'You Are', red)  # 7 and 28
+    addText(canvas, 42, 162, 'Here', red)  #add 8 and 12
+       
   return canvas
 
 
