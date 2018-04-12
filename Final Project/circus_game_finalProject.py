@@ -14,10 +14,6 @@ def main(): #Jason Tse
   progress = 0 #This variable is used to determine game endings
   player = ''  # Holds the player's name.
   
-  #########################################
-  #   made new variable currentLocation   #
-  #########################################
-  currentLocation = ''
 
 	
   #initStory: start user UI
@@ -62,11 +58,6 @@ def main(): #Jason Tse
     elif (comTypeCode == 7):
       progress = useItem(location, inventory, command, progress)
     
-    #########################################
-    #   made new variable currentLocation   #
-    #########################################  
-    currentLocation = location
-    
     #prints if game is a win or loss
     if (progress == 1):
       showInformation("Good End! Congratulations, " + player + ", you WON!")
@@ -77,8 +68,12 @@ def main(): #Jason Tse
       print "The path you took: " + str(locationHistory)
       break
     
+    
+    
+    
+    
     ################################################  
-    #       TESTING FOR LOCATION HISTORY MAP       #
+    #       TESTING FOR LOCATION HISTORY, MAP       #
     ################################################  
     #print locationHistory
     #open map
@@ -86,9 +81,9 @@ def main(): #Jason Tse
    # if (location == 'spectator seats' or location == 'ticket gate') and (command == 'northwest' or command == 'southeast'):
       
      # angleMovement.append('specttoticket')
-    print "this is the current location from main " + currentLocation
-    print " this is the location variable from main " + location 
-    show (map(location, locationHistory, currentLocation))
+    #print "this is the current location from main towards bottom of main " + currentLocation
+    #print " this is the location variable from main " + location 
+    show (map(location, locationHistory))
     
     
     
@@ -177,17 +172,22 @@ def execMovement(location, command, inventory, locationHistory):  #Rocky Moreno
   if (location == ticketGate): 
     if(command == 'n' or command == 'north'):
       newLocation = circusTent
+      locationHistory.append('ticketToCircus')
     elif(command == 'nw' or command == 'northwest'):
       newLocation = spectatorSeats
+      locationHistory.append("ticketToSpectator") 
 
   #Location is Circus Tent    
   elif (location == circusTent):
     if(command == 's' or command == 'south'):
       newLocation = ticketGate
+      locationHistory.append('circusToTicket')
     elif(command == 'n' or command == 'north'):
       newLocation = backStage
+      locationHistory.append('circusToBack')
     elif(command == 'w' or command == 'west'):
       newLocation = spectatorSeats
+      locationHistory.append('circusToSpectator')
     elif(command == 'e' or command == 'east'):
       newLocation = stagingArea
       
@@ -195,15 +195,19 @@ def execMovement(location, command, inventory, locationHistory):  #Rocky Moreno
   elif (location == spectatorSeats):
     if(command == 'se' or command == 'southeast'):
       newLocation = ticketGate
+      locationHistory.append('spectatorToTicket')
     elif(command == 'e' or command == 'east'):
       newLocation = circusTent
+      locationHistory.append('spectatorToCircusTent')
   
   #Location is Staging Area
   elif (location == stagingArea):
     if(command == 'w' or command == 'west'):
       newLocation = circusTent
+      locationHistory.append('stagingToCircus')
     elif(command == 'nw' or command == 'northwest'):
       newLocation = backStage
+      locationHistory.append('stagingToBack')
     elif(command == 'n' or command == 'north'):
       newLocation = trailer
     elif(command == 's' or command == 'south') and ('keys' in inventory):
@@ -216,8 +220,10 @@ def execMovement(location, command, inventory, locationHistory):  #Rocky Moreno
   elif (location == backStage):
     if(command == 's' or command == 'south'):
       newLocation = circusTent
+      locationHistory.append('backToCircus')
     elif(command == 'se' or command == 'southeast'):
       newLocation = stagingArea
+      locationHistory.append('backToStaging')
       
   #Location is Trailer
   elif (location == trailer):
@@ -241,8 +247,6 @@ def execMovement(location, command, inventory, locationHistory):  #Rocky Moreno
     return location
   else:
     dispLocation(newLocation, inventory)
-    if newLocation <> location and location == 'ticket gate' and command == 'northeast':
-      locationHistory.append(newLocation)    # Add new location to history.
     if newLocation <> location:
       locationHistory.append(newLocation)    # Add new location to history.
     return newLocation
@@ -259,11 +263,11 @@ def execMovement(location, command, inventory, locationHistory):  #Rocky Moreno
 #       map function      #  
 ###########################
 
-def map(location, locationHistory, currentLocation):
+def map(location, locationHistory):
   #print "This is from map function"
   #print len(locationHistory)
-  #print location
-  print "this is the current location from map function " + currentLocation
+  #print locationHistory
+ # print "this is the location from map function " + location
   
   
   
@@ -272,30 +276,89 @@ def map(location, locationHistory, currentLocation):
   addRectFilled(canvas, 115, 210, 75, 75, gray)#ticket gate
   addText(canvas,120, 215, 'ticket Gate', black)
   
-  if 'circus tent' in locationHistory:    
-    addRectFilled(canvas, 115, 115, 75, 75, gray)#circus Tent
-    addText(canvas,120,120, 'Circus Tent', black)  
-    addLine(canvas, 153, 210, 153, 190, black) ######line Ticket Gate to Circus Tent
-    
-  if 'staging area' in locationHistory:
-    addRectFilled(canvas, 210, 115, 75, 75, gray)#staging area
-    addText(canvas,215,120, 'Staging Area', black)
-    addLine(canvas, 190, 152, 210, 152, black) ######line Circus Tent to Staging Area
   
-  if 'spectator seats' in locationHistory: 
-    addRectFilled(canvas, 20, 115, 75, 75, gray)#spectator seats
-    addText(canvas,25,120, 'Spectator Seats', black)
+
+  
+  if 'circusToTicket' in locationHistory:    
+    addRectFilled(canvas, 115, 115, 75, 75, gray)#Ticket
+    addText(canvas,120,120, 'Circus Tent', black)  
+    addLine(canvas, 153, 210, 153, 190, black) ######line Circus Tent to Ticket Gate
     
-  #if 'specttoticket' in angleMovement:
-   #   addLine(canvas, 115, 210, 95, 190, black) ######line Ticket Gate to Spectator Seats
-  #else:
-     # addLine(canvas, 95, 152, 115, 152, black) #######line circus tent to specator seats
+  if 'circusToSpectator' in locationHistory:    
+    addRectFilled(canvas, 115, 115, 75, 75, gray)#spectator
+    addText(canvas,25,120, 'Spectator Seats', black)  
+    addLine(canvas, 95, 152, 115, 152, black) ######line Circus Tent to Spectator Seats
     
-  if 'backstage' in locationHistory:  
+  if 'circusToBack' in locationHistory:    
     addRectFilled(canvas, 115, 20, 75, 75, gray)#backstage
     addText(canvas,120,25, 'Backstage', black)
     addLine(canvas, 153, 115, 153, 95, black) ######line Circus Tent to Backstage
     
+    if location == 'backstage':
+      addRect(canvas, 122, 27, 61, 61, red) #Tracker  add 7 and 7
+      addText(canvas,122, 48, 'You Are', red)  # 7 and 28
+      addText(canvas,130, 60, 'Here', red)  #add 8 and 12
+    
+  
+  
+  if 'spectator seats' in locationHistory: 
+    addRectFilled(canvas, 20, 115, 75, 75, gray)#spectator seats
+    addText(canvas,25,120, 'Spectator Seats', black)
+  
+  if 'spectatorToCircusTent' in locationHistory:    
+    addRectFilled(canvas, 115, 115, 75, 75, gray)#circus Tent
+    addText(canvas,120,120, 'Circus Tent', black)  
+    addLine(canvas, 95, 152, 115, 152, black) ######line Spectator Seats to Circus Tent
+    
+  if 'spectatorToTicket' in locationHistory:    
+    addRectFilled(canvas, 115, 210, 75, 75, gray)#ticket gate
+    addLine(canvas, 115, 210, 95, 190, black) ######line Ticket Gate to Spectator Seats
+    addText(canvas,120, 215, 'ticket Gate', black)
+    
+  
+  
+  
+  if 'staging area' in locationHistory:
+    addRectFilled(canvas, 210, 115, 75, 75, gray)#staging area
+    addText(canvas,215,120, 'Staging Area', black)
+    addLine(canvas, 190, 152, 210, 152, black) ######line Circus Tent to Staging Area
+
+  if 'stagingToBack' in locationHistory:
+    addRectFilled(canvas, 115, 20, 75, 75, gray)#backstage
+    addText(canvas,120,25, 'Backstage', black)
+    addLine(canvas, 190, 95, 210, 115, black) ######line Backstage to Staging Area
+
+  if 'stagingToCircus' in locationHistory:
+    addRectFilled(canvas, 115, 115, 75, 75, gray)#circus Tent
+    addText(canvas,120,120, 'Circus Tent', black)  
+    addLine(canvas, 95, 152, 115, 152, black) ######line staging to Circus Tent 
+      
+   
+  if 'ticketToSpectator' in locationHistory:
+    addLine(canvas, 115, 210, 95, 190, black) ######line Ticket Gate to Spectator Seats
+    
+  if 'ticketToCircus' in locationHistory:    
+    addRectFilled(canvas, 115, 115, 75, 75, gray)#circus Tent
+    addText(canvas,120,120, 'Circus Tent', black)
+    addLine(canvas, 153, 210, 153, 190, black) ######line Ticket Gate to Circus Tent  
+    if location == 'circus tent':
+      addRect(canvas, 122,122, 61, 61, red) #Tracker
+      addText(canvas,130, 150, 'You Are', red)  
+      addText(canvas,138, 162, 'Here', red)   
+  
+  if 'backToCircus' in locationHistory:  
+    addRectFilled(canvas, 115, 20, 75, 75, gray)#backstage
+    addText(canvas,120,25, 'Backstage', black)
+    addLine(canvas, 153, 115, 153, 95, black) ######line Circus Tent to Backstage
+    
+  if 'backToStaging' in locationHistory:  
+    addRectFilled(canvas, 210, 115, 75, 75, gray)#staging area
+    addText(canvas,215,120, 'Staging Area', black)
+    addLine(canvas, 190, 95, 210, 115, black) ######line Backstage to Staging Area 
+    
+    
+  
+  
   if 'trailer' in locationHistory:  
     addRectFilled(canvas, 210, 20, 75, 75, gray)#trailer
     addText(canvas,220,25, 'Trailer', black)
@@ -306,7 +369,6 @@ def map(location, locationHistory, currentLocation):
     addText(canvas,215,215, 'Security Room', black)
     addLine(canvas, 247, 210, 247, 190, black)  ######line Security Room to Staging Area
     
- 
   return canvas
 
 
