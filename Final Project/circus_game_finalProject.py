@@ -7,7 +7,7 @@
 def main(): #Jason Tse
   #initialize game variables
   location = "ticket gate"
-  locationHistory = []    # Records the path the player has taken.
+  locationHistory = ['ticket gate']    # Records the path the player has taken.
   command = "none"
   comTypeCode = 99
   inventory = []
@@ -91,7 +91,7 @@ def main(): #Jason Tse
 def dispLocation(location, inventory): #Nikola Petkov
   print "You are currently at the " + location
   if location.lower() == "ticket gate":
-    print "The turnstyles are locked and looks difficult to climb over.\nTo the NORTH you see a big tent. The tent has smaller entrance NORTHEAST.\nThrough the gate bars you spot a clown in the distance. Maybe you can YELL out to them.\n"
+    print "The turnstyles are locked and looks difficult to climb over.\nTo the NORTH you see a big tent. The tent has smaller entrance NORTHWEST.\nThrough the gate bars you spot a clown in the distance. Maybe you can YELL out to them.\n"
   elif location.lower() == "circus tent":
     print "The insides are strung with dim holiday lights. Doesn't look like there have been any shows recently.\nThe spectator seats are to the WEST. There is an opening in the tent NORTH, SOUTH, and EAST.\n"
     if "clown nose" not in inventory:
