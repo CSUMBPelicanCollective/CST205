@@ -1,7 +1,10 @@
-file = open("C:\\Users\\rocky.moreno\\Documents\\GitHub\\CST205\\moreno_r_labs\\lab16\\superweb.html", "wt")
+file = open("C:\\Users\\computer1\\Documents\\GitHub2\\CST205\\moreno_r_labs\\lab16\\superweb.html", "wt")
 
 def addText():
   return "<h1><b>Hell<br>llo</h1>"
+  
+def addMoreText():
+  return "<a href=""> OH Yea </a>"
 
 
 def makePage():
@@ -18,7 +21,10 @@ def makePage():
   <h1>MY PYTHON PAGE!!!</h1>
   """
   
-  + addText() +
+  + 
+  addText() +
+  addMoreText()
+  +
   
   """
   </body>
