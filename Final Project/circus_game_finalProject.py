@@ -13,6 +13,12 @@ def main(): #Jason Tse
   inventory = []
   progress = 0 #This variable is used to determine game endings
   player = ''  # Holds the player's name.
+  setMediaPath()
+  background=makeSound("251461__joshuaempyre__arcade-music-loop.wav")
+  play(background)
+  door = makeSound("sfx_movement_dooropen2.wav") 
+  movement = makeSound("footsteps-4.wav")
+
   
 
 	
@@ -46,7 +52,9 @@ def main(): #Jason Tse
     elif (comTypeCode == 1):
       dispLocation(location, inventory)
     elif (comTypeCode == 2):
-      location = execMovement(location, command, inventory, locationHistory) 
+      location = execMovement(location, command, inventory, locationHistory)
+      blockingPlay(door)
+      blockingPlay(movement)
     elif (comTypeCode == 3):
       dispHelp()
     elif (comTypeCode == 4):
@@ -68,8 +76,7 @@ def main(): #Jason Tse
       print "The path you took: " + str(locationHistory)
       break
     
-    
-    
+
     
     
     ################################################  
@@ -86,7 +93,8 @@ def main(): #Jason Tse
     show (map(location, locationHistory))
     
     
-    
+#def soundFx():
+  
     
 def dispLocation(location, inventory): #Nikola Petkov
   print "You are currently at the " + location
