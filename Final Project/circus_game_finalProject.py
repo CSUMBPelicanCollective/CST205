@@ -13,11 +13,29 @@ def main(): #Jason Tse
   inventory = []
   progress = 0 #This variable is used to determine game endings
   player = ''  # Holds the player's name.
+  
+  
+#########################################
+#             SOUND EFFECTS             #  
+#########################################
+  
   setMediaPath()
   background=makeSound("251461__joshuaempyre__arcade-music-loop.wav")
+  for sample in getSamples(background):
+      value = getSampleValue(sample)
+      value = value * 0.1
+      setSampleValue(sample, value)
   play(background)
   door = makeSound("sfx_movement_dooropen2.wav") 
+  for sample in getSamples(door):
+      value = getSampleValue(sample)
+      value = value * 5.0
+      setSampleValue(sample, value)
   movement = makeSound("footsteps-4.wav")
+  for sample in getSamples(movement):
+    value = getSampleValue(sample)
+    value = value * 5.0
+    setSampleValue(sample, value)
 
   
 
@@ -47,14 +65,15 @@ def main(): #Jason Tse
     #also prints the progress of the game
     if (comTypeCode == 0):  #Jiwanjot Sandhu
       #break (checking the behaviour of break statement)
+      stopPlaying(background)
       print "End Game"
       break
     elif (comTypeCode == 1):
       dispLocation(location, inventory)
     elif (comTypeCode == 2):
       location = execMovement(location, command, inventory, locationHistory)
-      blockingPlay(door)
-      blockingPlay(movement)
+      play(door)
+      play(movement)
     elif (comTypeCode == 3):
       dispHelp()
     elif (comTypeCode == 4):
@@ -75,7 +94,11 @@ def main(): #Jason Tse
       showInformation("Bad End! Sorry, " + player + ", you LOST!\nPlay again?")
       print "The path you took: " + str(locationHistory)
       break
+
     
+  
+  
+  
 
     
     
@@ -91,10 +114,6 @@ def main(): #Jason Tse
     #print "this is the current location from main towards bottom of main " + currentLocation
     #print " this is the location variable from main " + location 
     show (map(location, locationHistory))
-    
-    
-#def soundFx():
-  
     
 def dispLocation(location, inventory): #Nikola Petkov
   print "You are currently at the " + location
