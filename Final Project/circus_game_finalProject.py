@@ -19,7 +19,10 @@ def main(): #Jason Tse
 #             SOUND EFFECTS             #  
 #########################################
   
-  setMediaPath()
+  dir = __file__               # Full directory for the .py file
+  dir = dir.rstrip("circus_game_finalProject.py")
+  setMediaPath(dir)
+  
   background=makeSound("251461__joshuaempyre__arcade-music-loop.wav")
   for sample in getSamples(background):
       value = getSampleValue(sample)
