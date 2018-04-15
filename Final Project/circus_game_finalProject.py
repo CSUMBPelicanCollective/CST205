@@ -288,6 +288,22 @@ def execMovement(location, command, inventory, locationHistory):  #Rocky Moreno
 #########################################
 
 
+###################
+#   Map Painter   #
+###################
+
+def mapPainter(source, target, targetX, targetY):   
+  canvas = makeEmptyPicture(305, 305, white)
+  for x in range(0, getWidth(source)):
+    for y in range(0, getHeight(source)):
+      pic_pixel = getPixel(source, x, y)
+      pic_pixel_color = getColor(pic_pixel)  
+      setColor(getPixel(canvas, x + targetX ,y + targetY), pic_pixel_color)
+      
+  #show (canvas)
+  return canvas 
+
+
 
 ###########################
 #       map function      #  
@@ -305,6 +321,8 @@ def map(location, locationHistory):
   #Game starts at ticket gate
   addRectFilled(canvas, 115, 210, 75, 75, gray)#ticket gate
   addText(canvas,120, 215, 'ticket Gate', black)
+  #picture = "C:\\Users\\computer1\\Documents\\GitHub2\\CST205\\Final Projec\\backgroundCanvas.png"
+  #show(picture)
   
   
   if 'circusToTicket' in locationHistory:    
