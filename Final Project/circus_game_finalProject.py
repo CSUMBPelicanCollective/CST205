@@ -1,8 +1,5 @@
-# PELICAN COLLECTIVE - Group A - Nikola Petkov, Jason Tse
-# Lab 13, Problem 2: Adventure Game Updates
-# Changed inventory from string to list. Added a list that keeps track of the path a player took (locationHistory).
-# Changed greeting and game ending messages from print to showInformation.
-# Added a string to allow the user to enter his/her name. Displays it at game's end.
+# PELICAN COLLECTIVE - Group A/2 + Group B = Daniel Howe, Nikola Petkov, Rogelio Moreno, Jiwanjot Sandhu
+# Final Project - Circus Game
 
 def main(): #Jason Tse
   #initialize game variables
