@@ -21,26 +21,13 @@ def main(): #Jason Tse
   dir = dir[0] + "\\Game Data\\" # Add directory for game files.
   setMediaPath(dir)
   
-  background=makeSound("background.wav")
-  for sample in getSamples(background):
-      value = getSampleValue(sample)
-      value = value * 0.1
-      setSampleValue(sample, value)
-  play(background)
-  door = makeSound("dooropen.wav") 
-  for sample in getSamples(door):
-      value = getSampleValue(sample)
-      value = value * 5.0
-      setSampleValue(sample, value)
-  movement = makeSound("footsteps.wav")
-  for sample in getSamples(movement):
-    value = getSampleValue(sample)
-    value = value * 5.0
-    setSampleValue(sample, value)
+  sounds = dict()
+  sounds = {'background': makeSound("background.wav"), 'door': makeSound("dooropen.wav"), 'movement': makeSound("footsteps.wav")}
+  play(sounds['background'])
 
 
 
-	
+
   #initStory: start user UI
   showInformation("You suddenly awoke on the hard ground outdoors. As your eyes adjust to the dimly moon-lit surroundings, you find yourself inside the front gates of an old abandoned circus. " \
                   "In the wind you could hear faint giggling.\nClick OK to play. Click Stop to exit the game.")
@@ -66,13 +53,13 @@ def main(): #Jason Tse
     #also prints the progress of the game
     if (comTypeCode == 0):  #Jiwanjot Sandhu
       #break (checking the behaviour of break statement)
-      stopPlaying(background)
+      stopPlaying(sounds['background'])
       print "End Game"
       break
     elif (comTypeCode == 1):
       dispLocation(location, inventory)
     elif (comTypeCode == 2):
-      location = execMovement(location, command, inventory, locationHistory, door, movement)
+      location = execMovement(location, command, inventory, locationHistory, sounds)
     elif (comTypeCode == 3):
       dispHelp()
     elif (comTypeCode == 4):
@@ -88,12 +75,12 @@ def main(): #Jason Tse
     if (progress == 1):
       showInformation("Good End! Congratulations, " + player + ", you WON!")
       print "The path you took: " + str(locationHistory)
-      stopPlaying(background)
+      stopPlaying(sounds['background'])
       break
     elif (progress == 2):
       showInformation("Bad End! Sorry, " + player + ", you LOST!")
       print "The path you took: " + str(locationHistory)
-      stopPlaying(background)
+      stopPlaying(sounds['background'])
       break
 
     
@@ -186,7 +173,7 @@ def useItem(location, inventory, command, progress):  #Nikola Petkov
 #          EXEC MOVEMENT FUNCTION       #  
 #########################################
 
-def execMovement(location, command, inventory, locationHistory, door, movement):  #Rocky Moreno
+def execMovement(location, command, inventory, locationHistory, sounds):  #Rocky Moreno
   ticketGate = 'ticket gate'
   circusTent = 'circus tent'
   spectatorSeats = 'spectator seats'
@@ -276,8 +263,8 @@ def execMovement(location, command, inventory, locationHistory, door, movement):
   else:
     dispLocation(newLocation, inventory)
     if newLocation <> location:
-      play(door)
-      play(movement)
+      play(sounds['door'])
+      play(sounds['movement'])
       locationHistory.append(newLocation)    # Add new location to history.
     return newLocation
     
