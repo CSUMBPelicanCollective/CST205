@@ -342,7 +342,7 @@ def map(location, locationHistory):
     #addRectFilled(canvas, 115, 115, 75, 75, gray)#spectator
      
     addLine(canvas, 95, 152, 115, 152, white) ######line Circus Tent to Spectator Seats
-    filename = ("C:\\Users\\computer1\\Documents\\GitHub2\\CST205\\Final Project\\spectatorseats.png")
+    filename = ("spectatorseats")
     spectatorSeat = makePicture(filename)
     canvas = (mapPainter(spectatorSeat, mapBackground, 20, 115))
     addText(canvas,25,120, 'Spectator Seats', white)
@@ -372,7 +372,7 @@ def map(location, locationHistory):
   if 'spectatorToTicket' in locationHistory:    
     #addRectFilled(canvas, 115, 210, 75, 75, gray)#ticket gate
     addLine(canvas, 115, 210, 95, 190, white) ######line Ticket Gate to Spectator Seats
-    filename = ("C:\\Users\\computer1\\Documents\\GitHub2\\CST205\\Final Project\\ticketgate.png")
+    filename = ("ticketgate")
     ticketGate = makePicture(filename)
     canvas = (mapPainter(ticketGate, mapBackground, 115, 210))
     addText(canvas,120, 215, 'ticket Gate', white)
@@ -384,7 +384,7 @@ def map(location, locationHistory):
     #addRectFilled(canvas, 210, 115, 75, 75, gray)#staging area
     #addText(canvas,215,120, 'Staging Area', black)
     addLine(canvas, 190, 152, 210, 152, white) ######line Circus Tent to Staging Area
-    filename = ("C:\\Users\\computer1\\Documents\\GitHub2\\CST205\\Final Project\\stagingarea.png")
+    filename = ("stagingarea")
     stagingArea = makePicture(filename)
     canvas = (mapPainter(stagingArea, mapBackground, 210, 115))
     addText(canvas,215, 120, 'Staging Area', white)
@@ -395,7 +395,7 @@ def map(location, locationHistory):
     #addRectFilled(canvas, 115, 20, 75, 75, gray)#backstage
     #addText(canvas,120,25, 'Backstage', black)
     addLine(canvas, 190, 95, 210, 115, black) ######line Backstage to Staging Area
-    filename = ("C:\\Users\\computer1\\Documents\\GitHub2\\CST205\\Final Project\\backstage.png")
+    filename = ("backstage")
     backStage = makePicture(filename)
     canvas = (mapPainter(backStage, mapBackground, 115, 20))
     addText(canvas,120,25, 'Backstage', white)
@@ -432,7 +432,7 @@ def map(location, locationHistory):
     addRectFilled(canvas, 115, 20, 75, 75, red)#backstage
     addText(canvas,120,25, 'Backstage', white)
     addLine(canvas, 153, 115, 153, 95, white) ######line Circus Tent to Backstage
-    filename = ("C:\\Users\\computer1\\Documents\\GitHub2\\CST205\\Final Project\\backstage.png")
+    filename = ("backstage")
     backStage = makePicture(filename)
     canvas = (mapPainter(backStage, mapBackground, 115, 20))
     addText(canvas,120,25, 'Backstage', white)
@@ -441,7 +441,7 @@ def map(location, locationHistory):
     #addRectFilled(canvas, 210, 115, 75, 75, gray)#staging area
     #addText(canvas,215,120, 'Staging Area', black)
     addLine(canvas, 190, 95, 210, 115, white) ######line Backstage to Staging Area
-    filename = ("C:\\Users\\computer1\\Documents\\GitHub2\\CST205\\Final Project\\stagingarea.png")
+    filename = ("stagingarea")
     stagingArea = makePicture(filename)
     canvas = (mapPainter(stagingArea, mapBackground, 210, 115))
     addText(canvas,215, 120, 'Staging Area', white) 
@@ -452,7 +452,7 @@ def map(location, locationHistory):
     #addRectFilled(canvas, 210, 20, 75, 75, gray)#trailer
     #addText(canvas,220,25, 'Trailer', black)
     addLine(canvas, 248, 115, 248, 95,white) ######Staging Area to Trailer
-    filename = ("C:\\Users\\computer1\\Documents\\GitHub2\\CST205\\Final Project\\trailer.png")
+    filename = ("trailer")
     trailer = makePicture(filename)
     canvas = (mapPainter(trailer, mapBackground, 210, 20))
     addText(canvas,220, 25, 'Trailer', white)
@@ -462,7 +462,7 @@ def map(location, locationHistory):
     #addRectFilled(canvas, 210, 210, 75, 75, gray) #security room
     #addText(canvas,215,215, 'Security Room', black)
     addLine(canvas, 247, 210, 247, 190, white)  ######line Security Room to Staging Area
-    filename = ("C:\\Users\\computer1\\Documents\\GitHub2\\CST205\\Final Project\\securityroom.png")
+    filename = ("securityroom")
     security = makePicture(filename)
     canvas = (mapPainter(security, mapBackground, 210, 210))
     addText(canvas,215, 215, 'Security Room', white)
