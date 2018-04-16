@@ -37,7 +37,7 @@ def main(): #Jason Tse
     value = value * 5.0
     setSampleValue(sample, value)
 
-  
+
 
 	
   #initStory: start user UI
@@ -333,13 +333,19 @@ def map(location, locationHistory):
     filename = ("C:\\Users\\computer1\\Documents\\GitHub2\\CST205\\Final Project\\ticketgate.png")
     ticketGate = makePicture(filename)
     canvas = (mapPainter(ticketGate, mapBackground, 115, 210))
+    addText(canvas,120, 215, 'ticket Gate', white)
+    
     
     
   if 'circusToSpectator' in locationHistory:    
-    addRectFilled(canvas, 115, 115, 75, 75, gray)#spectator
-    addText(canvas,25,120, 'Spectator Seats', black)  
-    addLine(canvas, 95, 152, 115, 152, black) ######line Circus Tent to Spectator Seats
-    
+    #addRectFilled(canvas, 115, 115, 75, 75, gray)#spectator
+     
+    addLine(canvas, 95, 152, 115, 152, white) ######line Circus Tent to Spectator Seats
+    filename = ("C:\\Users\\computer1\\Documents\\GitHub2\\CST205\\Final Project\\spectatorseats.png")
+    spectatorSeat = makePicture(filename)
+    canvas = (mapPainter(spectatorSeat, mapBackground, 20, 115))
+    addText(canvas,25,120, 'Spectator Seats', white)
+     
   if 'circusToBack' in locationHistory:    
     #addRectFilled(canvas, 115, 20, 75, 75, gray)#backstage  
     addLine(canvas, 153, 115, 153, 95, white) ######line Circus Tent to Backstage
@@ -349,9 +355,9 @@ def map(location, locationHistory):
     addText(canvas,120,25, 'Backstage', white)
      
   
-  if 'spectator seats' in locationHistory: 
-    addRectFilled(canvas, 20, 115, 75, 75, gray)#spectator seats
-    addText(canvas,25,120, 'Spectator Seats', black)
+ # if 'spectator seats' in locationHistory: 
+    #addRectFilled(canvas, 20, 115, 75, 75, gray)#spectator seats
+    #addText(canvas,25,120, 'Spectator Seats', black)
   
   if 'spectatorToCircusTent' in locationHistory:    
     #addRectFilled(canvas, 115, 115, 75, 75, gray)#circus Tent
@@ -363,29 +369,43 @@ def map(location, locationHistory):
     addText(canvas,120,120, 'Circus Tent',white)  
     
   if 'spectatorToTicket' in locationHistory:    
-    addRectFilled(canvas, 115, 210, 75, 75, gray)#ticket gate
-    addLine(canvas, 115, 210, 95, 190, black) ######line Ticket Gate to Spectator Seats
-    addText(canvas,120, 215, 'ticket Gate', black)
+    #addRectFilled(canvas, 115, 210, 75, 75, gray)#ticket gate
+    addLine(canvas, 115, 210, 95, 190, white) ######line Ticket Gate to Spectator Seats
+    filename = ("C:\\Users\\computer1\\Documents\\GitHub2\\CST205\\Final Project\\ticketgate.png")
+    ticketGate = makePicture(filename)
+    canvas = (mapPainter(ticketGate, mapBackground, 115, 210))
+    addText(canvas,120, 215, 'ticket Gate', white)
     
   
   
   
   if 'staging area' in locationHistory:
-    addRectFilled(canvas, 210, 115, 75, 75, gray)#staging area
-    addText(canvas,215,120, 'Staging Area', black)
-    addLine(canvas, 190, 152, 210, 152, black) ######line Circus Tent to Staging Area
+    #addRectFilled(canvas, 210, 115, 75, 75, gray)#staging area
+    #addText(canvas,215,120, 'Staging Area', black)
+    addLine(canvas, 190, 152, 210, 152, white) ######line Circus Tent to Staging Area
+    filename = ("C:\\Users\\computer1\\Documents\\GitHub2\\CST205\\Final Project\\stagingarea.png")
+    stagingArea = makePicture(filename)
+    canvas = (mapPainter(stagingArea, mapBackground, 210, 115))
+    addText(canvas,215, 120, 'Staging Area', white)
+    
+    
 
   if 'stagingToBack' in locationHistory:
-    addRectFilled(canvas, 115, 20, 75, 75, gray)#backstage
-    addText(canvas,120,25, 'Backstage', black)
+    #addRectFilled(canvas, 115, 20, 75, 75, gray)#backstage
+    #addText(canvas,120,25, 'Backstage', black)
     addLine(canvas, 190, 95, 210, 115, black) ######line Backstage to Staging Area
+    filename = ("C:\\Users\\computer1\\Documents\\GitHub2\\CST205\\Final Project\\backstage.png")
+    backStage = makePicture(filename)
+    canvas = (mapPainter(backStage, mapBackground, 115, 20))
+    addText(canvas,120,25, 'Backstage', white)
     
 
 
   if 'stagingToCircus' in locationHistory:
     addRectFilled(canvas, 115, 115, 75, 75, gray)#circus Tent
     addText(canvas,120,120, 'Circus Tent', black)  
-    #addLine(canvas, 95, 152, 115, 152, black) ######line staging to Circus Tent 
+    #addLine(canvas, 95, 152, 115, 152, black) ######line staging to Circus Tent
+     
       
    
   if 'ticketToSpectator' in locationHistory:
@@ -408,26 +428,43 @@ def map(location, locationHistory):
 
   
   if 'backToCircus' in locationHistory:  
-    addRectFilled(canvas, 115, 20, 75, 75, gray)#backstage
-    addText(canvas,120,25, 'Backstage', black)
-    addLine(canvas, 153, 115, 153, 95, black) ######line Circus Tent to Backstage
+    addRectFilled(canvas, 115, 20, 75, 75, red)#backstage
+    addText(canvas,120,25, 'Backstage', white)
+    addLine(canvas, 153, 115, 153, 95, white) ######line Circus Tent to Backstage
+    filename = ("C:\\Users\\computer1\\Documents\\GitHub2\\CST205\\Final Project\\backstage.png")
+    backStage = makePicture(filename)
+    canvas = (mapPainter(backStage, mapBackground, 115, 20))
+    addText(canvas,120,25, 'Backstage', white)
     
   if 'backToStaging' in locationHistory:  
-    addRectFilled(canvas, 210, 115, 75, 75, gray)#staging area
-    addText(canvas,215,120, 'Staging Area', black)
-    addLine(canvas, 190, 95, 210, 115, black) ######line Backstage to Staging Area 
+    #addRectFilled(canvas, 210, 115, 75, 75, gray)#staging area
+    #addText(canvas,215,120, 'Staging Area', black)
+    addLine(canvas, 190, 95, 210, 115, white) ######line Backstage to Staging Area
+    filename = ("C:\\Users\\computer1\\Documents\\GitHub2\\CST205\\Final Project\\stagingarea.png")
+    stagingArea = makePicture(filename)
+    canvas = (mapPainter(stagingArea, mapBackground, 210, 115))
+    addText(canvas,215, 120, 'Staging Area', white) 
     
      
   
   if 'trailer' in locationHistory:  
-    addRectFilled(canvas, 210, 20, 75, 75, gray)#trailer
-    addText(canvas,220,25, 'Trailer', black)
-    addLine(canvas, 248, 115, 248, 95, black) ######Staging Area to Trailer
+    #addRectFilled(canvas, 210, 20, 75, 75, gray)#trailer
+    #addText(canvas,220,25, 'Trailer', black)
+    addLine(canvas, 248, 115, 248, 95,white) ######Staging Area to Trailer
+    filename = ("C:\\Users\\computer1\\Documents\\GitHub2\\CST205\\Final Project\\trailer.png")
+    trailer = makePicture(filename)
+    canvas = (mapPainter(trailer, mapBackground, 210, 20))
+    addText(canvas,220, 25, 'Trailer', white)
+    
     
   if 'security room' in locationHistory:  
-    addRectFilled(canvas, 210, 210, 75, 75, gray) #security room
-    addText(canvas,215,215, 'Security Room', black)
-    addLine(canvas, 247, 210, 247, 190, black)  ######line Security Room to Staging Area
+    #addRectFilled(canvas, 210, 210, 75, 75, gray) #security room
+    #addText(canvas,215,215, 'Security Room', black)
+    addLine(canvas, 247, 210, 247, 190, white)  ######line Security Room to Staging Area
+    filename = ("C:\\Users\\computer1\\Documents\\GitHub2\\CST205\\Final Project\\securityroom.png")
+    security = makePicture(filename)
+    canvas = (mapPainter(security, mapBackground, 210, 210))
+    addText(canvas,215, 215, 'Security Room', white)
     
   
   ############ you are here ################################  
