@@ -72,9 +72,7 @@ def main(): #Jason Tse
     elif (comTypeCode == 1):
       dispLocation(location, inventory)
     elif (comTypeCode == 2):
-      location = execMovement(location, command, inventory, locationHistory)
-      play(door)
-      play(movement)
+      location = execMovement(location, command, inventory, locationHistory, door, movement)
     elif (comTypeCode == 3):
       dispHelp()
     elif (comTypeCode == 4):
@@ -188,7 +186,7 @@ def useItem(location, inventory, command, progress):  #Nikola Petkov
 #          EXEC MOVEMENT FUNCTION       #  
 #########################################
 
-def execMovement(location, command, inventory, locationHistory):  #Rocky Moreno
+def execMovement(location, command, inventory, locationHistory, door, movement):  #Rocky Moreno
   ticketGate = 'ticket gate'
   circusTent = 'circus tent'
   spectatorSeats = 'spectator seats'
@@ -278,6 +276,8 @@ def execMovement(location, command, inventory, locationHistory):  #Rocky Moreno
   else:
     dispLocation(newLocation, inventory)
     if newLocation <> location:
+      play(door)
+      play(movement)
       locationHistory.append(newLocation)    # Add new location to history.
     return newLocation
     
