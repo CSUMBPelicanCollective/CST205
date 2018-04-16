@@ -14,7 +14,7 @@ def main(): #Jason Tse
   progress = 0 #This variable is used to determine game endings
   player = ''  # Holds the player's name.
   
-  
+  """  
 #########################################
 #             SOUND EFFECTS             #  
 #########################################
@@ -39,7 +39,7 @@ def main(): #Jason Tse
     value = getSampleValue(sample)
     value = value * 5.0
     setSampleValue(sample, value)
-
+  """
   
 
 	
@@ -75,8 +75,8 @@ def main(): #Jason Tse
       dispLocation(location, inventory)
     elif (comTypeCode == 2):
       location = execMovement(location, command, inventory, locationHistory)
-      play(door)
-      play(movement)
+      #play(door)######################################################################################
+      #play(movement)
     elif (comTypeCode == 3):
       dispHelp()
     elif (comTypeCode == 4):
@@ -293,15 +293,15 @@ def execMovement(location, command, inventory, locationHistory):  #Rocky Moreno
 ###################
 
 def mapPainter(source, target, targetX, targetY):   
-  canvas = makeEmptyPicture(305, 305, white)
+  #canvas = makeEmptyPicture(305, 305, white)
   for x in range(0, getWidth(source)):
     for y in range(0, getHeight(source)):
       pic_pixel = getPixel(source, x, y)
       pic_pixel_color = getColor(pic_pixel)  
-      setColor(getPixel(canvas, x + targetX ,y + targetY), pic_pixel_color)
+      setColor(getPixel(target, x + targetX ,y + targetY), pic_pixel_color)
       
   #show (canvas)
-  return canvas 
+  return target
 
 
 
@@ -317,19 +317,26 @@ def map(location, locationHistory):
   
   
   
-  canvas = makeEmptyPicture(305, 305)
+  #canvas = makeEmptyPicture(305, 305)
   #Game starts at ticket gate
-  addRectFilled(canvas, 115, 210, 75, 75, gray)#ticket gate
-  addText(canvas,120, 215, 'ticket Gate', black)
-  filename = "C:\\Users\\computer1\\Documents\\GitHub2\\CST205\\Final Projec\\backgroundCanvas.png"
-  picture = makePicture(filename)
-  show(picture)
+  #addRectFilled(canvas, 115, 210, 75, 75, gray)#ticket gate
+  #addText(canvas,120, 215, 'ticket Gate', black)
+  filename = ("C:\\Users\\computer1\\Documents\\GitHub2\\CST205\\Final Project\\backgroundCanvas.png")
+  mapBackground = makePicture(filename)
+  #show(picture)
+  filename = ("C:\\Users\\computer1\\Documents\\GitHub2\\CST205\\Final Project\\ticketgate.png")
+  ticketGate = makePicture(filename)
+  canvas = (mapPainter(ticketGate, mapBackground, 115, 210))
   
   
   if 'circusToTicket' in locationHistory:    
-    addRectFilled(canvas, 115, 115, 75, 75, gray)#Ticket
-    addText(canvas,120,120, 'Circus Tent', black)  
-    addLine(canvas, 153, 210, 153, 190, black) ######line Circus Tent to Ticket Gate
+    #addRectFilled(canvas, 115, 115, 75, 75, gray)#Ticket
+    #addText(canvas,120,120, 'Circus Tent', white)  
+    addLine(canvas, 153, 210, 153, 190, white) ######line Circus Tent to Ticket Gate
+    filename = ("C:\\Users\\computer1\\Documents\\GitHub2\\CST205\\Final Project\\ticketgate.png")
+    ticketGate = makePicture(filename)
+    canvas = (mapPainter(ticketGate, mapBackground, 115, 210))
+    
     
   if 'circusToSpectator' in locationHistory:    
     addRectFilled(canvas, 115, 115, 75, 75, gray)#spectator
@@ -337,9 +344,12 @@ def map(location, locationHistory):
     addLine(canvas, 95, 152, 115, 152, black) ######line Circus Tent to Spectator Seats
     
   if 'circusToBack' in locationHistory:    
-    addRectFilled(canvas, 115, 20, 75, 75, gray)#backstage
-    addText(canvas,120,25, 'Backstage', black)
-    addLine(canvas, 153, 115, 153, 95, black) ######line Circus Tent to Backstage
+    #addRectFilled(canvas, 115, 20, 75, 75, gray)#backstage  
+    addLine(canvas, 153, 115, 153, 95, white) ######line Circus Tent to Backstage
+    filename = ("C:\\Users\\computer1\\Documents\\GitHub2\\CST205\\Final Project\\backstage.png")
+    backStage = makePicture(filename)
+    canvas = (mapPainter(backStage, mapBackground, 115, 20))
+    addText(canvas,120,25, 'Backstage', white)
      
   
   if 'spectator seats' in locationHistory: 
@@ -347,9 +357,13 @@ def map(location, locationHistory):
     addText(canvas,25,120, 'Spectator Seats', black)
   
   if 'spectatorToCircusTent' in locationHistory:    
-    addRectFilled(canvas, 115, 115, 75, 75, gray)#circus Tent
-    addText(canvas,120,120, 'Circus Tent', black)  
-    addLine(canvas, 95, 152, 115, 152, black) ######line Spectator Seats to Circus Tent
+    #addRectFilled(canvas, 115, 115, 75, 75, gray)#circus Tent
+    #addText(canvas,120,120, 'Circus Tent', black)  
+    addLine(canvas, 95, 152, 115, 152, white) ######line Spectator Seats to Circus Tent
+    filename = ("C:\\Users\\computer1\\Documents\\GitHub2\\CST205\\Final Project\\circustent.png")
+    circusTent = makePicture(filename)
+    canvas = (mapPainter(circusTent, mapBackground, 115, 115))
+    addText(canvas,120,120, 'Circus Tent',white)  
     
   if 'spectatorToTicket' in locationHistory:    
     addRectFilled(canvas, 115, 210, 75, 75, gray)#ticket gate
@@ -378,12 +392,22 @@ def map(location, locationHistory):
       
    
   if 'ticketToSpectator' in locationHistory:
-    addLine(canvas, 115, 210, 95, 190, black) ######line Ticket Gate to Spectator Seats
+    addLine(canvas, 115, 210, 95, 190, white) ######line Ticket Gate to Spectator Seats
+    #addRectFilled(canvas, 20, 115, 75, 75, gray)#spectator seats   
+    filename = ("C:\\Users\\computer1\\Documents\\GitHub2\\CST205\\Final Project\\spectatorseats.png")
+    spectatorSeats = makePicture(filename)
+    canvas = (mapPainter(spectatorSeats, mapBackground, 20, 115))
+    addText(canvas,25,120, 'Spectator Seats', white)
+    
+    
     
   if 'ticketToCircus' in locationHistory:    
-    addRectFilled(canvas, 115, 115, 75, 75, gray)#circus Tent
-    addText(canvas,120,120, 'Circus Tent', black)
-    addLine(canvas, 153, 210, 153, 190, black) ######line Ticket Gate to Circus Tent  
+    #addRectFilled(canvas, 115, 115, 75, 75, gray)#circus Tent   
+    addLine(canvas, 153, 210, 153, 190, white) ######line Ticket Gate to Circus Tent
+    filename = ("C:\\Users\\computer1\\Documents\\GitHub2\\CST205\\Final Project\\circustent.png")
+    circusTent = makePicture(filename)
+    canvas = (mapPainter(circusTent, mapBackground, 115, 115))
+    addText(canvas,120,120, 'Circus Tent',white)  
 
   
   if 'backToCircus' in locationHistory:  
