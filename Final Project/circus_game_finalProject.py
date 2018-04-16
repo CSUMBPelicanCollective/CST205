@@ -10,7 +10,7 @@ def main(): #Jason Tse
   inventory = []
   progress = 0 #This variable is used to determine game endings
   player = ''  # Holds the player's name.
-  
+
 
 #########################################
 #             SOUND EFFECTS             #  
@@ -21,13 +21,12 @@ def main(): #Jason Tse
   dir = dir[0] + "\\Game Data\\" # Add directory for game files.
   setMediaPath(dir)
   
+  
   sounds = dict()
   sounds = {'background': makeSound("background.wav"), 'door': makeSound("dooropen.wav"), 'movement': makeSound("footsteps.wav")}
   play(sounds['background'])
-
-
-
-
+  
+  
   #initStory: start user UI
   showInformation("You suddenly awoke on the hard ground outdoors. As your eyes adjust to the dimly moon-lit surroundings, you find yourself inside the front gates of an old abandoned circus. " \
                   "In the wind you could hear faint giggling.\nClick OK to play. Click Stop to exit the game.")
@@ -36,7 +35,7 @@ def main(): #Jason Tse
     player = 'Player'
   dispLocation(location, inventory)
   
-	
+  
   #main game loop
   while True:
     #prompt player for command
@@ -101,7 +100,7 @@ def main(): #Jason Tse
      # angleMovement.append('specttoticket')
     #print "this is the current location from main towards bottom of main " + currentLocation
     #print " this is the location variable from main " + location 
-    show (map(location, locationHistory))
+    #show (map(location, locationHistory))
     
 def dispLocation(location, inventory): #Nikola Petkov
   print "You are currently at the " + location
@@ -266,6 +265,7 @@ def execMovement(location, command, inventory, locationHistory, sounds):  #Rocky
       play(sounds['door'])
       play(sounds['movement'])
       locationHistory.append(newLocation)    # Add new location to history.
+      show (map(newLocation, locationHistory))
     return newLocation
     
    
