@@ -457,21 +457,26 @@ def map(location, locationHistory):
     addText(canvas,215, 215, 'Security Room', white)
     
   
-  ############ you are here ################################  
+  ############ you are here ################################ 
+  #youAreHere = makeStyle(mono, plain, 8)
   if location == 'backstage':
-    addRect(canvas, 122, 27, 61, 61, red) #Tracker  add 7 and 7
-    addText(canvas,122, 48, 'You Are', red)  # 7 and 28
-    addText(canvas,130, 60, 'Here', red)  #add 8 and 12
+    #addRect(canvas, 122, 27, 61, 61, red) #Tracker  add 7 and 7
+    addOvalFilled(canvas,129, 34, 42, 42, white)
+    addText(canvas,128, 53, 'You Are', black)  # 7 and 28
+    addText(canvas,137, 66, 'Here', black)  #add 8 and 12
     
   if location == 'circus tent':
-    addRect(canvas, 122,122, 61, 61, red) #Tracker
-    addText(canvas,130, 150, 'You Are', red)  
-    addText(canvas,138, 162, 'Here', red)
+    #addRect(canvas, 122,122, 61, 61, red) #Tracker
+    addOvalFilled(canvas,130, 130, 42, 42, white)
+    addText(canvas,130, 150, 'You Are', black)  
+    addText(canvas,138, 162, 'Here', black)
+    
     
   if location == 'staging area':
-    addRect(canvas, 217, 122, 61, 61, red) #Tracker  add 7 and 7
-    addText(canvas,224, 150, 'You Are', red)  # 7 and 28
-    addText(canvas,232, 162, 'Here', red)  #add 8 and 12
+    #addRect(canvas, 217, 122, 61, 61, red) #Tracker  add 7 and 7
+    #addOvalFilled(canvas,224, 129, 42, 42, white)
+    addText(canvas,217, 197, 'You Are', white)  # 7 and 28
+    addText(canvas,243, 197, 'Here', white)  #add 8 and 12
     
   if location == 'trailer': 
     addRect(canvas, 217, 27, 61, 61, red) #Tracker  add 7 and 7
