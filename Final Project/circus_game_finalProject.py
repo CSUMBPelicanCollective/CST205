@@ -11,7 +11,7 @@ def main(): #Jason Tse
   progress = 0 #This variable is used to determine game endings
   player = ''  # Holds the player's name.
   
-  """  
+
 #########################################
 #             SOUND EFFECTS             #  
 #########################################
@@ -36,7 +36,7 @@ def main(): #Jason Tse
     value = getSampleValue(sample)
     value = value * 5.0
     setSampleValue(sample, value)
-  """
+
   
 
 	
@@ -72,8 +72,8 @@ def main(): #Jason Tse
       dispLocation(location, inventory)
     elif (comTypeCode == 2):
       location = execMovement(location, command, inventory, locationHistory)
-      #play(door)######################################################################################
-      #play(movement)
+      play(door)
+      play(movement)
     elif (comTypeCode == 3):
       dispHelp()
     elif (comTypeCode == 4):
