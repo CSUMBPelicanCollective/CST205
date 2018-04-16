@@ -321,8 +321,9 @@ def map(location, locationHistory):
   #Game starts at ticket gate
   addRectFilled(canvas, 115, 210, 75, 75, gray)#ticket gate
   addText(canvas,120, 215, 'ticket Gate', black)
-  #picture = "C:\\Users\\computer1\\Documents\\GitHub2\\CST205\\Final Projec\\backgroundCanvas.png"
-  #show(picture)
+  filename = "C:\\Users\\computer1\\Documents\\GitHub2\\CST205\\Final Projec\\backgroundCanvas.png"
+  picture = makePicture(filename)
+  show(picture)
   
   
   if 'circusToTicket' in locationHistory:    
