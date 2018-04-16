@@ -90,10 +90,12 @@ def main(): #Jason Tse
     if (progress == 1):
       showInformation("Good End! Congratulations, " + player + ", you WON!")
       print "The path you took: " + str(locationHistory)
+      stopPlaying(background)
       break
     elif (progress == 2):
       showInformation("Bad End! Sorry, " + player + ", you LOST!")
       print "The path you took: " + str(locationHistory)
+      stopPlaying(background)
       break
 
     
