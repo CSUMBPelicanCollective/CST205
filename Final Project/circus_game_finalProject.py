@@ -16,9 +16,13 @@ def main(): #Jason Tse
 #             SOUND EFFECTS             #  
 #########################################
   
-  dir = __file__                 # Full directory for the .py file
-  dir = dir.rsplit("\\", 1)      # Remove file name.
-  dir = dir[0] + "\\Game Data\\" # Add directory for game files.
+  dir = __file__                   # Full path for the .py file.
+  if "\\" in dir:
+    dir = dir.rsplit("\\", 1)      # Remove file name.
+    dir = dir[0] + "\\Game Data\\" # Add directory for game files.
+  else:
+    dir = dir.rsplit("/", 1)       # For Unix-based OSes.
+    dir = dir[0] + "/Game Data/"
   setMediaPath(dir)
   
   
