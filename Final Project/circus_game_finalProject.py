@@ -23,7 +23,8 @@ def main(): #Jason Tse
   
   
   sounds = dict()
-  sounds = {'background': makeSound("background.wav"), 'door': makeSound("dooropen.wav"), 'movement': makeSound("footsteps.wav")}
+  sounds = {'background': makeSound("background.wav"), 'door': makeSound("dooropen.wav"), 'movement': makeSound("footsteps.wav"),
+            'yell': makeSound("yell.wav"), 'win': makeSound("win.wav"), 'lose': makeSound("lose.wav")}
   play(sounds['background'])
   
   
@@ -62,7 +63,7 @@ def main(): #Jason Tse
     elif (comTypeCode == 3):
       dispHelp()
     elif (comTypeCode == 4):
-      progress = yell(location, inventory)
+      progress = yell(location, inventory, sounds)
     elif (comTypeCode == 5):
       inventory = getItem(location, inventory, command)
     elif (comTypeCode == 6):
@@ -72,23 +73,21 @@ def main(): #Jason Tse
     
     #prints if game is a win or loss
     if (progress == 1):
+      stopPlaying(sounds['background'])
+      play(sounds['win'])
       showInformation("Good End! Congratulations, " + player + ", you WON!")
       print "The path you took: " + str(locationHistory)
-      stopPlaying(sounds['background'])
       break
     elif (progress == 2):
+      stopPlaying(sounds['background'])
+      play(sounds['lose'])
       showInformation("Bad End! Sorry, " + player + ", you LOST!")
       print "The path you took: " + str(locationHistory)
-      stopPlaying(sounds['background'])
       break
 
-    
-  
-  
-  
 
-    
-    
+
+
     ################################################  
     #       TESTING FOR LOCATION HISTORY, MAP       #
     ################################################  
@@ -508,11 +507,13 @@ def map(location, locationHistory):
 
 
 #For yelling action. Only useful at ticket gate.        
-def yell(location, inventory): #Jason Tse
+def yell(location, inventory, sounds): #Jason Tse
   if location == "ticket gate" and "clown nose" in inventory:
+    play(sounds['yell'])
     print "The clown thinks you stole its nose! The last thing you remember is the clown grabbing ahold of you ... "
     return 2
   elif location == "ticket gate":
+    play(sounds['yell'])
     print "The clown seems to ignore you. It's looking for something."
   else:
     print "Now is not the time for that."
