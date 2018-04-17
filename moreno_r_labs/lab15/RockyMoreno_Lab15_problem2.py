@@ -1,4 +1,4 @@
-#Rocky Moreno
+#Rocky Moreno, Daniel Howe, Jiwanjot, Sandhu
 #Lab 15 Problem 2
 
 import calendar
@@ -48,7 +48,7 @@ showInformation ("You have " + str(daysTilBirthday.days) + " days until your bir
 #   Declaration of Independence   #
 ###################################
 
-showInformation ("The Declartion of Independence was ratified on: " )
+print ("The Declartion of Independence was ratified on: " )
 #Monday July 4th, 1776
 declaration = date(1776, 7, 4)  # Independence Day.
 declarationDay = day_name[declaration.weekday()]
