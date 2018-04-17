@@ -1,4 +1,4 @@
-#Rocky Moreno
+#Rocky Moreno, Jiwanjot Sandhu, Daniel Howe
 #Lab 16
 
 
