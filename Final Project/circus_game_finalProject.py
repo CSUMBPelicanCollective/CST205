@@ -10,7 +10,7 @@ def main(): #Jason Tse
   inventory = []
   progress = 0 #This variable is used to determine game endings
   player = ''  # Holds the player's name.
-
+  main.temp = makeEmptyPicture(305, 305)    # Temporary variable to draw map onto.
 
 #########################################
 #             SOUND EFFECTS             #  
@@ -265,7 +265,7 @@ def execMovement(location, command, inventory, locationHistory, sounds):  #Rocky
       play(sounds['door'])
       play(sounds['movement'])
       locationHistory.append(newLocation)    # Add new location to history.
-      show (map(newLocation, locationHistory))
+      map(newLocation, locationHistory)      # Draw the map.
     return newLocation
     
    
@@ -498,7 +498,8 @@ def map(location, locationHistory):
     addText(canvas, 34, 150, 'You Are', red)  # 7 and 28
     addText(canvas, 42, 162, 'Here', red)  #add 8 and 12
        
-  return canvas
+  copyInto(canvas, main.temp, 0, 0)
+  repaint(main.temp)
 
 
 ###############################
