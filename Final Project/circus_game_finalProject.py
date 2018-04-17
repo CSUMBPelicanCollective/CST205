@@ -473,29 +473,41 @@ def map(location, locationHistory):
     
   if location == 'staging area':
     #addRect(canvas, 217, 122, 61, 61, red) #Tracker  add 7 and 7
-    #addOvalFilled(canvas,224, 129, 42, 42, white)
-    addText(canvas,217, 197, 'You Are', white)  # 7 and 28
-    addText(canvas,243, 197, 'Here', white)  #add 8 and 12
+    addOvalFilled(canvas,224, 130, 42, 42, white)
+    addText(canvas,225, 150, 'You Are', black)  # 7 and 28
+    addText(canvas,232, 162, 'Here', black)  #add 8 and 12
     
   if location == 'trailer': 
-    addRect(canvas, 217, 27, 61, 61, red) #Tracker  add 7 and 7
-    addText(canvas,224, 55, 'You Are', red)  # 7 and 28
-    addText(canvas,232, 67, 'Here', red)  #add 8 and 12 
+    #addRect(canvas, 217, 27, 61, 61, red) #Tracker  add 7 and 7
+    #addText(canvas,224, 55, 'You Are', red)  # 7 and 28
+    #addText(canvas,232, 67, 'Here', red)  #add 8 and 12
+    addOvalFilled(canvas,224, 30, 42, 42, white)
+    addText(canvas,225, 55, 'You Are', black)  # 7 and 28
+    addText(canvas,232, 67, 'Here', black)  #add 8 and 12 
     
   if location == 'security room':     
-    addRect(canvas, 217, 217, 61, 61, red) #Tracker  add 7 and 7
-    addText(canvas,224, 245, 'You Are', red)  # 7 and 28
-    addText(canvas,232, 257, 'Here', red)  #add 8 and 12
+    #addRect(canvas, 217, 217, 61, 61, red) #Tracker  add 7 and 7
+    #addText(canvas,224, 245, 'You Are', red)  # 7 and 28
+    #addText(canvas,232, 257, 'Here', red)  #add 8 and 12
+    addOvalFilled(canvas,224, 225, 42, 42, white)
+    addText(canvas,225, 245, 'You Are', black)  # 7 and 28
+    addText(canvas,232, 257, 'Here', black)  #add 8 and 12
     
   if location == 'ticket gate':       
-    addRect(canvas, 122, 217, 61, 61, red) #Tracker  add 7 and 7
-    addText(canvas, 129, 245, 'You Are', red)  # 7 and 28
-    addText(canvas, 137, 257, 'Here', red)  #add 8 and 12
+    #addRect(canvas, 122, 217, 61, 61, red) #Tracker  add 7 and 7
+    #addText(canvas, 129, 245, 'You Are', red)  # 7 and 28
+    #addText(canvas, 137, 257, 'Here', red)  #add 8 and 12
+    addOvalFilled(canvas,130, 225, 42, 42, white)
+    addText(canvas,130, 245, 'You Are', black)  
+    addText(canvas,138, 257, 'Here', black)
     
   if location == 'spectator seats':          
-    addRect(canvas, 27, 122, 61, 61, red) #Tracker  add 7 and 7
-    addText(canvas, 34, 150, 'You Are', red)  # 7 and 28
-    addText(canvas, 42, 162, 'Here', red)  #add 8 and 12
+    #addRect(canvas, 27, 122, 61, 61, red) #Tracker  add 7 and 7
+    #addText(canvas, 34, 150, 'You Are', red)  # 7 and 28
+    #addText(canvas, 42, 162, 'Here', red)  #add 8 and 12
+    addOvalFilled(canvas,34, 130, 42, 42, white)
+    addText(canvas,34, 150, 'You Are', black)  
+    addText(canvas,42, 162, 'Here', black)
        
   copyInto(canvas, main.temp, 0, 0)
   repaint(main.temp)
