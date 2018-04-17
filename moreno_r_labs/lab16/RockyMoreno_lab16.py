@@ -49,7 +49,7 @@ for x in range(0, len(readFile)):
 ################
 
 
-file = open("C:\\Users\\computer1\\Documents\\GitHub2\\CST205\\moreno_r_labs\\lab16\\superweb.html", "wt")
+file = open(pickAFile(), "wt")
 
 def addText():
   string = ''
