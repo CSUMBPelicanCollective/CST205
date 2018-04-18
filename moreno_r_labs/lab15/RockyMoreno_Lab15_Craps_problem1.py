@@ -1,4 +1,4 @@
-#Rocky Moreno
+#Rocky Moreno, Daniel Howe, Jiwanjot Sandhu
 #Lab 15 Prob 1
 
 from random import randrange
@@ -38,15 +38,15 @@ while keepPlaying == 'y':
     
   if playCount > 1 and totalDiePoints == firstPointTracker:
     print "YOU WIN"
-    print 'printing totalDiePoints from playcount > 1'
-    print totalDiePoints
-    print 'printing firstPointTracker from playcount > 1'
+    #print 'printing totalDiePoints from playcount > 1'
+    #print totalDiePoints
+    #print 'printing firstPointTracker from playcount > 1'
     break  
     
   elif playCount > 1 and totalDiePoints == 7:
     print "YOU LOSE!"
-    print 'printing from playcount > 1 total die points'
-    print totalDiePoints
+    #print 'printing from playcount > 1 total die points'
+    #print totalDiePoints
     break  
     
   elif playCount > 1:

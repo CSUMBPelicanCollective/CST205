@@ -1,10 +1,11 @@
-#Rocky Moreno
+#Rocky Moreno, Daniel Howe, Jiwanjot, Sandhu
 #Lab 15 Problem 2
 
 import calendar
+from calendar import setfirstweekday, prmonth, weekday, day_name, month_name
 from datetime import *
 
-"""
+
 #PROBLEM 2 -----------------------------
 
 ########################################
@@ -41,19 +42,19 @@ birthDate = date(currentYear, month, day)
 #print birthDate
 
 daysTilBirthday = (birthDate - todaysDate)
-print "You have " + str(daysTilBirthday.days) + " days until your birthday"
-"""
+showInformation ("You have " + str(daysTilBirthday.days) + " days until your birthday")
+
 ###################################
 #   Declaration of Independence   #
 ###################################
 
-#print "The Declartion of Independence was ratified on: " 
-#Monday July 4th, 1776)
-#date = datetime(1901, 7, 4)
-#print "%s  %s %sth, %s" % (date.day, date.month, date.day, date.year)  
-#print date.strftime("%A %B %dth, %Y")
-
-
+print ("The Declartion of Independence was ratified on: " )
+#Monday July 4th, 1776
+declaration = date(1776, 7, 4)  # Independence Day.
+declarationDay = day_name[declaration.weekday()]
+declarationMonth = month_name[declaration.month]
+declarationYear = declaration.year
+print declarationDay + ", " + declarationMonth, str(declaration.day) + ", " + str(declarationYear)
 
 
 
